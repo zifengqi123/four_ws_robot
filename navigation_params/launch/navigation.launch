@@ -1,0 +1,40 @@
+<launch>
+  <master auto="start"/>
+  <!-- MAP SERVER -->
+  <arg name="map_file" default="$(find navigation_params)/map/four_ws_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="map" />
+  </node>
+
+  <!-- AMCL -->
+  <include file="$(find navigation_params)/launch/amcl_diff.launch"/>
+
+  <!-- MOVE BASE -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <!-- COST MAP -->
+    <rosparam file="$(find navigation_params)/config/costmap/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find navigation_params)/config/costmap/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find navigation_params)/config/costmap/local_costmap.yaml" command="load" />
+    <rosparam file="$(find navigation_params)/config/costmap/global_costmap.yaml" command="load" />
+
+    <!-- BASE GLOBAL PLANNER -->
+    <rosparam file="$(find navigation_params)/config/planner/global/navfn_planner.yaml" command="load" />
+    <!-- BASE LOCAL PLANNER -->
+    <rosparam file="$(find navigation_params)/config/planner/local/trajectory_planner.yaml" command="load" />
+    <!-- RECOVERY -->
+    <rosparam file="$(find navigation_params)/config/planner/recovery_behaviors.yaml" command="load"/>
+
+    <!-- MOVE BASE -->
+    <param name="controller_frequency" value="5.0" />
+    <param name="controller_patience" value="15.0" />
+    <param name="max_planning_retries" value="10" />
+    <param name="oscillation_timeout" value="10.0" />
+    <param name="clearing_rotation_allowed" value="true" />
+
+    <!-- remap cmd_vel topic for gazebo -->
+    <remap from="cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
+    <remap from="odom" to="/four_wheel_steering_controller/odom"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find navigation_params)/rviz/navigation.rviz" />
+</launch>

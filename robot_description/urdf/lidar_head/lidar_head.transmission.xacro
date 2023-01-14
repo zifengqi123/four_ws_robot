@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="lidar_trans_v0">
+    <transmission name="lidar_head_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="lidar_head_joint">
+	<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+	<actuator name="lidar_head_motor">
+	  <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	  <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+  </xacro:macro>
+</robot>
+

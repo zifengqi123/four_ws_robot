@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="commander" name="commander_node" type="pub_command.py" output="screen"/>
+</launch>
