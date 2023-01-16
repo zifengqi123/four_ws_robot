@@ -1,0 +1,49 @@
+# Using map
+min_particles: 100
+max_particles: 5000
+kld_err: 0.01
+update_min_d: 0.2
+update_min_a: 0.5
+
+transform_tolerance: 0.2
+
+
+use_map_topic: true
+first_map_only: true
+# Publish scans from best pose at a max of 10 Hz
+gui_publish_rate: 10.0
+kld_z: 0.99   #0.99
+#odom_alpha5: 0.003
+
+laser_max_beams: 60
+laser_z_hit: 0.5
+laser_z_short: 0.05
+laser_z_max" : 0.05
+laser_z_rand": 0.5
+laser_sigma_hit: 0.2
+laser_lambda_short: 0.1
+laser_likelihood_max_dist: 2.0
+laser_model_type: likelihood_field
+
+odom_model_type: diff-corrected #Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". 
+odom_alpha1: 0.2 #0.2  #0.005
+odom_alpha2: 0.2 #0.2  #0.005
+# translation std dev, m
+odom_alpha3: 0.8  #0.8  #0.01
+odom_alpha4: 0.2 #0.2  #0.005
+odom_alpha5: 0.1
+odom_frame_id: odom #odom
+
+resample_interval: 1
+transform_tolerance: 0.1
+recovery_alpha_slow: 0.0
+recovery_alpha_fast: 0.0
+# initial_pose_x: 75.630
+# initial_pose_y: 62.509
+# initial_pose_a: -1.220
+# initial_pose_x: -2.964
+# initial_pose_y: 57.112
+# initial_pose_a: 1.507
+# initial_pose_x: 419.633
+# initial_pose_y: 186.369
+# initial_pose_a: 2.569

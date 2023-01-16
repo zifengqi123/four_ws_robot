@@ -1,0 +1,25 @@
+obstacle_range: 3.0  #determines the maximum range sensor reading that will result in an obstacle being put into the costmap
+raytrace_range: 3.5  #The "raytrace_range" parameter determines the range to which we will raytrace freespace given a sensor reading. 
+footprint: [[0.091, 0.07], [0.091, -0.07], [-0.091, -0.07], [-0.091, 0.07]] #footprint of the robot
+#robot_radius: ir_of_robot
+
+inflation_radius: 0.2 #The inflation radius should be set to the maximum distance from obstacles at which a cost should be incurred
+cost_scaling_factor: 0.5 #10
+
+observation_sources: base_scan #The "observation_sources" parameter defines a list of sensors that are going to be passing information to the costmap separated by spaces. 
+base_scan: {
+  sensor_frame: lrf_link, 
+  topic: front/scan,
+  data_type: LaserScan, 
+  expected_update_rate: 1.0,
+  observation_persistence: 0.0, 
+  marking: true, 
+  clearing: true, 
+  max_obstacle_height: 1.0, 
+  min_obstacle_height: -0.15
+  }  
+plugins: 
+  - {name: static_map, type: "costmap_2d::StaticLayer"}
+  - {name: sensor,    type: "costmap_2d::ObstacleLayer"}
+  - {name: inflation, type: "costmap_2d::InflationLayer"}
+transform_tolerance: 1.5
