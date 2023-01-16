@@ -24,12 +24,12 @@
   
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-  		args="-x 0
-                      -y 0
-                      -z 0.15
-                      -urdf
-                      -model four_ws_robot
-                      -param robot_description"/>
+  		args="    -x 0
+                -y 0
+                -z 0.15
+                -urdf
+                -model four_ws_robot
+                -param robot_description"/>
 
   <!-- ros_control motoman launch file -->
   <include file="$(find robot_control)/launch/robot_control.launch"/>

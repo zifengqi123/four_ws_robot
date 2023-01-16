@@ -1,10 +1,6 @@
 use_map_topic: true
 first_map_only: true
-
-odom_model_type: diff-corrected #Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected".
-
-
-kld_z: 0.99   #0.99
+kld_z: 0.99
 
 min_particles: 500
 max_particles: 3000
@@ -15,13 +11,20 @@ resample_interval: 1
 transform_tolerance: 0.5
 recovery_alpha_slow: 0.0
 recovery_alpha_fast: 0.0
-# initial_pose_x: 75.630
-# initial_pose_y: 62.509
-# initial_pose_a: -1.220
+initial_pose_x: 0
+initial_pose_y: 0
+initial_pose_a: 0
+# initial_cov_xx:
+# initial_cov_yy:
+# initial_cov_aa:
 gui_publish_rate: 50.0
+save_pose_rate: 0.5
+use_map_topic: false
+first_map_only: false
+selective_resampling: false
 
-#
-#
+laser_min_range: -1.0
+aser_max_range: -1.0
 laser_max_beams: 180
 laser_z_hit: 0.5
 laser_z_short: 0.05
@@ -32,12 +35,14 @@ laser_lambda_short: 0.1
 laser_likelihood_max_dist: 2.0
 laser_model_type: likelihood_field
 
-# 
-odom_alpha1: 0.1 #0.2  #0.005
-odom_alpha2: 0.1 #0.2  #0.005
-# translation std dev, m
-odom_alpha3: 0.1  #0.8  #0.01
-odom_alpha4: 0.1 #0.2  #0.005
-odom_alpha5: 0.1
-odom_frame_id: odom #odom
 #
+odom_model_type: diff-corrected
+odom_alpha1: 0.1
+odom_alpha2: 0.1
+odom_alpha3: 0.1
+odom_alpha4: 0.1
+odom_alpha5: 0.1
+odom_frame_id: odom
+base_frame_id: base_link
+global_frame_id: map
+tf_broadcast: true
