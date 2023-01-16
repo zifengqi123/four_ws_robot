@@ -46,13 +46,13 @@ catkin_make
 cd
 ```
 
-в случае использование zsh  
+в случае использование zsh
 
 ```bash
 echo "source ~/four_ws_navigation/devel/setup.zsh" >> ~/.zshrc
 ```
 
-или в случает bash  
+или в случает bash
 
 ```bash
 echo "source ~/four_ws_navigation/devel/setup.bash" >> ~/.bashrc
@@ -77,7 +77,11 @@ roslaunch robot_launch launch_simulation_for_map_creation.launch
 ```
 
 ```bash
-rosrun gmapping slam_gmapping scan:=/front/scan
+roslaunch gmapping slam_gmapping_high_resolution.launch
+```
+
+```bash
+roslaunch gmapping rviz_slam_gmapping_view.launch
 ```
 
 ```bash
