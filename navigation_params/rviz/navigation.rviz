@@ -4,8 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /TF1
-        - /PoseArray1
+        - /Global Options1
       Splitter Ratio: 0.7441176176071167
     Tree Height: 651
   - Class: rviz/Selection
@@ -263,7 +262,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: odom
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
