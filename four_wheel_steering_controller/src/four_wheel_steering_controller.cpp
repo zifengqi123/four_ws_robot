@@ -49,9 +49,8 @@ namespace four_wheel_steering_controller{
     , wheel_base_(0.0)
     , cmd_vel_timeout_(0.5)
     , base_frame_id_("base_link")
-    , odom_frame_id_("odom") //added
     , enable_odom_tf_(true)
-    , enable_twist_cmd_(true) //default false
+    , enable_twist_cmd_(false)
   {
   }
 
@@ -140,9 +139,6 @@ namespace four_wheel_steering_controller{
 
     controller_nh.param("base_frame_id", base_frame_id_, base_frame_id_);
     ROS_INFO_STREAM_NAMED(name_, "Base frame_id set to " << base_frame_id_);
-
-    controller_nh.param("odom_frame_id", odom_frame_id_, odom_frame_id_);
-    ROS_INFO_STREAM_NAMED(name_, "Odometry frame_id set to " << odom_frame_id_);
 
     controller_nh.param("enable_odom_tf", enable_odom_tf_, enable_odom_tf_);
     ROS_INFO_STREAM_NAMED(name_, "Publishing to tf is " << (enable_odom_tf_?"enabled":"disabled"));
@@ -268,21 +264,20 @@ namespace four_wheel_steering_controller{
     const double fr_steering = front_steering_joints_[1].getPosition();
     const double rl_steering = rear_steering_joints_[0].getPosition();
     const double rr_steering = rear_steering_joints_[1].getPosition();
-
     if (std::isnan(fl_steering) || std::isnan(fr_steering)
         || std::isnan(rl_steering) || std::isnan(rr_steering))
       return;
-
     double front_steering_pos = 0.0;
     if(fabs(fl_steering) > 0.001 || fabs(fr_steering) > 0.001)
     {
-      front_steering_pos = atan(2*tan(fl_steering)*tan(fr_steering)/(tan(fl_steering) + tan(fr_steering)));
+      front_steering_pos = atan(2*tan(fl_steering)*tan(fr_steering)/
+                                      (tan(fl_steering) + tan(fr_steering)));
     }
-    
     double rear_steering_pos = 0.0;
     if(fabs(rl_steering) > 0.001 || fabs(rr_steering) > 0.001)
     {
-      rear_steering_pos = atan(2*tan(rl_steering)*tan(rr_steering)/(tan(rl_steering) + tan(rr_steering)));
+      rear_steering_pos = atan(2*tan(rl_steering)*tan(rr_steering)/
+                                     (tan(rl_steering) + tan(rr_steering)));
     }
 
     ROS_DEBUG_STREAM_THROTTLE(1, "rl_steering "<<rl_steering<<" rr_steering "<<rr_steering<<" rear_steering_pos "<<rear_steering_pos);
@@ -385,54 +380,49 @@ namespace four_wheel_steering_controller{
       last1_cmd_ = last0_cmd_;
       last0_cmd_ = curr_cmd_twist;
 
-      // Compute wheels velocities
-      if(abs(curr_cmd_twist.lin_x) > 0.001 && fabs(curr_cmd_twist.lin_y) < 0.05)
+      // Compute wheels velocities:
+      if(fabs(curr_cmd_twist.lin_x) > 0.001)
       {
-          const double vel_steering_offset = (curr_cmd_twist.ang*wheel_steering_y_offset_)/wheel_radius_;
-          const double sign = copysign(1.0, curr_cmd_twist.lin_x);
-          vel_left_front  = sign * std::hypot((curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2),
+        const double vel_steering_offset = (curr_cmd_twist.ang*wheel_steering_y_offset_)/wheel_radius_;
+        const double sign = copysign(1.0, curr_cmd_twist.lin_x);
+        vel_left_front  = sign * std::hypot((curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2),
                                             (wheel_base_*curr_cmd_twist.ang/2.0)) / wheel_radius_
                           - vel_steering_offset;
-          vel_right_front = sign * std::hypot((curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track/2),
+        vel_right_front = sign * std::hypot((curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track/2),
                                             (wheel_base_*curr_cmd_twist.ang/2.0)) / wheel_radius_
                           + vel_steering_offset;
-          vel_left_rear = sign * std::hypot((curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2),
+        vel_left_rear = sign * std::hypot((curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track/2),
                                           (wheel_base_*curr_cmd_twist.ang/2.0)) / wheel_radius_
                         - vel_steering_offset;
-          vel_right_rear = sign * std::hypot((curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track/2),
+        vel_right_rear = sign * std::hypot((curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track/2),
                                            (wheel_base_*curr_cmd_twist.ang/2.0)) / wheel_radius_
                          + vel_steering_offset;
-
-          if(fabs(2.0*curr_cmd_twist.lin_x) > fabs(curr_cmd_twist.ang*steering_track) && fabs(curr_cmd_twist.lin_y) < 0.001) 
-          {
-            front_left_steering = atan(curr_cmd_twist.ang*wheel_base_ /
-                                    (2.0*curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track));
-            front_right_steering = atan(curr_cmd_twist.ang*wheel_base_ /
-                                     (2.0*curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track));
-             rear_left_steering = -front_left_steering;
-             rear_right_steering = -front_right_steering;
-          }
-          else if(fabs(curr_cmd_twist.lin_x) > 0.001 && fabs(curr_cmd_twist.lin_y) < 0.001)
-          {
-            front_left_steering = copysign(M_PI_2, curr_cmd_twist.ang);
-            front_right_steering = copysign(M_PI_2, curr_cmd_twist.ang);
-            rear_left_steering = -front_left_steering;
-            rear_right_steering = -front_right_steering;
-          }
       }
-      else if(abs(curr_cmd_twist.ang) > 0.001 && abs(curr_cmd_twist.lin_x) < 0.001 && abs(curr_cmd_twist.lin_y) < 0.001) //pivot turn
+
+      // Compute steering angles
+      if(fabs(2.0*curr_cmd_twist.lin_x) > fabs(curr_cmd_twist.ang*steering_track) && fabs(curr_cmd_twist.lin_y) < 0.001)
       {
-            double omega_const = 6; //to make robot rotates a little bit slower
+        front_left_steering = atan(curr_cmd_twist.ang*wheel_base_ /
+                                    (2.0*curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track));
+        front_right_steering = atan(curr_cmd_twist.ang*wheel_base_ /
+                                     (2.0*curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track));
+         rear_left_steering = -front_left_steering;
+         rear_right_steering = -front_right_steering;
+      }
+      else if(fabs(curr_cmd_twist.lin_x) > 0.001 && fabs(curr_cmd_twist.lin_y) < 0.001)
+      {
+        front_left_steering = copysign(M_PI_2, curr_cmd_twist.ang);
+        front_right_steering = copysign(M_PI_2, curr_cmd_twist.ang);
+        rear_left_steering = -front_left_steering;
+        rear_right_steering = -front_right_steering;
+      }
+      else if(fabs(curr_cmd_twist.lin_x) > 0.001 && fabs(curr_cmd_twist.lin_y) >= 0.001 && fabs(curr_cmd_twist.ang) < 0.001)
+      {
+        front_left_steering = atan(curr_cmd_twist.lin_y / curr_cmd_twist.lin_x);
+        front_right_steering = atan(curr_cmd_twist.lin_y / curr_cmd_twist.lin_x);
+        rear_left_steering = front_left_steering;
+        rear_right_steering = front_right_steering;        
 
-            front_right_steering = atan((wheel_base_ /2)/(0 + steering_track/2));
-            rear_right_steering = atan(-(wheel_base_ /2)/(0 + steering_track/2));
-            front_left_steering = atan((wheel_base_ /2)/(0 - steering_track/2));
-            rear_left_steering = atan(-(wheel_base_ /2)/(0 - steering_track/2));
-
-            vel_left_front = -curr_cmd_twist.ang / (omega_const*wheel_radius_);
-            vel_right_front = curr_cmd_twist.ang / (omega_const*wheel_radius_);
-            vel_left_rear = vel_left_front ;
-            vel_right_rear = vel_right_front;
       }
 
     }
@@ -660,7 +650,7 @@ namespace four_wheel_steering_controller{
 
     // Setup odometry realtime publisher + odom message constant fields
     odom_pub_.reset(new realtime_tools::RealtimePublisher<nav_msgs::Odometry>(controller_nh, "odom", 100));
-    odom_pub_->msg_.header.frame_id = odom_frame_id_;
+    odom_pub_->msg_.header.frame_id = "odom";
     odom_pub_->msg_.child_frame_id = base_frame_id_;
     odom_pub_->msg_.pose.pose.position.z = 0;
     odom_pub_->msg_.pose.covariance = {
@@ -688,7 +678,7 @@ namespace four_wheel_steering_controller{
     tf_odom_pub_->msg_.transforms.resize(1);
     tf_odom_pub_->msg_.transforms[0].transform.translation.z = 0.0;
     tf_odom_pub_->msg_.transforms[0].child_frame_id = base_frame_id_;
-    tf_odom_pub_->msg_.transforms[0].header.frame_id = odom_frame_id_;
+    tf_odom_pub_->msg_.transforms[0].header.frame_id = "odom";
   }
 
 } // namespace four_wheel_steering_controller
