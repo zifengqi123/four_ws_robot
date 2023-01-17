@@ -30,7 +30,6 @@ def commander():
         rate.sleep()
 
 if __name__ == '__main__':
-    print "In main"
     rospy.init_node('commander', anonymous=True)
     rospy.Subscriber("joy0", Joy, callback_controller)
     commander()
