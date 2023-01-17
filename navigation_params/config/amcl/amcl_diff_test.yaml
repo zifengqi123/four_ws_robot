@@ -1,9 +1,5 @@
 # http://wiki.ros.org/amcl
 
-use_map_topic: true
-first_map_only: true
-
-
 min_particles: 500
 max_particles: 3000
 kld_err: 0.02
@@ -17,17 +13,17 @@ recovery_alpha_fast: 0.0
 initial_pose_x: 0
 initial_pose_y: 0
 initial_pose_a: 0
-initial_cov_xx: 0.5*0.5
-initial_cov_yy: 0.5*0.5
-initial_cov_aa: (3.14159/12)*(3.14159/12)
+# initial_cov_xx:
+# initial_cov_yy:
+# initial_cov_aa:
 gui_publish_rate: 50.0
-save_pose_rate: 0.5
-use_map_topic: false
-first_map_only: false
-selective_resampling: false
+# save_pose_rate: 0.5
+use_map_topic: false # отличаются
+first_map_only: false # отличаются
+# selective_resampling:
 
 laser_min_range: -1.0
-aser_max_range: -1.0
+laser_max_range: -1.0
 laser_max_beams: 180
 laser_z_hit: 0.5
 laser_z_short: 0.05
@@ -43,7 +39,7 @@ odom_alpha1: 0.1
 odom_alpha2: 0.1
 odom_alpha3: 0.1
 odom_alpha4: 0.1
-odom_alpha5: 0.1
+odom_alpha5: 0.1 # вот тут я бы уточнил
 odom_frame_id: odom
 base_frame_id: base_link
 global_frame_id: map
