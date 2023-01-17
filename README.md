@@ -77,11 +77,12 @@ roslaunch robot_launch launch_simulation_for_map_creation.launch
 ```
 
 ```bash
-roslaunch gmapping slam_gmapping_high_resolution.launch
+roslaunch gmapping rviz_slam_gmapping_view.launch
 ```
+сохранение карты в файл
 
 ```bash
-roslaunch gmapping rviz_slam_gmapping_view.launch
+cd ~/four_ws_navigation/src/navigation_params/map
 ```
 
 ```bash
