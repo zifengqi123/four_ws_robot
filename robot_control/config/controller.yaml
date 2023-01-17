@@ -4,7 +4,7 @@
     publish_rate: 50
 
   four_wheel_steering_controller:
-    type        : "four_wheel_steering_controller/FourWheelSteeringController"
+    type: "four_wheel_steering_controller/FourWheelSteeringController"
     front_wheel: ['ffl_wheel_joint', 'ffr_wheel_joint']
     rear_wheel: ['rfl_wheel_joint', 'rfr_wheel_joint']
     front_steering: ['front_left_steering_joint', 'front_right_steering_joint']
