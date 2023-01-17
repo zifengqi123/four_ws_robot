@@ -1,10 +1,13 @@
+# http://wiki.ros.org/amcl
+
 use_map_topic: true
 first_map_only: true
-kld_z: 0.99
+
 
 min_particles: 500
 max_particles: 3000
 kld_err: 0.02
+kld_z: 0.99
 update_min_d: 0.2
 update_min_a: 0.2
 resample_interval: 1
@@ -14,9 +17,9 @@ recovery_alpha_fast: 0.0
 initial_pose_x: 0
 initial_pose_y: 0
 initial_pose_a: 0
-# initial_cov_xx:
-# initial_cov_yy:
-# initial_cov_aa:
+initial_cov_xx: 0.5*0.5
+initial_cov_yy: 0.5*0.5
+initial_cov_aa: (3.14159/12)*(3.14159/12)
 gui_publish_rate: 50.0
 save_pose_rate: 0.5
 use_map_topic: false
@@ -35,7 +38,6 @@ laser_lambda_short: 0.1
 laser_likelihood_max_dist: 2.0
 laser_model_type: likelihood_field
 
-#
 odom_model_type: diff-corrected
 odom_alpha1: 0.1
 odom_alpha2: 0.1
