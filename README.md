@@ -2,6 +2,10 @@
 
 ## установка пакетов
 
+<p align="center">
+<img src="imgs/skelet.JPG">
+</p>
+
 ```bash
 cd
 ```
