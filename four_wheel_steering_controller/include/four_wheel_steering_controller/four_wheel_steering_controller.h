@@ -38,7 +38,6 @@
 
 #include <controller_interface/multi_interface_controller.h>
 #include <hardware_interface/joint_command_interface.h>
-#include <pluginlib/class_list_macros.hpp>
 
 #include <nav_msgs/Odometry.h>
 #include <four_wheel_steering_msgs/FourWheelSteeringStamped.h>
@@ -167,9 +166,6 @@ namespace four_wheel_steering_controller{
     /// Frame to use for the robot base:
     std::string base_frame_id_;
 
-    /// Frame to use for odometry and odom tf: //added
-    std::string odom_frame_id_;                //added
-
     /// Whether to publish odometry to tf or not:
     bool enable_odom_tf_;
 
@@ -234,5 +230,4 @@ namespace four_wheel_steering_controller{
 
   };
 
-  PLUGINLIB_EXPORT_CLASS(four_wheel_steering_controller::FourWheelSteeringController, controller_interface::ControllerBase);
 } // namespace four_wheel_steering_controller
