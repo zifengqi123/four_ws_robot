@@ -11,7 +11,7 @@ def callback_controller(data):
     global vel_msg
     
     vel_msg.linear.x = data.axes[1]
-    vel_msg.linear.y = data.axes[0]
+    vel_msg.linear.y = data.axes[2]
     vel_msg.angular.z = data.axes[3]
 
 def commander():
