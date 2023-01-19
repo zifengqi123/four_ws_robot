@@ -1,4 +1,5 @@
 # http://wiki.ros.org/gmapping
+
 inverted_laser: false # изначально не было
 throttle_scans: 1 # не было
 base_frame: base_link
