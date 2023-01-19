@@ -1,12 +1,12 @@
 # http://wiki.ros.org/gmapping
-inverted_laser: false
-throttle_scans: 1
+inverted_laser: false # изначально не было
+throttle_scans: 1 # не было
 base_frame: base_link
 map_frame: map
 odom_frame: odom
-map_update_interval: 5.0
-maxUrange: 16.0
-sigma: 0.05
+map_update_interval: 5.0 # 2.0 в боте
+maxUrange: 16.0 # 3.0 в боте
+sigma: 0.05 # 
 kernelSize: 1
 lstep: 0.05
 astep: 0.05
@@ -21,9 +21,9 @@ str: 0.1
 stt: 0.2
 linearUpdate: 1.0
 angularUpdate: 0.5
-temporalUpdate: 3.0
+temporalUpdate: 3.0 # 0.5 в боте
 resampleThreshold: 0.5
-particles: 100 # изначально 30
+particles: 100 # изначально 30 (100 в боте)
 xmin: -10.0
 ymin: -10.0
 xmax: 10.0
