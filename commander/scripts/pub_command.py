@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-import rospy, os, sys
+import rospy
 
-from std_msgs.msg import Header, String, Int32, Float64
-from geometry_msgs.msg import Twist, Vector3
+from std_msgs.msg import Float64
+from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
 
 vel_msg = Twist()
@@ -13,18 +13,15 @@ def callback_controller(data):
     # управление только левым стиком
     
     vel_msg.linear.x = data.axes[1]
-    vel_msg.linear.y = data.axes[3]
     vel_msg.angular.z = data.axes[0]
 
     # управление как в гонках
     
     # vel_msg.linear.x = data.axes[2] - data.axes[5]
-    # vel_msg.linear.y = data.axes[3]
     # vel_msg.angular.z = data.axes[0]
 
 def commander():
     global vel_msg
-    vel_msg_head = Twist()
 
     head_angular_speed = 8
 
