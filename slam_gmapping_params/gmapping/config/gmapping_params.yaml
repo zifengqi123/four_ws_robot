@@ -5,7 +5,7 @@ throttle_scans: 1 # не было
 base_frame: base_link
 map_frame: map
 odom_frame: odom
-map_update_interval: 5.0 # 2.0 в боте
+map_update_interval: 0.5 # 2.0 в боте
 maxUrange: 16.0 # 3.0 в боте
 sigma: 0.05 # 
 kernelSize: 1
@@ -24,12 +24,12 @@ linearUpdate: 1.0
 angularUpdate: 0.5
 temporalUpdate: 3.0 # 0.5 в боте
 resampleThreshold: 0.5
-particles: 100 # изначально 30 (100 в боте)
+particles: 5 # изначально 30 (100 в боте) (очень сильно влияет на быстродействие) 
 xmin: -10.0
 ymin: -10.0
 xmax: 10.0
 ymax: 10.0
-delta: 0.05 # изначально 0.01
+delta: 0.02 # изначально 0.01
 llsamplerange: 0.01
 llsamplestep: 0.01
 lasamplerange: 0.005
