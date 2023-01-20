@@ -3,11 +3,8 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /Global Options1
-        - /Status1
-        - /LaserScan1
-      Splitter Ratio: 0.5
+      Expanded: ~
+      Splitter Ratio: 0.7588235139846802
     Tree Height: 651
   - Class: rviz/Selection
     Name: Selection
@@ -90,6 +87,75 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
+        ffl_wheel_link:
+          Value: false
+        ffr_wheel_link:
+          Value: false
+        front_left_steering_link:
+          Value: false
+        front_lrf_link:
+          Value: false
+        front_right_steering_link:
+          Value: false
+        lidar_base_link:
+          Value: false
+        lidar_head_link:
+          Value: false
+        lrf_link:
+          Value: false
+        map:
+          Value: true
+        odom:
+          Value: true
+        rear_left_steering_link:
+          Value: false
+        rear_right_steering_link:
+          Value: false
+        rfl_wheel_link:
+          Value: false
+        rfr_wheel_link:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                front_left_steering_link:
+                  ffl_wheel_link:
+                    {}
+                front_lrf_link:
+                  {}
+                front_right_steering_link:
+                  ffr_wheel_link:
+                    {}
+                lidar_base_link:
+                  lidar_head_link:
+                    {}
+                lrf_link:
+                  {}
+                rear_left_steering_link:
+                  rfl_wheel_link:
+                    {}
+                rear_right_steering_link:
+                  rfr_wheel_link:
+                    {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -118,7 +184,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 7.372596740722656
+      Distance: 5.8207526206970215
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -134,9 +200,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.4453973770141602
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 3.0985727310180664
+      Yaw: 3.118579387664795
     Saved: ~
 Window Geometry:
   Displays:
