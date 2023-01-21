@@ -31,7 +31,7 @@ cd src
 ```
 
 ```bash
-cp -r four_ws_stage /home/USER_NAME/.gazebo/models
+cp -r four_ws_stage ~/.gazebo/models
 ```
 
 ```bash
