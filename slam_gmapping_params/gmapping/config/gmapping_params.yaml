@@ -1,9 +1,9 @@
 # исходные параметры
-inverted_laser: 
-throttle_scans: 
-base_frame: 
-map_frame: 
-odom_frame: 
+# inverted_laser: 
+# throttle_scans: 
+# base_frame: 
+# map_frame: 
+# odom_frame: 
 map_update_interval: 5.0
 maxUrange: 16.0
 sigma: 0.05
@@ -14,7 +14,7 @@ iterations: 5
 lsigma: 0.075
 ogain: 3.0
 lskip: 0
-minimumScore: 
+# minimumScore: 
 srr: 0.1
 srt: 0.2
 str: 0.1
@@ -33,6 +33,6 @@ llsamplerange: 0.01
 llsamplestep: 0.01
 lasamplerange: 0.005
 lasamplestep: 0.005
-transform_publish_period: 
-occ_thresh: 
-maxRange: 
+# transform_publish_period: 
+# occ_thresh: 
+# maxRange: 
