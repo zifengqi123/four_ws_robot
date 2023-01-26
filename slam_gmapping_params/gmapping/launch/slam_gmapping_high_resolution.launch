@@ -2,6 +2,6 @@
     <param name="use_sim_time" value="true"/>
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
       <remap from="scan" to="front/scan"/>
-      <rosparam command="load" file="$(find gmapping)/config/gmapping_params.yaml" />
+      <rosparam command="load" file="$(find gmapping)/config/gmapping_params_test.yaml" />
     </node>
 </launch>
