@@ -11,9 +11,9 @@ recovery_alpha_fast: 0.0
 initial_pose_x: 0.0
 initial_pose_y: 0.0
 initial_pose_a: 0.0
-# initial_cov_xx: 
-# initial_cov_yy: 
-# initial_cov_aa: 
+initial_cov_xx: 0.25
+initial_cov_yy: 0.25
+initial_cov_aa: 0.06854
 gui_publish_rate: 50.0
 save_pose_rate: 0.5
 use_map_topic: false
