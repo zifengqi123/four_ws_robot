@@ -1,0 +1,13 @@
+<launch>
+  <master auto="start"/>
+  <!-- MAP SERVER -->
+  <arg name="map_file" default="$(find navigation_params)/map/four_ws_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="map" />
+  </node>
+
+  <!-- AMCL -->
+  <include file="$(find navigation_params)/launch/amcl_diff.launch"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find navigation_params)/rviz/navigation.rviz" />
+</launch>
