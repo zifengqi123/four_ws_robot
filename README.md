@@ -44,6 +44,16 @@ roslaunch robot_launch launch_navigation_simulation.launch
 roslaunch navigation_params navigation.launch
 ```
 
+## запуск локализации
+
+```bash
+roslaunch robot_launch launch_simulation_for_localization.launch
+```
+
+```bash
+roslaunch navigation_params localization.launch
+```
+
 ## запуск gmapping
 
 ```bash
