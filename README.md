@@ -95,7 +95,7 @@ rosrun map_server map_saver -f four_ws_map
 
 ## параметры AMCL
 
-официальная документация http://wiki.ros.org/amcl
+[официальная документация](http://wiki.ros.org/amcl)
 
 ### общие параметры фильтра
 
