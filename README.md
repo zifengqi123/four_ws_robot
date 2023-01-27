@@ -8,45 +8,15 @@
 
 ```bash
 cd
-```
-
-```bash
 mkdir ~/four_ws_navigation
-```
-
-```bash
 cd ~/four_ws_navigation
-```
-
-```bash
 git clone https://github.com/5met4nka/ROS-four_ws_navigation-src.git
-```
-
-```bash
 mv ROS-four_ws_navigation-src src
-```
-
-```bash
 cd src
-```
-
-```bash
 cp -r four_ws_stage ~/.gazebo/models
-```
-
-```bash
 rm -r four_ws_stage
-```
-
-```bash
 cd ..
-```
-
-```bash
 catkin_make
-```
-
-```bash
 cd
 ```
 
