@@ -37,7 +37,7 @@ echo "source ~/four_ws_navigation/devel/setup.bash" >> ~/.bashrc
 ## запуск навигации
 
 ```bash
-roslaunch robot_launch launch_navigation_simulation.launch
+roslaunch robot_launch launch_simulation_for_navigation.launch
 ```
 
 ```bash
