@@ -9,5 +9,5 @@
   <!-- AMCL -->
   <include file="$(find navigation_params)/launch/amcl_diff.launch"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find navigation_params)/rviz/navigation.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find navigation_params)/rviz/localization.rviz" />
 </launch>
