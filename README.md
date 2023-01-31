@@ -13,7 +13,8 @@ cd ~/four_ws_navigation
 git clone https://github.com/5met4nka/ROS-four_ws_navigation-src.git
 mv ROS-four_ws_navigation-src src
 cd src
-cp -r four_ws_stage ~/.gazebo/models
+mkdir -p ~/.gazebo/models
+cp -r four_ws_stage ~/.gazebo/models/four_ws_stage
 rm -r four_ws_stage
 cd ..
 catkin_make
