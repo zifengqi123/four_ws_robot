@@ -3,7 +3,7 @@
 ## установка пакетов
 
 <p align="center">
-<img src="imgs/skelet.JPG">
+<img src="media/model.JPG">
 </p>
 
 ```bash
@@ -45,6 +45,10 @@ roslaunch robot_launch launch_simulation_for_navigation.launch
 roslaunch navigation_params navigation.launch
 ```
 
+<p align="center">
+<img src="media/navigation.webm">
+</p>
+
 ## запуск локализации
 
 ```bash
@@ -55,6 +59,10 @@ roslaunch robot_launch launch_simulation_for_localization.launch
 roslaunch navigation_params localization.launch
 ```
 
+<p align="center">
+<img src="media/localization.webm">
+</p>
+
 ## запуск gmapping
 
 ```bash
@@ -64,7 +72,12 @@ roslaunch robot_launch launch_simulation_for_map_creation.launch
 ```bash
 roslaunch gmapping rviz_slam_gmapping_view.launch
 ```
-сохранение карты в файл
+
+<p align="center">
+<img src="media/slam_gmapping.webm">
+</p>
+
+* сохранение карты в файл
 
 ```bash
 cd ~/four_ws_navigation/src/navigation_params/map
