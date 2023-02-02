@@ -1,10 +1,10 @@
 # ROS-four_ws_navigation-src
 
-## установка пакетов
-
 <p align="center">
 <img src="media/model.png">
 </p>
+
+## установка пакетов
 
 ```bash
 cd
