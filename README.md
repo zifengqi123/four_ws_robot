@@ -87,10 +87,10 @@ cd ~/four_ws_navigation/src/navigation_params/map
 rosrun map_server map_saver -f four_ws_map
 ```
 
-# [параметры slam_gmapping](slam_gmapping_params.md)
+# [описание параметров slam_gmapping](slam_gmapping_params.md)
 
 ## [настройка slam_gmapping в этом проекте](slam_gmapping_params/gmapping/config/gmapping_params_test.yaml)
 
-# [параметры amcl](amcl_params.md)
+# [описание параметров amcl](amcl_params.md)
 
 ## [настройка amcl в этом проекте](navigation_params/config/amcl/amcl_diff_test.yaml)
