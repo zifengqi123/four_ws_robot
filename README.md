@@ -3,7 +3,7 @@
 ## установка пакетов
 
 <p align="center">
-<img src="media/model.JPG">
+<img src="media/model.png">
 </p>
 
 ```bash
@@ -46,7 +46,7 @@ roslaunch navigation_params navigation.launch
 ```
 
 <p align="center">
-<img src="media/navigation.webm">
+<img src="media/navigation.gif">
 </p>
 
 ## запуск локализации
@@ -60,7 +60,7 @@ roslaunch navigation_params localization.launch
 ```
 
 <p align="center">
-<img src="media/localization.webm">
+<img src="media/localization.gif">
 </p>
 
 ## запуск gmapping
@@ -74,7 +74,7 @@ roslaunch gmapping rviz_slam_gmapping_view.launch
 ```
 
 <p align="center">
-<img src="media/slam_gmapping.webm">
+<img src="media/slam_gmapping.gif">
 </p>
 
 * сохранение карты в файл
