@@ -1,7 +1,7 @@
 # ROS-four_ws_navigation-src
 
 <p align="center">
-<img src="media/model.png">
+<img src="media/model.gif">
 </p>
 
 ## установка пакетов
