@@ -8,7 +8,7 @@
   </node>
 
   <!-- AMCL -->
-  <include file="$(find navigation_params)/launch/amcl_diff.launch"/>
+  <include file="$(find navigation_params)/launch/amcl.launch"/>
 
   <!-- MOVE BASE -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

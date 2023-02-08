@@ -1,6 +1,6 @@
 <launch>
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <remap from="scan" to="front/scan" />
-    <rosparam file="$(find navigation_params)/config/amcl/amcl_diff_test.yaml" command="load" />
+    <rosparam file="$(find navigation_params)/config/amcl/amcl_params_test.yaml" command="load" />
   </node>
 </launch>

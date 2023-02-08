@@ -46,7 +46,7 @@ roslaunch navigation_params navigation.launch
 ```
 
 <p align="center">
-<img src="media/navigation.gif">
+<img src="documentation/navigation.gif">
 </p>
 
 ## запуск локализации
@@ -60,7 +60,7 @@ roslaunch navigation_params localization.launch
 ```
 
 <p align="center">
-<img src="media/localization.gif">
+<img src="documentation/localization.gif">
 </p>
 
 ## запуск gmapping
@@ -74,7 +74,7 @@ roslaunch gmapping rviz_slam_gmapping_view.launch
 ```
 
 <p align="center">
-<img src="media/slam_gmapping.gif">
+<img src="documentation/slam_gmapping.gif">
 </p>
 
 * сохранение карты в файл
@@ -87,10 +87,14 @@ cd ~/four_ws_navigation/src/navigation_params/map
 rosrun map_server map_saver -f four_ws_map
 ```
 
-# [описание параметров slam_gmapping](slam_gmapping_params.md)
+# [описание параметров slam_gmapping](documentation/slam_gmapping_params.md)
 
 * ## [настройка slam_gmapping в этом проекте](slam_gmapping_params/gmapping/config/gmapping_params_test.yaml)
 
-# [описание параметров amcl](amcl_params.md)
+# [описание параметров amcl](documentation/amcl_params.md)
 
-* ## [настройка amcl в этом проекте](navigation_params/config/amcl/amcl_diff_test.yaml)
+* ## [настройка amcl в этом проекте](navigation_params/config/amcl/amcl_params_test.yaml)
+
+# [описание параметров movebase](documentation/movebase_params.md)
+
+* ## [настройка movebase в этом проекте](navigation_params/config/movebase/movebase_params_test.yaml)
