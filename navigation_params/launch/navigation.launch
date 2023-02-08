@@ -14,10 +14,10 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
     <!-- COST MAP -->
-    <rosparam file="$(find navigation_params)/config/costmap/costmap_common.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find navigation_params)/config/costmap/costmap_common.yaml" command="load" ns="local_costmap"/>
-    <rosparam file="$(find navigation_params)/config/costmap/local_costmap.yaml" command="load"/>
-    <rosparam file="$(find navigation_params)/config/costmap/global_costmap.yaml" command="load"/>
+    <rosparam file="$(find navigation_params)/config/costmap/costmap_common_original.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find navigation_params)/config/costmap/costmap_common_original.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find navigation_params)/config/costmap/local_costmap_original.yaml" command="load"/>
+    <rosparam file="$(find navigation_params)/config/costmap/global_costmap_original.yaml" command="load"/>
 
     <!-- BASE GLOBAL PLANNER -->
     <rosparam file="$(find navigation_params)/config/planner/global/navfn_planner.yaml" command="load"/>
