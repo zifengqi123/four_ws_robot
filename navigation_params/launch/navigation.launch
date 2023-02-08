@@ -29,15 +29,12 @@
     <rosparam file="$(find navigation_params)/config/planner/recovery_behaviors.yaml" command="load"/>
 
     <!-- MOVE BASE -->
-    <param name="controller_frequency" value="5.0" />
-    <param name="controller_patience" value="15.0" />
-    <param name="max_planning_retries" value="10" />
-    <param name="oscillation_timeout" value="10.0" />
-    <param name="clearing_rotation_allowed" value="true" />
+    <rosparam file="$(find navigation_params)/config/movebase/movebase_params_original.yaml" command="load"/>
 
     <!-- remap cmd_vel topic for gazebo -->
     <remap from="cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
     <remap from="odom" to="/four_wheel_steering_controller/odom"/>
+    
   </node>
 
   <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find navigation_params)/rviz/navigation.rviz" />
