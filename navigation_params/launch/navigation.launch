@@ -1,5 +1,6 @@
 <launch>
   <master auto="start"/>
+
   <!-- MAP SERVER -->
   <arg name="map_file" default="$(find navigation_params)/map/four_ws_map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
@@ -11,6 +12,7 @@
 
   <!-- MOVE BASE -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
     <!-- COST MAP -->
     <rosparam file="$(find navigation_params)/config/costmap/costmap_common_test.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find navigation_params)/config/costmap/costmap_common_test.yaml" command="load" ns="local_costmap" />
@@ -19,8 +21,10 @@
 
     <!-- BASE GLOBAL PLANNER -->
     <rosparam file="$(find navigation_params)/config/planner/global/navfn_planner.yaml" command="load" />
+
     <!-- BASE LOCAL PLANNER -->
     <rosparam file="$(find navigation_params)/config/planner/local/trajectory_planner.yaml" command="load" />
+    
     <!-- RECOVERY -->
     <rosparam file="$(find navigation_params)/config/planner/recovery_behaviors.yaml" command="load"/>
 
