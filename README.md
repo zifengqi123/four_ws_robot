@@ -1,4 +1,4 @@
-# ROS-four_ws_navigation-src
+# ROS-four_ws_robot-src
 
 <p align="center">
 <img src="media/model.gif">
@@ -8,10 +8,10 @@
 
 ```bash
 cd
-mkdir ~/four_ws_navigation
-cd ~/four_ws_navigation
-git clone https://github.com/5met4nka/ROS-four_ws_navigation-src.git
-mv ROS-four_ws_navigation-src src
+mkdir ~/four_ws_robot
+cd ~/four_ws_robot
+git clone https://github.com/5met4nka/ROS-four_ws_robot-src.git
+mv ROS-four_ws_robot-src src
 cd src
 mkdir -p ~/.gazebo/models
 cp -r four_ws_stage ~/.gazebo/models/four_ws_stage
@@ -21,16 +21,16 @@ catkin_make
 cd
 ```
 
-в случае использование zsh
+в случае использование терминальной оболочки `zsh`
 
 ```bash
-echo "source ~/four_ws_navigation/devel/setup.zsh" >> ~/.zshrc
+echo "source ~/four_ws_robot/devel/setup.zsh" >> ~/.zshrc
 ```
 
-или в случает bash
+или в случае терминальной оболочки `bash`
 
 ```bash
-echo "source ~/four_ws_navigation/devel/setup.bash" >> ~/.bashrc
+echo "source ~/four_ws_robot/devel/setup.bash" >> ~/.bashrc
 ```
 
 * замечание: ROS может видеть только один ws, поэтому комментим настройку запуска других ws при помощи символа "#"
