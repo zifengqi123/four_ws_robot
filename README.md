@@ -1,7 +1,7 @@
 # ROS-four_ws_robot-src
 
 <p align="center">
-<img src="media/model.gif">
+<img src="documentation/model.gif">
 </p>
 
 ## установка пакетов
@@ -89,12 +89,12 @@ rosrun map_server map_saver -f four_ws_map
 
 # [описание параметров slam_gmapping](documentation/slam_gmapping_params.md)
 
-* ## [настройка slam_gmapping в этом проекте](slam_gmapping_params/gmapping/config/gmapping_params_test.yaml)
+> ## [настройка slam_gmapping в этом проекте](slam_gmapping_params/gmapping/config/gmapping_params_test.yaml)
 
 # [описание параметров amcl](documentation/amcl_params.md)
 
-* ## [настройка amcl в этом проекте](navigation_params/config/amcl/amcl_params_test.yaml)
+> ## [настройка amcl в этом проекте](navigation_params/config/amcl/amcl_params_test.yaml)
 
 # [описание параметров movebase](documentation/movebase_params.md)
 
-* ## [настройка movebase в этом проекте](navigation_params/config/movebase/movebase_params_test.yaml)
+> ## [настройка movebase в этом проекте](navigation_params/config/movebase/movebase_params_test.yaml)
