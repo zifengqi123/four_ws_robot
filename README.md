@@ -4,21 +4,54 @@
 <img src="documentation/model.gif">
 </p>
 
-## установка пакетов
+## создание воркспейса `four_ws_robot` и установка пакетов
 
 ```bash
-cd
+cd ~
+```
+
+```bash
 mkdir ~/four_ws_robot
+```
+
+```bash
 cd ~/four_ws_robot
-git clone https://github.com/5met4nka/ROS-four_ws_robot-src.git
+```
+
+```bash
+git clone https://github.com/5met4nka/ROS-four_ws_robot-src.git -b main
+```
+
+```bash
 mv ROS-four_ws_robot-src src
+```
+
+```bash
 cd src
+```
+
+```bash
 mkdir -p ~/.gazebo/models
+```
+
+```bash
 cp -r four_ws_stage ~/.gazebo/models/four_ws_stage
+```
+
+```bash
 rm -r four_ws_stage
+```
+
+```bash
 cd ..
+```
+
+```bash
 catkin_make
-cd
+```
+
+```bash
+cd ~
 ```
 
 в случае использование терминальной оболочки `zsh`
