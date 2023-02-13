@@ -1,6 +1,6 @@
 local_costmap:
   global_frame: odom #map #odom #The "global_frame" parameter defines what coordinate frame the costmap should run in
-                    #it should be odom, but i don't know how to solve the errors
+                     #it should be odom, but i don't know how to solve the errors
   robot_base_frame: base_footprint #The "robot_base_frame" parameter defines the coordinate frame the costmap should reference for the base of the robot.
   update_frequency: 10.0
   publish_frequency: 10.0 #The "publish_frequency" parameter determines the rate, in Hz, at which the costmap will publish visualization information
@@ -9,4 +9,4 @@ local_costmap:
   width: 0.8
   height: 0.8
   resolution: 0.01
-transform_tolerance: 1.5
+  transform_tolerance: 1.5

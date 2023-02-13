@@ -1,16 +1,17 @@
-plugins:
-global_frame: odom
-robot_base_frame: base_footprint
-transform_tolerance: 1.5
+global_costmap:
+  plugins:
+  global_frame: odom
+  robot_base_frame: base_footprint
+  transform_tolerance: 1.5
 
-update_frequency: 10.0
-publish_frequency: 10.0
+  update_frequency: 10.0
+  publish_frequency: 10.0
 
-rolling_window: true
-always_send_full_costmap: 
+  rolling_window: true
+  always_send_full_costmap: 
 
-width: 0.8
-height: 0.8
-resolution: 0.01
-origin_x:
-origin_y:
+  width: 0.8
+  height: 0.8
+  resolution: 0.01
+  origin_x:
+  origin_y:
