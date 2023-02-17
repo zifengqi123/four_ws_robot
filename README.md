@@ -43,6 +43,10 @@ rm -r four_ws_stage
 ```
 
 ```bash
+./scripts/install_pkgs.sh
+```
+
+```bash
 cd ..
 ```
 
