@@ -31,18 +31,6 @@ cd src
 ```
 
 ```bash
-mkdir -p ~/.gazebo/models
-```
-
-```bash
-cp -r four_ws_stage ~/.gazebo/models/four_ws_stage
-```
-
-```bash
-rm -r four_ws_stage
-```
-
-```bash
 ./scripts/install_pkgs.sh
 ```
 
