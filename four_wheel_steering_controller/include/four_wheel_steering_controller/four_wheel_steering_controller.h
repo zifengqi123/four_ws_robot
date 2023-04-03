@@ -38,6 +38,7 @@
 
 #include <controller_interface/multi_interface_controller.h>
 #include <hardware_interface/joint_command_interface.h>
+#include <pluginlib/class_list_macros.hpp>
 
 #include <nav_msgs/Odometry.h>
 #include <four_wheel_steering_msgs/FourWheelSteeringStamped.h>
@@ -230,4 +231,5 @@ namespace four_wheel_steering_controller{
 
   };
 
+  PLUGINLIB_EXPORT_CLASS(four_wheel_steering_controller::FourWheelSteeringController, controller_interface::ControllerBase);
 } // namespace four_wheel_steering_controller

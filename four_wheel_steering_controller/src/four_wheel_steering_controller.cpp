@@ -35,7 +35,6 @@
 
 #include <cmath>
 #include <four_wheel_steering_controller/four_wheel_steering_controller.h>
-#include <pluginlib/class_list_macros.hpp>
 #include <tf/transform_datatypes.h>
 #include <urdf_geometry_parser/urdf_geometry_parser.h>
 
@@ -351,7 +350,7 @@ namespace four_wheel_steering_controller{
     }
 
     const double dt = (time - cmd->stamp).toSec();
-    // Brake if cmd_vel has timeout:
+    // Brake if cmd_vel has timeout://
     if (dt > cmd_vel_timeout_)
     {
       curr_cmd_twist.lin_x = 0.0;
@@ -401,20 +400,31 @@ namespace four_wheel_steering_controller{
       }
 
       // Compute steering angles
-      if(fabs(2.0*curr_cmd_twist.lin_x) > fabs(curr_cmd_twist.ang*steering_track))
+      if(fabs(2.0*curr_cmd_twist.lin_x) > fabs(curr_cmd_twist.ang*steering_track) && fabs(curr_cmd_twist.lin_y) < 0.001)
       {
         front_left_steering = atan(curr_cmd_twist.ang*wheel_base_ /
                                     (2.0*curr_cmd_twist.lin_x - curr_cmd_twist.ang*steering_track));
         front_right_steering = atan(curr_cmd_twist.ang*wheel_base_ /
                                      (2.0*curr_cmd_twist.lin_x + curr_cmd_twist.ang*steering_track));
+         rear_left_steering = -front_left_steering;
+         rear_right_steering = -front_right_steering;
       }
-      else if(fabs(curr_cmd_twist.lin_x) > 0.001)
+      else if(fabs(curr_cmd_twist.lin_x) > 0.001 && fabs(curr_cmd_twist.lin_y) < 0.001)
       {
         front_left_steering = copysign(M_PI_2, curr_cmd_twist.ang);
         front_right_steering = copysign(M_PI_2, curr_cmd_twist.ang);
+        rear_left_steering = -front_left_steering;
+        rear_right_steering = -front_right_steering;
       }
-      rear_left_steering = -front_left_steering;
-      rear_right_steering = -front_right_steering;
+      else if(fabs(curr_cmd_twist.lin_x) > 0.001 && fabs(curr_cmd_twist.lin_y) >= 0.001 && fabs(curr_cmd_twist.ang) < 0.001)
+      {
+        front_left_steering = atan(curr_cmd_twist.lin_y / curr_cmd_twist.lin_x);
+        front_right_steering = atan(curr_cmd_twist.lin_y / curr_cmd_twist.lin_x);
+        rear_left_steering = front_left_steering;
+        rear_right_steering = front_right_steering;        
+
+      }
+
     }
     else
     {
@@ -672,5 +682,3 @@ namespace four_wheel_steering_controller{
   }
 
 } // namespace four_wheel_steering_controller
-
-PLUGINLIB_EXPORT_CLASS(four_wheel_steering_controller::FourWheelSteeringController, controller_interface::ControllerBase)
