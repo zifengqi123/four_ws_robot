@@ -105,7 +105,7 @@ roslaunch gmapping rviz_slam_gmapping_view.launch
 * сохранение карты в файл
 
 ```bash
-cd ~/four_ws_navigation/src/navigation_params/map
+cd ~/four_ws_robot/src/navigation_params/map
 ```
 
 ```bash
