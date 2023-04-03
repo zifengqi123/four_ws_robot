@@ -2,21 +2,16 @@
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
   <arg name="model" default="$(find robot_description)/robots/fourth_robot.urdf.xacro"/>
-  <arg name="paused" default="false"/>
-  <arg name="use_sim_time" default="true"/>
-  <arg name="gui" default="true"/>
-  <arg name="headless" default="false"/>
-  <arg name="debug" default="false"/>
   <arg name="joy_dev0" default="/dev/input/js0" />
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_stage_2.world"/>
-    <arg name="debug" value="$(arg debug)" />
-    <arg name="gui" value="$(arg gui)" />
-    <arg name="paused" value="$(arg paused)"/>
-    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-    <arg name="headless" value="$(arg headless)"/>
+    <arg name="world_name" value="$(find gazebo_models_worlds_collection)/worlds/turtlebot3_stage_2.world"/>
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
@@ -24,12 +19,12 @@
   
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-  		args="    -x 0
-                -y 0
-                -z 0.15
-                -urdf
-                -model four_ws_robot
-                -param robot_description"/>
+    args="  -x 0
+            -y 0
+            -z 0.15
+            -urdf
+            -model four_ws_robot
+            -param robot_description"/>
 
   <!-- ros_control motoman launch file -->
   <include file="$(find robot_control)/launch/robot_control.launch"/>
