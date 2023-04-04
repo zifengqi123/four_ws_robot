@@ -15,11 +15,15 @@ git clone https://github.com/5met4nka/ROS-four_ws_robot.git -b main
 ```
 
 ```bash
+mv ROS-four_ws_robot four_ws_robot
+```
+
+```bash
 git clone https://github.com/ros-planning/navigation.git -b noetic-devel
 ```
 
 ```bash
-mv ROS-four_ws_robot four_ws_robot
+git clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b main
 ```
 
 ```bash
