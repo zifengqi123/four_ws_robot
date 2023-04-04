@@ -1,5 +1,7 @@
 <launch>
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find gmapping)/rviz/4ws_slam.rviz" />
-	<include file="$(find gmapping)/launch/slam_gmapping_high_resolution.launch">
-    </include>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find gmapping)/rviz/4ws_slam.rviz" />
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+        <remap from="scan" to="front/scan"/>
+        <rosparam command="load" file="$(find gmapping)/config/gmapping_params_test.yaml" />
+    </node>
 </launch>
