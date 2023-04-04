@@ -9,9 +9,14 @@ vel_msg = Twist()
 def callback_controller(data):
     global vel_msg
 
-    vel_msg.linear.x = data.axes[1]
-    vel_msg.linear.y = data.axes[3]
-    vel_msg.angular.z = data.axes[0]
+    if data.axes[3] == 0:
+        vel_msg.linear.x = data.axes[1]
+        vel_msg.linear.y = 0
+        vel_msg.angular.z = data.axes[0]
+    else:
+        vel_msg.linear.x = data.axes[1]
+        vel_msg.linear.y = data.axes[3]
+        vel_msg.angular.z = 0
 
 def commander():
     global vel_msg
