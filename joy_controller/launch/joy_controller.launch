@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="joy_controller" name="joy_controller_node" type="joy_controller.py" output="screen"/>
+</launch>
