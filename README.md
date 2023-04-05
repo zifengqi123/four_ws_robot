@@ -62,6 +62,10 @@ rosrun map_server map_saver -f four_ws_map
 
 > ## [настройка slam_gmapping в этом проекте](four_ws_robot_software/config/slam_gmapping_params/slam_gmapping_params_test.yaml)
 
+# [описание параметров hector_mapping](docs/hector_mapping_params.md)
+
+> ## [настройка hector_mapping в этом проекте](four_ws_robot_software/config/hector_mapping_params/hector_mapping_params_test.yaml)
+
 # [описание параметров amcl](docs/amcl_params.md)
 
 > ## [настройка amcl в этом проекте](four_ws_robot_software/config/amcl_params/amcl_params_test.yaml)

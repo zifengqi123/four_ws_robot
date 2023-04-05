@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <node name="hector_mapping" pkg="hector_mapping" type="hector_mapping" output="screen">
-        <rosparam file="$(find four_ws_robot_software)/config/hector_slam_params/hector_mapping_params_original.yaml" command="load"/>
+        <rosparam file="$(find four_ws_robot_software)/config/hector_mapping_params/hector_mapping_params_original.yaml" command="load"/>
         <remap from="scan" to="front/scan"/>
     </node>
 </launch>
