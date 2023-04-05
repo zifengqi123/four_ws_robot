@@ -9,7 +9,7 @@
 ## запуск навигации
 
 ```bash
-roslaunch four_ws_robot_software launch_simulation_for_navigation.launch
+roslaunch four_ws_robot_software simulation_for_navigation.launch
 ```
 
 ```bash
@@ -23,7 +23,7 @@ roslaunch four_ws_robot_software navigation.launch
 ## запуск локализации
 
 ```bash
-roslaunch four_ws_robot_software launch_simulation_for_localization.launch
+roslaunch four_ws_robot_software simulation_for_localization.launch
 ```
 
 ```bash
@@ -34,14 +34,14 @@ roslaunch four_ws_robot_software localization.launch
 <img src="docs/localization.gif">
 </p>
 
-## запуск gmapping
+## запуск картографирования
 
 ```bash
-roslaunch four_ws_robot_software launch_simulation_for_map_creation.launch
+roslaunch four_ws_robot_software simulation_for_map_creation.launch
 ```
 
 ```bash
-roslaunch four_ws_robot_software slam_gmapping.launch
+roslaunch four_ws_robot_software mapping.launch
 ```
 
 <p align="center">
