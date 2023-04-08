@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- parameters -->
+    <arg name="gui"        default="false"/>
+    <arg name="world_name" default="turtlebot3_house"/>
+    <arg name="model"      default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
+    <arg name="joy_dev"    default="/dev/input/js0"/>
+
+    <!-- parameter is used to save the map scan with the name of the map from the simulation -->
+    <param name="map_name" value="$(arg world_name)"/>
+
+    <!-- simulation -->
+    <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
+        <arg name="gui"        value="$(arg gui)"/>
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="model"      value="$(arg model)"/>
+    </include>
+
+    <!-- mapping algorithm with output in rviz -->
+    <include file="$(find four_ws_robot_software)/launch/mapping.launch"/>
+
+    <!-- launch joynode -->
+    <include file="$(find four_ws_robot_software)/launch/joy_control.launch">
+        <arg name="joy_dev" value="$(arg joy_dev)"/>
+    </include>
+
+</launch>

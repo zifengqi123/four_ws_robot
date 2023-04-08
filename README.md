@@ -9,7 +9,7 @@
 ## запуск навигации
 
 ```bash
-roslaunch four_ws_robot_software simulation_for_navigation.launch
+roslaunch four_ws_robot_software gz_navigation.launch
 ```
 
 <p align="center">
@@ -19,7 +19,7 @@ roslaunch four_ws_robot_software simulation_for_navigation.launch
 ## запуск локализации
 
 ```bash
-roslaunch four_ws_robot_software simulation_for_localization.launch
+roslaunch four_ws_robot_software gz_localization.launch
 ```
 
 <p align="center">
@@ -29,7 +29,7 @@ roslaunch four_ws_robot_software simulation_for_localization.launch
 ## запуск картографирования
 
 ```bash
-roslaunch four_ws_robot_software simulation_for_map_creation.launch
+roslaunch four_ws_robot_software gz_map_creation.launch
 ```
 
 <p align="center">
@@ -39,11 +39,7 @@ roslaunch four_ws_robot_software simulation_for_map_creation.launch
 * сохранение карты в файл
 
 ```bash
-cd ~/four_ws_robot/src/four_ws_robot/four_ws_robot_software/maps
-```
-
-```bash
-rosrun map_server map_saver -f four_ws_map
+roslaunch four_ws_robot_software map_saver.launch
 ```
 
 # [описание параметров slam_gmapping](docs/slam_gmapping_params.md)

@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="map_saver" pkg="four_ws_robot_software" type="map_saver.py" output="screen"/>
+</launch>

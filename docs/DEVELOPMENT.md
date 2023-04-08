@@ -52,6 +52,10 @@ cd ~
 echo "source ~/four_ws_robot/devel/setup.zsh" >> ~/.zshrc
 ```
 
+```bash
+export CATKIN_WORKSPACE=~/four_ws_robot
+```
+
 или в случае терминальной оболочки `bash`
 
 ```bash
