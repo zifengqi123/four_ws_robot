@@ -26,10 +26,6 @@ roslaunch four_ws_robot_software navigation.launch
 roslaunch four_ws_robot_software simulation_for_localization.launch
 ```
 
-```bash
-roslaunch four_ws_robot_software localization.launch
-```
-
 <p align="center">
 <img src="docs/localization.gif">
 </p>
@@ -38,10 +34,6 @@ roslaunch four_ws_robot_software localization.launch
 
 ```bash
 roslaunch four_ws_robot_software simulation_for_map_creation.launch
-```
-
-```bash
-roslaunch four_ws_robot_software mapping.launch
 ```
 
 <p align="center">
