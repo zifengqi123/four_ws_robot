@@ -5,7 +5,7 @@
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/slam.rviz"/>
 
     <!-- SELECT MAPPING ALGORITHM -->
-    <arg name="mapping_algorithm" default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
+    <arg name="mapping_algorithm"/>
 
     <!-- INCLUDE LAUNCH WITH SELECTED MAPPING ALGORITHM -->
     <include file="$(find four_ws_robot_software)/launch/base/$(arg mapping_algorithm).launch"/>

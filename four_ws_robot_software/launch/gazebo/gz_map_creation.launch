@@ -2,10 +2,11 @@
 <launch>
 
     <!-- parameters -->
-    <arg name="gui"        default="false"/>
-    <arg name="world_name" default="turtlebot3_house"/>
-    <arg name="model"      default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
-    <arg name="joy_dev"    default="/dev/input/js0"/>
+    <arg name="gui"               default="false"/>
+    <arg name="world_name"        default="turtlebot3_house"/>
+    <arg name="model"             default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
+    <arg name="joy_dev"           default="/dev/input/js0"/>
+    <arg name="mapping_algorithm" default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
 
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
@@ -18,7 +19,9 @@
     </include>
 
     <!-- mapping algorithm with output in rviz -->
-    <include file="$(find four_ws_robot_software)/launch/mapping.launch"/>
+    <include file="$(find four_ws_robot_software)/launch/mapping.launch">
+        <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>
+    </include>
 
     <!-- launch joynode -->
     <include file="$(find four_ws_robot_software)/launch/joy_control.launch">
