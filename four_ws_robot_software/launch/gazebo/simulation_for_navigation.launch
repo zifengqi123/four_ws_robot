@@ -1,41 +1,25 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- an argument for opening a map with a specific name -->
+    <!-- parameters -->
+    <arg name="gui"     default="false"/>
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/four_ws_map.yaml" doc="[Ф, Ф]"/>
-
-    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
     <arg name="model"    default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
-    <arg name="joy_dev0" default="/dev/input/js0"/>
+
+    <!-- simulation -->
+    <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
+        <arg name="gui"   value="$(arg gui)"/>
+        <arg name="model" value="$(arg model)"/>
+    </include>
 
     <!-- stack of navigation algorithms with output in rviz -->
     <include file="$(find four_ws_robot_software)/launch/navigation.launch">
         <arg name="map_file" value="$(arg map_file)"/>
     </include>
 
-    <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name"   value="$(find gazebo_models_worlds_collection)/worlds/turtlebot3_stage_3.world"/>
-        <arg name="debug"        value="false"/>
-        <arg name="gui"          value="false"/>
-        <arg name="paused"       value="false"/>
-        <arg name="use_sim_time" value="true"/>
-        <arg name="headless"     value="false"/>
+    <!-- launch joynode -->
+    <include file="$(find four_ws_robot_software)/launch/joy_control.launch">
+        <arg name="joy_dev" value="$(arg joy_dev)"/>
     </include>
-
-    <!-- Load the URDF into the ROS Parameter Server -->
-    <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
-    
-    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-x 0
-                -y 0
-                -z 0.15
-                -urdf
-                -model four_ws_robot
-                -param robot_description"/>
-
-    <!-- ros_control motoman launch file -->
-    <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
 
 </launch>
