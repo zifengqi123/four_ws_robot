@@ -5,7 +5,7 @@
     <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find four_ws_robot_software)/rviz/localization.rviz"/>
 
     <!-- MAP SERVER -->
-    <arg name="map_file" default="$(find four_ws_robot_software)/maps/four_ws_map.yaml"/>
+    <arg name="map_file"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
         <param name="frame_id" value="map"/>
     </node>

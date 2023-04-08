@@ -1,12 +1,17 @@
 <?xml version="1.0"?>
 <launch>
 
+    <!-- an argument for opening a map with a specific name -->
+    <arg name="map_file" default="$(find four_ws_robot_software)/maps/four_ws_map.yaml" doc="[Ф, Ф]"/>
+
     <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-    <arg name="model" default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
-    <arg name="joy_dev0" default="/dev/input/js0" />
+    <arg name="model"    default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
+    <arg name="joy_dev0" default="/dev/input/js0"/>
 
     <!-- stack of navigation algorithms with output in rviz -->
-    <include file="$(find four_ws_robot_software)/launch/navigation.launch"/>
+    <include file="$(find four_ws_robot_software)/launch/navigation.launch">
+        <arg name="map_file" value="$(arg map_file)"/>
+    </include>
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">

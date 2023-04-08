@@ -12,10 +12,6 @@
 roslaunch four_ws_robot_software simulation_for_navigation.launch
 ```
 
-```bash
-roslaunch four_ws_robot_software navigation.launch
-```
-
 <p align="center">
 <img src="docs/navigation.gif">
 </p>
