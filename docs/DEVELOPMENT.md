@@ -53,13 +53,17 @@ echo "source ~/four_ws_robot/devel/setup.zsh" >> ~/.zshrc
 ```
 
 ```bash
-export CATKIN_WORKSPACE=~/four_ws_robot
+export CATKIN_WORKSPACE="$HOME/four_ws_robot"
 ```
 
 или в случае терминальной оболочки `bash`
 
 ```bash
 echo "source ~/four_ws_robot/devel/setup.bash" >> ~/.bashrc
+```
+
+```bash
+export CATKIN_WORKSPACE="$HOME/four_ws_robot"
 ```
 
 * замечание: ROS может видеть только один ws, поэтому комментим настройку запуска других ws при помощи символа "#"
