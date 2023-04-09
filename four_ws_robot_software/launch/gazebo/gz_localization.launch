@@ -2,11 +2,12 @@
 <launch>
 
     <!-- parameters -->
-    <arg name="gui"        default="false"/>
-    <arg name="world_name" default="turtlebot3_house"/>
-    <arg name="map_file"   default="$(arg world_name)"/>
-    <arg name="model"      default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
-    <arg name="joy_dev"    default="/dev/input/js0"/>
+    <arg name="gui"              default="false"/>
+    <arg name="world_name"       default="turtlebot3_house"/>
+    <arg name="model"            default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
+    <arg name="map_file"         default="$(arg world_name)"/>
+    <arg name="algorithm_config" default="test"/>
+    <arg name="joy_dev"          default="/dev/input/js0"/>
 
     <!-- simulation -->
     <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
@@ -18,6 +19,7 @@
     <!-- localization algorithm with output in rviz -->
     <include file="$(find four_ws_robot_software)/launch/localization.launch">
         <arg name="map_file" value="$(find four_ws_robot_software)/maps/$(arg map_file).yaml"/>
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
     </include>
 
     <!-- launch joynode -->

@@ -11,12 +11,12 @@ map_pub_period: 0.5
 map_multi_res_levels: 2
 update_factor_free: 0.4
 update_factor_occupied: 0.9
-# laser_min_dist: 
-# laser_max_dist: 
+laser_min_dist: 0.4
+laser_max_dist: 30.0
 laser_z_min_value: -1.0
 laser_z_max_value: 1.0
 pub_map_odom_transform: true
 output_timing: false
-# scan_subscriber_queue_size: 
+scan_subscriber_queue_size: 5
 pub_map_scanmatch_transform: false
-# tf_map_scanmatch_transform_frame_name: 
+tf_map_scanmatch_transform_frame_name: scanmatcher_frame

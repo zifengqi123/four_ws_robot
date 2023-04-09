@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <launch>
+
+    <arg name="algorithm_config"/>
+
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
+        <rosparam file="$(find four_ws_robot_software)/config/amcl_params/amcl_params_$(arg algorithm_config).yaml" command="load"/>
         <remap from="scan" to="front/scan"/>
-        <rosparam file="$(find four_ws_robot_software)/config/amcl_params/amcl_params_test.yaml" command="load"/>
     </node>
+
 </launch>

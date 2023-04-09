@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- RVIZ -->
+    <arg name="mapping_algorithm"/>
+    <arg name="algorithm_config"/>
+
+    <!-- rviz -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/slam.rviz"/>
 
-    <!-- SELECT MAPPING ALGORITHM -->
-    <arg name="mapping_algorithm"/>
-
-    <!-- INCLUDE LAUNCH WITH SELECTED MAPPING ALGORITHM -->
-    <include file="$(find four_ws_robot_software)/launch/base/$(arg mapping_algorithm).launch"/>
+    <!-- include launch with selected mapping algorithm -->
+    <include file="$(find four_ws_robot_software)/launch/base/$(arg mapping_algorithm).launch">
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+    </include>
 
 </launch>

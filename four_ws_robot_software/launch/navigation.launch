@@ -1,38 +1,42 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- RVIZ -->
+    <arg name="algorithm_config"/>
+
+    <!-- rviz -->
     <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find four_ws_robot_software)/rviz/navigation.rviz"/>
 
-    <!-- MAP SERVER -->
+    <!-- map server -->
     <arg name="map_file"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
         <param name="frame_id" value="map"/>
     </node>
 
     <!-- AMCL -->
-    <include file="$(find four_ws_robot_software)/launch/base/amcl.launch"/>
+    <include file="$(find four_ws_robot_software)/launch/base/amcl.launch">
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+    </include>
 
-    <!-- MOVE BASE -->
+    <!-- move base -->
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
-        <!-- COST MAP -->
-        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/costmap_common/costmap_common_original.yaml" command="load" ns="global_costmap"/>
-        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/costmap_common/costmap_common_original.yaml" command="load" ns="local_costmap"/>
-        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/local_costmap/local_costmap_original.yaml" command="load"/>
-        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/global_costmap/global_costmap_original.yaml" command="load"/>
+        <!-- cost map -->
+        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/costmap_common_params/costmap_common_params_$(arg algorithm_config).yaml" command="load" ns="global_costmap"/>
+        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/costmap_common_params/costmap_common_params_$(arg algorithm_config).yaml" command="load" ns="local_costmap"/>
+        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/local_costmap_params/local_costmap_params_$(arg algorithm_config).yaml" command="load"/>
+        <rosparam file="$(find four_ws_robot_software)/config/costmap_params/global_costmap_params/global_costmap_params_$(arg algorithm_config).yaml" command="load"/>
 
-        <!-- BASE GLOBAL PLANNER -->
-        <rosparam file="$(find four_ws_robot_software)/config/planner_params/global_params/navfn_planner.yaml" command="load"/>
+        <!-- base global planner -->
+        <rosparam file="$(find four_ws_robot_software)/config/planner_params/global_planners_params/navfn_planner_params/navfn_planner_params_$(arg algorithm_config).yaml" command="load"/>
 
-        <!-- BASE LOCAL PLANNER -->
-        <rosparam file="$(find four_ws_robot_software)/config/planner_params/local_params/trajectory_planner.yaml" command="load"/>
+        <!--  base local planner -->
+        <rosparam file="$(find four_ws_robot_software)/config/planner_params/local_planners_params/trajectory_planner_params/trajectory_planner_params_$(arg algorithm_config).yaml" command="load"/>
         
-        <!-- RECOVERY -->
-        <rosparam file="$(find four_ws_robot_software)/config/planner_params/recovery_behaviors.yaml" command="load"/>
+        <!-- recovery -->
+        <rosparam file="$(find four_ws_robot_software)/config/planner_params/recovery_behaviors_params/recovery_behaviors_params_$(arg algorithm_config).yaml" command="load"/>
 
-        <!-- MOVE BASE -->
-        <rosparam file="$(find four_ws_robot_software)/config/movebase_params/movebase_params_original.yaml" command="load"/>
+        <!-- move base -->
+        <rosparam file="$(find four_ws_robot_software)/config/movebase_params/movebase_params_$(arg algorithm_config).yaml" command="load"/>
 
         <!-- remap cmd_vel topic for gazebo -->
         <remap from="cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
