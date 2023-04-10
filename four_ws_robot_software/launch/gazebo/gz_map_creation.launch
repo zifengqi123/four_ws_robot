@@ -3,12 +3,12 @@
 
     <!-- parameters -->
     <!-- gazebo -->
-    <arg name="gui"          default="false"/>
-    <arg name="world_name"   default="turtlebot3_house"/>
-    <arg name="model"        default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
-    <arg name="robot_pose_x" default="6.0"/>
-    <arg name="robot_pose_y" default="-4.0"/>
-    <arg name="robot_pose_z" default="0.0"/>
+    <arg name="gui"               default="false" doc="[true, false]"/>
+    <arg name="world_name"        default="turtlebot3_house"/>
+    <arg name="model"             default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
+    <arg name="robot_pose_x"      default="0.0"/>
+    <arg name="robot_pose_y"      default="0.0"/>
+    <arg name="robot_pose_z"      default="0.15"/>
     <!-- mapping algorithm and config -->
     <arg name="mapping_algorithm" default="slam_gmapping" doc="[slam_gmapping, hector_mapping]"/>
     <arg name="algorithm_config"  default="test"/>
