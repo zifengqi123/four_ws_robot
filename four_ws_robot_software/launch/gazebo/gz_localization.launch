@@ -2,24 +2,36 @@
 <launch>
 
     <!-- parameters -->
-    <arg name="gui"              default="false"/>
-    <arg name="world_name"       default="turtlebot3_house"/>
-    <arg name="model"            default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
+    <!-- gazebo -->
+    <arg name="gui"          default="false"/>
+    <arg name="world_name"   default="turtlebot3_house"/>
+    <arg name="model"        default="$(find four_ws_robot_description)/robots/fourth_robot.urdf.xacro"/>
+    <arg name="robot_pose_x" default="6.0"/>
+    <arg name="robot_pose_y" default="-4.0"/>
+    <arg name="robot_pose_z" default="0.0"/>
+    <!-- map file -->
     <arg name="map_file"         default="$(arg world_name)"/>
+    <!-- algorithm_config -->
     <arg name="algorithm_config" default="test"/>
+    <!-- joy -->
     <arg name="joy_dev"          default="/dev/input/js0"/>
 
     <!-- simulation -->
     <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
-        <arg name="gui"        value="$(arg gui)"/>
-        <arg name="world_name" value="$(arg world_name)"/>
-        <arg name="model"      value="$(arg model)"/>
+        <arg name="gui"          value="$(arg gui)"/>
+        <arg name="world_name"   value="$(arg world_name)"/>
+        <arg name="model"        value="$(arg model)"/>
+        <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
+        <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
+        <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
     </include>
 
     <!-- localization algorithm with output in rviz -->
     <include file="$(find four_ws_robot_software)/launch/localization.launch">
-        <arg name="map_file" value="$(find four_ws_robot_software)/maps/$(arg map_file).yaml"/>
+        <arg name="map_file"         value="$(find four_ws_robot_software)/maps/$(arg map_file).yaml"/>
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+        <arg name="robot_pose_x"     value="$(arg robot_pose_x)"/>
+        <arg name="robot_pose_y"     value="$(arg robot_pose_y)"/>
     </include>
 
     <!-- launch joynode -->

@@ -4,6 +4,9 @@
     <arg name="gui"/>
     <arg name="world_name"/>
     <arg name="model"/>
+    <arg name="robot_pose_x"/>
+    <arg name="robot_pose_y"/>
+    <arg name="robot_pose_z"/>
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -20,9 +23,9 @@
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-x 6
-                -y -4
-                -z 0
+          args="-x $(arg robot_pose_x)
+                -y $(arg robot_pose_y)
+                -z $(arg robot_pose_z)
                 -urdf
                 -model four_ws_robot
                 -param robot_description"/>

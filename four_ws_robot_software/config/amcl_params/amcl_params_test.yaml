@@ -8,8 +8,8 @@ resample_interval: 1
 transform_tolerance: 0.5
 recovery_alpha_slow: 0.0
 recovery_alpha_fast: 0.0
-initial_pose_x: 0.0
-initial_pose_y: 0.0
+# initial_pose_x: # defined in launch
+# initial_pose_y: # defined in launch
 initial_pose_a: 0.0
 initial_cov_xx: 0.25
 initial_cov_yy: 0.25
@@ -32,7 +32,7 @@ laser_lambda_short: 0.1
 laser_likelihood_max_dist: 2.0
 laser_model_type: likelihood_field
 
-odom_model_type: diff-corrected
+odom_model_type: diff
 odom_alpha1: 0.1
 odom_alpha2: 0.1
 odom_alpha3: 0.1
