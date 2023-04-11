@@ -80,6 +80,7 @@ def main():
     plt.show()
 
     # построение данных по координате X для ground truth и SLAM
+    plt.xlim(0, len(ground_truth_data_x))
     plt.plot(
             ground_truth_data_x,
             linestyle='-',
@@ -97,6 +98,7 @@ def main():
     plt.show()
 
     # построение данных по координате Y для ground truth и SLAM
+    plt.xlim(0, len(ground_truth_data_y))
     plt.plot(
             ground_truth_data_y,
             linestyle='-',
@@ -115,6 +117,8 @@ def main():
 
     # построение графика отклонения SLAM от Ground Truth для X
     x_error = [(gt - slam) for gt, slam in zip(ground_truth_data_x, slam_data_x)]
+    plt.xlim(0, len(x_error))
+    plt.ylim(-0.5, 0.5)
     plt.plot(
             x_error,
             linestyle='-',
@@ -143,6 +147,8 @@ def main():
 
     # построение графика отклонения SLAM от Ground Truth для Y
     y_error = [(gt - slam) for gt, slam in zip(ground_truth_data_y, slam_data_y)]
+    plt.xlim(0, len(y_error))
+    plt.ylim(-0.5, 0.5)
     plt.plot(
             y_error,
             linestyle='-',
