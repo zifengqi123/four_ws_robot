@@ -10,7 +10,7 @@
     <arg name="robot_pose_y"      default="0.0"/>
     <arg name="robot_pose_z"      default="0.15"/>
     <!-- mapping algorithm and config -->
-    <arg name="mapping_algorithm" default="slam_gmapping" doc="[slam_gmapping, hector_mapping]"/>
+    <arg name="mapping_algorithm" default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
     <arg name="algorithm_config"  default="test"/>
     <!-- joy -->
     <arg name="joy_dev"           default="/dev/input/js0"/>
