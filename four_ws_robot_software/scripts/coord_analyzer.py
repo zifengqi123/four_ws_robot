@@ -2,6 +2,7 @@ import csv
 import math
 import os
 import matplotlib.pyplot as plt
+import numpy as np
 
 def read_csv(filename):
     data = []
@@ -32,12 +33,19 @@ def calculate_std_dev(slam_data_x, slam_data_y, ground_truth_data_x, ground_trut
     std_dev_y = math.sqrt(ssd_y / (len(differences_y) - 1))
     return std_dev_x, std_dev_y
 
-def main():
+def file_rider(ground_truth_file, slam_data_file):
     # чтение данных из файлов
-    ground_truth_file = os.path.expanduser('~/ground_truth_listener.csv')
-    slam_data_file = os.path.expanduser('~/tf_map_base_listener.csv')
     ground_truth_data = read_csv(ground_truth_file)
     slam_data = read_csv(slam_data_file)
+    return ground_truth_data, slam_data
+
+def main():
+    # задаем имена файлов в домашней директории
+    ground_truth_file = os.path.expanduser('~/ground_truth_listener.csv')
+    slam_data_file = os.path.expanduser('~/tf_map_base_listener.csv')
+
+    # читаем данные из файлов
+    ground_truth_data, slam_data = file_rider(ground_truth_file, slam_data_file)
 
     # разделение координат X и Y
     slam_data_x = [x[0] for x in slam_data]
@@ -53,23 +61,111 @@ def main():
     print("Standard deviation for Y:", std_dev_y)
 
     # построение данных для ground truth и SLAM
-    plt.scatter(ground_truth_data_x, ground_truth_data_y, label='Ground Truth Data')
-    plt.scatter(slam_data_x, slam_data_y, label='SLAM Data')
+    plt.plot(
+            ground_truth_data_x,
+            ground_truth_data_y,
+            linestyle='-',
+            color='black',
+            label='Ground Truth Data'
+            )
+    plt.plot(
+            slam_data_x,
+            slam_data_y,
+            linestyle='--',
+            color='black',
+            label='SLAM Data'
+            )
     plt.legend()
     plt.show()
 
     # построение данных по координате X для ground truth и SLAM
-    plt.plot(ground_truth_data_x, label='Ground Truth Data')
-    plt.plot(slam_data_x, label='SLAM Data')
+    plt.plot(
+            ground_truth_data_x,
+            linestyle='-',
+            color='black',
+            label='Ground Truth Data'
+            )
+    plt.plot(
+            slam_data_x,
+            linestyle='--',
+            color='black',
+            label='SLAM Data'
+            )
     plt.legend()
     plt.title('X Coordinate Data')
     plt.show()
 
     # построение данных по координате Y для ground truth и SLAM
-    plt.plot(ground_truth_data_y, label='Ground Truth Data')
-    plt.plot(slam_data_y, label='SLAM Data')
+    plt.plot(
+            ground_truth_data_y,
+            linestyle='-',
+            color='black',
+            label='Ground Truth Data'
+            )
+    plt.plot(
+            slam_data_y,
+            linestyle='--',
+            color='black',
+            label='SLAM Data'
+            )
     plt.legend()
     plt.title('Y Coordinate Data')
+    plt.show()
+
+    # построение графика отклонения SLAM от Ground Truth для X
+    x_error = [(gt - slam) for gt, slam in zip(ground_truth_data_x, slam_data_x)]
+    plt.plot(
+            x_error,
+            linestyle='-',
+            color='black',
+            label='X Error'
+            )
+    plt.plot(
+            [0, len(x_error)],
+            [0, 0],
+            linestyle='--',
+            color='black',
+            label='Expected value'
+            )
+    x_std_dev = np.std(x_error)
+    plt.fill_between(
+                    range(len(x_error)),
+                    [x_std_dev]*len(x_error),
+                    [-x_std_dev]*len(x_error),
+                    alpha=0.3,
+                    color='black',
+                    label='STD'
+                    )
+    plt.legend()
+    plt.title('SLAM Error (X Coordinate)')
+    plt.show()
+
+    # построение графика отклонения SLAM от Ground Truth для Y
+    y_error = [(gt - slam) for gt, slam in zip(ground_truth_data_y, slam_data_y)]
+    plt.plot(
+            y_error,
+            linestyle='-',
+            color='black',
+            label='Y Error'
+            )
+    plt.plot(
+            [0, len(x_error)],
+            [0, 0],
+            linestyle='--',
+            color='black',
+            label='Expected value'
+            )
+    y_std_dev = np.std(y_error)
+    plt.fill_between(
+                    range(len(y_error)),
+                    [y_std_dev]*len(y_error),
+                    [-y_std_dev]*len(y_error),
+                    alpha=0.3,
+                    color='black',
+                    label='STD'
+                    )
+    plt.legend()
+    plt.title('SLAM Error (Y Coordinate)')
     plt.show()
 
 if __name__ == '__main__':
