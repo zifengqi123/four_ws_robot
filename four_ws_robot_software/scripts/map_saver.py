@@ -11,7 +11,7 @@ def main():
     workspace_path = os.environ['CATKIN_WORKSPACE']
 
     # Формируем путь к папке "maps" внутри пакета "four_ws_robot_software"
-    maps_path = os.path.join(workspace_path, 'src', 'four_ws_robot', 'four_ws_robot_software', 'maps')
+    maps_path = os.path.join(workspace_path, 'src/four_ws_robot/four_ws_robot_software/maps')
 
     # Получаем значение параметра "map_name" из сервера параметров ROS
     map_name = rospy.get_param('/map_name', 'my_map')

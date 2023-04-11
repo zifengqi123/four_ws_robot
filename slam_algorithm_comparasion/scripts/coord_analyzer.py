@@ -17,7 +17,7 @@ def calculate_std_dev(slam_data_x, slam_data_y, ground_truth_data_x, ground_trut
     # вычисление разницы между данными ground truth и данными SLAM для X и Y
     differences_x = []
     differences_y = []
-    for i in range(len(slam_data_x)):
+    for i in range(len(ground_truth_data_x)):
         diff_x = slam_data_x[i] - ground_truth_data_x[i]
         differences_x.append(diff_x)
         diff_y = slam_data_y[i] - ground_truth_data_y[i]
@@ -41,8 +41,9 @@ def file_rider(ground_truth_file, slam_data_file):
 
 def main():
     # задаем имена файлов в домашней директории
-    ground_truth_file = os.path.expanduser('~/ground_truth_listener.csv')
-    slam_data_file = os.path.expanduser('~/tf_map_base_listener.csv')
+    workspace_path = os.environ['CATKIN_WORKSPACE']
+    ground_truth_file = os.path.join(workspace_path, 'src/four_ws_robot/slam_algorithm_comparasion/slam_gmapping/ground_truth_listener.csv')
+    slam_data_file = os.path.join(workspace_path, 'src/four_ws_robot/slam_algorithm_comparasion/slam_gmapping/tf_map_base_listener.csv')
 
     # читаем данные из файлов
     ground_truth_data, slam_data = file_rider(ground_truth_file, slam_data_file)
