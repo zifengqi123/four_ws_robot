@@ -1,21 +1,11 @@
+клонируем и собираем необходимые пакеты
+
 ```bash
-cd ~
+cd catkin_ws/src
 ```
 
 ```bash
-mkdir ~/four_ws_robot
-```
-
-```bash
-cd ~/four_ws_robot
-```
-
-```bash
-git clone https://github.com/5met4nka/ROS-four_ws_robot.git -b main
-```
-
-```bash
-mv ROS-four_ws_robot four_ws_robot
+git clone https://github.com/5met4nka/ROS-four_ws_robot.git four_ws_robot
 ```
 
 ```bash
@@ -27,43 +17,25 @@ git clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b mai
 ```
 
 ```bash
-cd src
+./four_ws_robot/scripts/install_pkgs.sh
 ```
 
 ```bash
-./scripts/install_pkgs.sh
-```
-
-```bash
-cd ~/four_ws_robot
+cd catkin_ws/src
 ```
 
 ```bash
 catkin build
 ```
 
-```bash
-cd ~
-```
-
 в случае использование терминальной оболочки `zsh`
 
 ```bash
-echo "source ~/four_ws_robot/devel/setup.zsh" >> ~/.zshrc
-```
-
-```bash
-export CATKIN_WORKSPACE="$HOME/four_ws_robot"
+echo "export CATKIN_WORKSPACE="$HOME/catkin_ws"" >> ~/.zshrc
 ```
 
 или в случае терминальной оболочки `bash`
 
 ```bash
-echo "source ~/four_ws_robot/devel/setup.bash" >> ~/.bashrc
+echo "export CATKIN_WORKSPACE="$HOME/catkin_ws"" >> ~/.bashrc
 ```
-
-```bash
-export CATKIN_WORKSPACE="$HOME/four_ws_robot"
-```
-
-* замечание: ROS может видеть только один ws, поэтому комментим настройку запуска других ws при помощи символа "#"
