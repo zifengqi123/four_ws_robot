@@ -21,7 +21,7 @@ def callback_controller(data):
 def joy_controller():
     global vel_msg
 
-    pub = rospy.Publisher('/four_wheel_steering_controller/cmd_vel', Twist, queue_size = 10)
+    pub = rospy.Publisher('four_wheel_steering_controller/cmd_vel', Twist, queue_size = 10)
     rate = rospy.Rate(50)
     while not rospy.is_shutdown():
         pub.publish(vel_msg)

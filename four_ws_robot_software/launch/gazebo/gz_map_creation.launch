@@ -3,17 +3,18 @@
 
     <!-- parameters -->
     <!-- gazebo -->
-    <arg name="gui"               default="false" doc="[true, false]"/>
-    <arg name="world_name"        default="turtlebot3_house"/>
-    <arg name="model"             default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
-    <arg name="robot_pose_x"      default="0.0"/>
-    <arg name="robot_pose_y"      default="0.0"/>
-    <arg name="robot_pose_z"      default="0.15"/>
+    <arg name="gui"                default="false" doc="[true, false]"/>
+    <arg name="world_name"         default="turtlebot3_house"/>
+    <arg name="model"              default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
+    <arg name="robot_pose_x"       default="0.0"/>
+    <arg name="robot_pose_y"       default="0.0"/>
+    <arg name="robot_pose_z"       default="0.15"/>
     <!-- mapping algorithm and config -->
-    <arg name="mapping_algorithm" default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
-    <arg name="algorithm_config"  default="test"/>
+    <arg name="mapping_algorithm"  default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
+    <arg name="algorithm_config"   default="test"/>
     <!-- joy -->
-    <arg name="joy_dev"           default="/dev/input/js0"/>
+    <arg name="joy_dev"            default="/dev/input/js0"/>
+    <arg name="joy_controller_sub" default="four_wheel_steering_controller/cmd_vel"/>
 
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
@@ -36,7 +37,8 @@
 
     <!-- launch joynode -->
     <include file="$(find four_ws_robot_software)/launch/joy_control.launch">
-        <arg name="joy_dev" value="$(arg joy_dev)"/>
+        <arg name="joy_dev"            value="$(arg joy_dev)"/>
+        <arg name="joy_controller_sub" value="$(arg joy_controller_sub)"/>
     </include>
 
 </launch>
