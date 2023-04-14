@@ -17,11 +17,11 @@ git clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b mai
 ```
 
 ```bash
-cd ./four_ws_robot/scripts/install_pkgs.sh
+./four_ws_robot/scripts/install_pkgs.sh
 ```
 
 ```bash
-cd catkin_ws/src
+cd ~/catkin_ws
 ```
 
 ```bash
