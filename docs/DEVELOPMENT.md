@@ -17,7 +17,7 @@ git clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b mai
 ```
 
 ```bash
-./four_ws_robot/scripts/install_pkgs.sh
+cd ./four_ws_robot/scripts/install_pkgs.sh
 ```
 
 ```bash
