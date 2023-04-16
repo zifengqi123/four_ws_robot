@@ -4,7 +4,7 @@
     <!-- parameters -->
     <!-- gazebo -->
     <arg name="gui"                default="false"/>
-    <arg name="world_name"         default="turtlebot3_house"/>
+    <arg name="world_name"         default="turtlebot3_stage_2"/>
     <arg name="model"              default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
     <arg name="robot_pose_x"       default="0.0"/>
     <arg name="robot_pose_y"       default="0.0"/>

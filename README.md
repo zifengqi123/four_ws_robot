@@ -26,7 +26,7 @@ roslaunch four_ws_robot_software gz_localization.launch
 <img src="docs/localization.gif">
 </p>
 
-## запуск картографирования
+## запуск SLAM
 
 ```bash
 roslaunch four_ws_robot_software gz_map_creation.launch
