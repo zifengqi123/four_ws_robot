@@ -29,6 +29,9 @@
         <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
     </include>
 
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/slam.rviz"/>
+
     <!-- mapping algorithm with output in rviz -->
     <include file="$(find four_ws_robot_software)/launch/mapping.launch">
         <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>

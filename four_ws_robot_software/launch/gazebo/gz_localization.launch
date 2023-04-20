@@ -27,6 +27,9 @@
         <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
     </include>
 
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find four_ws_robot_software)/rviz/localization.rviz"/>
+
     <!-- localization algorithm with output in rviz -->
     <include file="$(find four_ws_robot_software)/launch/localization.launch">
         <arg name="map_file"         value="$(find four_ws_robot_software)/maps/$(arg map_file).yaml"/>

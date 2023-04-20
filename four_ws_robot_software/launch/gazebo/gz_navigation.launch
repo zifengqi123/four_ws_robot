@@ -13,6 +13,7 @@
     <arg name="map_file"         default="$(arg world_name)"/>
     <!-- algorithm_config -->
     <arg name="algorithm_config" default="original"/>
+    <arg name="mapping_algorithm"  default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
 
     <!-- simulation -->
     <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
@@ -22,6 +23,15 @@
         <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
         <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
+    </include>
+
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find four_ws_robot_software)/rviz/navigation.rviz"/>
+
+    <!-- mapping algorithm with output in rviz -->
+    <include file="$(find four_ws_robot_software)/launch/mapping.launch">
+        <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>
+        <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
     </include>
 
     <!-- stack of navigation algorithms with output in rviz -->
