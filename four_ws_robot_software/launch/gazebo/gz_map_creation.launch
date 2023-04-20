@@ -15,6 +15,8 @@
     <!-- joy -->
     <arg name="joy_dev"            default="/dev/input/js0"/>
     <arg name="joy_controller_sub" default="four_wheel_steering_controller/cmd_vel"/>
+    <!-- selecting keyboard or joystick controls -->
+    <arg name="use_joy"            default="false"/>
 
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
@@ -39,13 +41,13 @@
     </include>
 
     <!-- launch joynode -->
-    <!-- <include file="$(find four_ws_robot_software)/launch/joy_control.launch">
+    <include file="$(find four_ws_robot_software)/launch/joy_control.launch" if="$(arg use_joy)">
         <arg name="joy_dev"            value="$(arg joy_dev)"/>
         <arg name="joy_controller_sub" value="$(arg joy_controller_sub)"/>
-    </include> -->
+    </include>
 
     <!-- keyboard control -->
-    <!-- <node pkg="wr8_software" type="key_teleop.py" name="keyboard_cmd" output="screen" respawn="false">
+    <node pkg="wr8_software" type="key_teleop.py" name="keyboard_cmd" output="screen" respawn="false" unless="$(arg use_joy)">
         <param name="turbo/steps" value="10"/>
         <param name="turbo/linear_forward_min" value="0.04"/>
         <param name="turbo/linear_forward_max" value="0.4"/>
@@ -54,6 +56,6 @@
         <param name="turbo/angular_min" value="0.05"/>
         <param name="turbo/angular_max" value="0.5"/>
         <remap from="key_vel" to="four_wheel_steering_controller/cmd_vel"/>
-    </node> -->
+    </node>
 
 </launch>
