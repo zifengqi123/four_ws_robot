@@ -48,8 +48,8 @@
         <param name="turbo/linear_forward_max" value="0.4"/>
         <param name="turbo/linear_backward_min" value="0.03"/>
         <param name="turbo/linear_backward_max" value="0.3"/>
-        <param name="turbo/angular_min" value="0.087266"/>
-        <param name="turbo/angular_max" value="0.87266"/>
+        <param name="turbo/angular_min" value="0.05"/>
+        <param name="turbo/angular_max" value="0.5"/>
         <remap from="key_vel" to="four_wheel_steering_controller/cmd_vel"/>
     </node> -->
 
