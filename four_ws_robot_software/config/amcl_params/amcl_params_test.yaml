@@ -32,7 +32,7 @@ laser_lambda_short: 0.1
 laser_likelihood_max_dist: 2.0
 laser_model_type: likelihood_field
 
-odom_model_type: diff
+odom_model_type: diff-corrected
 odom_alpha1: 0.1
 odom_alpha2: 0.1
 odom_alpha3: 0.1
