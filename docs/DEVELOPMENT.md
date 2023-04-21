@@ -25,6 +25,14 @@ git clone https://github.com/ros-drivers/four_wheel_steering_msgs.git -b main
 ```
 
 ```bash
+git clone https://github.com/ros-controls/urdf_geometry_parser.git
+```
+
+```bash
+git clone https://github.com/ros/geometry2.git -b noetic-devel
+```
+
+```bash
 ./four_ws_robot/scripts/install_pkgs.sh
 ```
 
