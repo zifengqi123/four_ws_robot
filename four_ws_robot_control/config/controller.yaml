@@ -4,8 +4,8 @@ joint_state_controller:
 
 four_wheel_steering_controller:
   type: "four_wheel_steering_controller/FourWheelSteeringController"
-  front_wheel: ['front_left_wheel_joint', 'front_right_wheel_joint']
-  rear_wheel: ['rear_left_wheel_joint', 'rear_right_wheel_joint']
+  front_wheel: ['ffl_wheel_joint', 'ffr_wheel_joint']
+  rear_wheel: ['rfl_wheel_joint', 'rfr_wheel_joint']
   front_steering: ['front_left_steering_joint', 'front_right_steering_joint']
   rear_steering: ['rear_left_steering_joint', 'rear_right_steering_joint']
   publish_rate: 50.0
@@ -68,19 +68,19 @@ four_wheel_steering_controller:
         p: 50
         i: 1
         d: 0.01
-      front_left_wheel:
+      ffl_wheel:
         p: 10.0
         i: 1
         d: 0.0
-      front_right_wheel:
+      ffr_wheel:
         p: 10.0
         i: 1
         d: 0.0
-      rear_left_wheel:
+      rfl_wheel:
         p: 10.0
         i: 1
         d: 0.0
-      rear_right_wheel:
+      rfr_wheel:
         p: 10.0
         i: 1
         d: 0.0

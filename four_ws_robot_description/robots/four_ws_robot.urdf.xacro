@@ -65,42 +65,42 @@
 
     <!-- Wheel -->
     <!-- Front Left Wheel -->
-    <xacro:wheel_v0 prefix="front_left" parent="front_left_steering_link">
+    <xacro:wheel_v0 prefix="ffl" parent="front_left_steering_link">
         <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}"/>
         <axis xyz="0 -1 0"/>
     </xacro:wheel_v0>
     <!-- Front Right Wheel -->
-    <xacro:wheel_v0 prefix="front_right" parent="front_right_steering_link">
+    <xacro:wheel_v0 prefix="ffr" parent="front_right_steering_link">
         <origin xyz="0 -0.021 -0.025" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
     </xacro:wheel_v0>
     <!--  Rear Left Wheel -->
-    <xacro:wheel_v0 prefix="rear_left" parent="rear_left_steering_link">
+    <xacro:wheel_v0 prefix="rfl" parent="rear_left_steering_link">
         <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}"/>
         <axis xyz="0 -1 0"/>
     </xacro:wheel_v0>
     <!-- Rear Right Wheel -->
-    <xacro:wheel_v0 prefix="rear_right" parent="rear_right_steering_link">
+    <xacro:wheel_v0 prefix="rfr" parent="rear_right_steering_link">
         <origin xyz="0 -0.021 -0.025" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
     </xacro:wheel_v0>
 
-    <!-- ===============  Wheel Transmission =============== -->
-    <xacro:wheel_trans_v0 prefix="front_left"/>
-    <xacro:wheel_trans_v0 prefix="front_right"/>
-    <xacro:wheel_trans_v0 prefix="rear_left"/>
-    <xacro:wheel_trans_v0 prefix="rear_right"/>
+    <!-- Wheel Transmission -->
+    <xacro:wheel_trans_v0 prefix="ffl"/>
+    <xacro:wheel_trans_v0 prefix="ffr"/>
+    <xacro:wheel_trans_v0 prefix="rfl"/>
+    <xacro:wheel_trans_v0 prefix="rfr"/>
 
-    <!-- ===============  Steering Transmission =============== -->
+    <!-- Steering Transmission -->
     <xacro:steering_trans_v0 prefix="front_left"/>
     <xacro:steering_trans_v0 prefix="front_right"/>
     <xacro:steering_trans_v0 prefix="rear_left"/>
     <xacro:steering_trans_v0 prefix="rear_right"/>
 
-    <!-- ===============  lider head Transmission =============== -->
+    <!-- lider head Transmission -->
     <xacro:lidar_trans_v0/>
 
-    <!-- =============== Gazebo =============== -->
+    <!-- Gazebo -->
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
         <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
@@ -128,10 +128,10 @@
     <xacro:lrf_gazebo_v0 prefix = "front" min_rad = "-3.14" max_rad = "3.14" min_range = "0.1" max_range = "10"/>
 
     <!-- Wheel -->
-    <xacro:wheel_gazebo_v0 prefix="front_left"/>
-    <xacro:wheel_gazebo_v0 prefix="front_right"/>
-    <xacro:wheel_gazebo_v0 prefix="rear_left"/>
-    <xacro:wheel_gazebo_v0 prefix="rear_right"/>
+    <xacro:wheel_gazebo_v0 prefix="fl"/>
+    <xacro:wheel_gazebo_v0 prefix="fr"/>
+    <xacro:wheel_gazebo_v0 prefix="rl"/>
+    <xacro:wheel_gazebo_v0 prefix="rr"/>
 
     <!-- Steering -->
     <xacro:steering_gazebo_v0 prefix="front_left"/>
