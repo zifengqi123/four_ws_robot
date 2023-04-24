@@ -21,7 +21,7 @@ git clone https://github.com/ros-controls/ros_controllers -b noetic-devel
 ```
 
 ```bash
-git clone https://github.com/ros-drivers/four_wheel_steering_msgs.git -b main
+git clone https://github.com/ros-drivers/four_wheel_steering_msgs.git -b master
 ```
 
 ```bash
