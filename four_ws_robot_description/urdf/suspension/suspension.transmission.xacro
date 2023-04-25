@@ -1,17 +1,20 @@
 <?xml version="1.0"?>
+<!-- Файл "suspension.transmission.xacro" определяет параметры трансмиссии робота.
+Он содержит макрос "steering_trans_v0", который определяет параметры трансмиссии,
+такие как тип трансмиссии (в данном случае "transmission_interface/SimpleTransmission"),
+аппаратный интерфейс для соединения с мотором и суставом, а также
+механическое уменьшение (mechanicalReduction) для мотора. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-
-  <xacro:macro name="steering_trans_v0" params="prefix">
-	<transmission name="${prefix}_steering_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}_steering_joint">
-		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      </joint>
-	  <actuator name="${prefix}_steering_motor">
-		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		<mechanicalReduction>30</mechanicalReduction>
-      </actuator>
-	</transmission>
-  </xacro:macro>
-  
+    <xacro:macro name="steering_trans_v0" params="prefix">
+        <transmission name="${prefix}_steering_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${prefix}_steering_joint">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${prefix}_steering_motor">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>30</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
 </robot>

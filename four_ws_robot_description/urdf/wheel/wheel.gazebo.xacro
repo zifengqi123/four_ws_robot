@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
+<!-- Файл wheel.gazebo.xacro содержит описание модели колеса для симулятора Gazebo.
+Внутри макроса wheel_gazebo_v0 определены параметры, такие как ссылка на соответствующее
+звено колеса в URDF модели (${prefix}_wheel_link) и коэффициенты трения mu1 и mu2,
+установленные в значения 1.2. Значения коэффициентов трения mu1 и mu2 определяют трение
+между колесом и поверхностью, где робот будет симулирован в среде Gazebo. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="wheel_gazebo_v0" params="prefix">
-    <gazebo reference="${prefix}_wheel_link">
-      <selfCollide>false</selfCollide>
-      <mu1 value="1.2" />
-      <mu2 value="1.2" />
-    </gazebo>
-  </xacro:macro>
+    <xacro:macro name="wheel_gazebo_v0" params="prefix">
+        <gazebo reference="${prefix}_wheel_link">
+            <selfCollide>false</selfCollide>
+            <mu1 value="1.2" />
+            <mu2 value="1.2" />
+        </gazebo>
+    </xacro:macro>
 </robot>
-

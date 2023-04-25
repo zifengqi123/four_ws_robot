@@ -1,36 +1,38 @@
 <?xml version="1.0"?>
+<!-- Файл wheel.urdf.xacro содержит полное описание колеса робота в формате URDF
+(Unified Robot Description Format), который используется для описания геометрии,
+кинематики, инерционных свойств и других характеристик робота.
+Внутри макроса wheel_v0 определены параметры, такие как название звена колеса
+(${prefix}_wheel_link), тип и ограничения соединения (<joint>),
+геометрия визуализации и столкновений колеса (<visual> и <collision>),
+а также инерционные свойства (<inertial>) для симуляции физических характеристик колеса. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-
-  <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro"/>
-  <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro"/>
-  
-  <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
-	<joint name="${prefix}_wheel_joint" type="continuous">
-	  <xacro:insert_block name="joint_origin"/>
-	  <parent link="${parent}"/>
-	  <child link="${prefix}_wheel_link"/>
-         <limit effort="1.5" velocity="20"/>
-	  <xacro:insert_block name="joint_axis"/>
-	</joint>
-
-	<link name="${prefix}_wheel_link">
-	  <visual>
-		<geometry>
-		  <mesh filename="package://four_ws_robot_description/meshes/DAE/wheel/wheel_link.dae"/>
-		</geometry>
-	  </visual>
-	  <collision>
-		<geometry>
-		  <mesh filename="package://four_ws_robot_description/meshes/STL/wheel/robot_wheel.stl"/>
-		</geometry>
-	  </collision>
-	  <inertial>
-		<origin xyz="0.0 -0.007 -0.0"/>
-		<mass value="0.05"/>
-		<inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.000018" iyz="0" izz="0.00001"/>
-	  </inertial>
-	</link>
-  </xacro:macro>
-  
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />
+    <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
+        <joint name="${prefix}_wheel_joint" type="continuous">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="${parent}" />
+            <child link="${prefix}_wheel_link" />
+            <limit effort="1.5" velocity="20" />
+            <xacro:insert_block name="joint_axis" />
+        </joint>
+        <link name="${prefix}_wheel_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://four_ws_robot_description/meshes/DAE/wheel/wheel_link.dae" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://four_ws_robot_description/meshes/STL/wheel/robot_wheel.stl" />
+                </geometry>
+            </collision>
+            <inertial>
+                <origin xyz="0.0 -0.007 -0.0" />
+                <mass value="0.05" />
+                <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.000018" iyz="0" izz="0.00001" />
+            </inertial>
+        </link>
+    </xacro:macro>
 </robot>
-
