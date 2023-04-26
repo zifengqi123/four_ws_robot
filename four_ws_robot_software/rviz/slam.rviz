@@ -99,9 +99,9 @@ Visualization Manager:
           Value: true
         base_link:
           Value: false
-        ffl_wheel_link:
+        fl_wheel_link:
           Value: false
-        ffr_wheel_link:
+        fr_wheel_link:
           Value: false
         front_left_steering_link:
           Value: false
@@ -123,9 +123,9 @@ Visualization Manager:
           Value: false
         rear_right_steering_link:
           Value: false
-        rfl_wheel_link:
+        rl_wheel_link:
           Value: false
-        rfr_wheel_link:
+        rr_wheel_link:
           Value: false
       Marker Alpha: 1
       Marker Scale: 1
@@ -139,12 +139,12 @@ Visualization Manager:
             base_footprint:
               base_link:
                 front_left_steering_link:
-                  ffl_wheel_link:
+                  fl_wheel_link:
                     {}
                 front_lrf_link:
                   {}
                 front_right_steering_link:
-                  ffr_wheel_link:
+                  fr_wheel_link:
                     {}
                 lidar_base_link:
                   lidar_head_link:
@@ -152,10 +152,10 @@ Visualization Manager:
                 lrf_link:
                   {}
                 rear_left_steering_link:
-                  rfl_wheel_link:
+                  rl_wheel_link:
                     {}
                 rear_right_steering_link:
-                  rfr_wheel_link:
+                  rr_wheel_link:
                     {}
       Update Interval: 0
       Value: true
@@ -187,7 +187,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 13.139300346374512
+      Distance: 8.020142555236816
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

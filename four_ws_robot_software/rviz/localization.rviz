@@ -4,7 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
         - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.7441176176071167
@@ -63,9 +62,9 @@ Visualization Manager:
           Value: true
         base_link:
           Value: false
-        ffl_wheel_link:
+        fl_wheel_link:
           Value: false
-        ffr_wheel_link:
+        fr_wheel_link:
           Value: false
         front_left_steering_link:
           Value: false
@@ -87,9 +86,9 @@ Visualization Manager:
           Value: false
         rear_right_steering_link:
           Value: false
-        rfl_wheel_link:
+        rl_wheel_link:
           Value: false
-        rfr_wheel_link:
+        rr_wheel_link:
           Value: false
       Marker Alpha: 1
       Marker Scale: 1
@@ -103,12 +102,12 @@ Visualization Manager:
             base_footprint:
               base_link:
                 front_left_steering_link:
-                  ffl_wheel_link:
+                  fl_wheel_link:
                     {}
                 front_lrf_link:
                   {}
                 front_right_steering_link:
-                  ffr_wheel_link:
+                  fr_wheel_link:
                     {}
                 lidar_base_link:
                   lidar_head_link:
@@ -116,10 +115,10 @@ Visualization Manager:
                 lrf_link:
                   {}
                 rear_left_steering_link:
-                  rfl_wheel_link:
+                  rl_wheel_link:
                     {}
                 rear_right_steering_link:
-                  rfr_wheel_link:
+                  rr_wheel_link:
                     {}
       Update Interval: 0
       Value: true
@@ -144,7 +143,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.05000000074505806
       Style: Flat Squares
       Topic: /front/scan
       Unreliable: false
