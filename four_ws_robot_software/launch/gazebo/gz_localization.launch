@@ -3,8 +3,8 @@
 
     <!-- parameters -->
     <!-- gazebo -->
-    <arg name="gui"                default="false"/>
-    <arg name="world_name"         default="turtlebot3_stage_2"/>
+    <arg name="gui"                default="false" doc="[true, false]"/>
+    <arg name="world_name"         default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
     <arg name="model"              default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
     <arg name="robot_pose_x"       default="0.0"/>
     <arg name="robot_pose_y"       default="0.0"/>
@@ -12,7 +12,7 @@
     <!-- map file -->
     <arg name="map_file"           default="$(arg world_name)"/>
     <!-- algorithm_config -->
-    <arg name="algorithm_config"   default="test"/>
+    <arg name="algorithm_config"   default="default" doc="[default, original, test]"/>
     <!-- joy -->
     <arg name="joy_dev"            default="/dev/input/js0"/>
     <arg name="joy_controller_sub" default="four_wheel_steering_controller/cmd_vel"/>
