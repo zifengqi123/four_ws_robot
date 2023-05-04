@@ -17,7 +17,7 @@
     <arg name="joy_dev"            default="/dev/input/js0"/>
     <arg name="joy_controller_sub" default="four_wheel_steering_controller/cmd_vel"/>
     <!-- selecting keyboard or joystick controls -->
-    <arg name="use_joy"            default="false"/>
+    <arg name="use_joy"            default="false" doc="[true, false]"/>
 
     <!-- simulation -->
     <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
