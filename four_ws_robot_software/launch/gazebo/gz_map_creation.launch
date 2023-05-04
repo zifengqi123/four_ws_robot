@@ -17,8 +17,6 @@
     <arg name="joy_controller_sub" default="four_wheel_steering_controller/cmd_vel"/>
     <!-- selecting keyboard or joystick controls -->
     <arg name="use_joy"            default="false" doc="[true, false]"/>
-    <!-- set in "true" if you need to save the coordinates -->
-    <arg name="coord_logging"      default="false" doc="[true, false]"/>
 
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
@@ -41,9 +39,6 @@
         <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>
         <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
     </include>
-
-    <!-- coord logging -->
-    <include file="$(find slam_algorithm_comparasion)/launch/all_listeners.launch" if="$(arg coord_logging)"/>
 
     <!-- launch joynode -->
     <include file="$(find four_ws_robot_software)/launch/joy_control.launch" if="$(arg use_joy)">
