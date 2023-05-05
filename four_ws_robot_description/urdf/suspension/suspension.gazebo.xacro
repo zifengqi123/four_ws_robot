@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!-- Файл "suspension.gazebo.xacro" описывает параметры модели подвески робота для симуляции
-в среде Gazebo. Он содержит макрос "steering_gazebo_v0", который определяет параметры для
+в среде Gazebo. Он содержит макрос "steering_gazebo", который определяет параметры для
 элемента "gazebo" в модели, такие как самостолкновение, коэффициенты трения между
 элементами модели и другие параметры. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="steering_gazebo_v0" params="prefix">
+    <xacro:macro name="steering_gazebo" params="prefix">
         <gazebo reference="${prefix}_steering_link">
             <selfCollide>false</selfCollide>
             <mu1 value="0.05" />

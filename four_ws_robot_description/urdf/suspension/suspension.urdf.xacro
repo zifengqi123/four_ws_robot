@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!-- Файл "suspension.urdf.xacro" объединяет описания подвески робота,
-используя включения (include), и определяет макрос "steering_v0", который
+используя включения (include), и определяет макрос "steering", который
 определяет параметры соединения сустава робота. Он содержит описание соединения
 сустава, такие как тип соединения (revolute), ограничения на усилие, скорость и
 ограничения на угол поворота сустава, а также геометрию визуализации и коллизий сустава. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.transmission.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.gazebo.xacro" />
-    <xacro:macro name="steering_v0" params="prefix parent *joint_origin *joint_axis">
+    <xacro:macro name="steering" params="prefix parent *joint_origin *joint_axis">
         <joint name="${prefix}_steering_joint" type="revolute">
             <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />

@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.transmission.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.gazebo.xacro" />
-    <xacro:macro name="lidar_head_v0" params="parent *joint_origin *joint_axis">
+    <xacro:macro name="lidar_head" params="parent *joint_origin *joint_axis">
         <joint name="lidar_head_joint" type="continuous">
             <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />

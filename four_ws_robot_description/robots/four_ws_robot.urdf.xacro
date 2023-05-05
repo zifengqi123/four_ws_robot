@@ -14,25 +14,25 @@
 
     <!-- Base -->
     <link name="base_footprint"/>
-    <xacro:base_v0 parent="base_footprint">
+    <xacro:base parent="base_footprint">
         <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:base_v0>
+    </xacro:base>
 
     <!-- lidar_base -->
-    <xacro:lidar_base_v0 parent="base_link">
+    <xacro:lidar_base parent="base_link">
         <origin xyz="-0.022 0 0.035" rpy="0 0 0"/>
-    </xacro:lidar_base_v0>
+    </xacro:lidar_base>
 
     <!-- lidar_head -->
-    <xacro:lidar_head_v0 parent="lidar_base_link">
+    <xacro:lidar_head parent="lidar_base_link">
         <origin xyz="0.022 0 0.0" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
-    </xacro:lidar_head_v0>
+    </xacro:lidar_head>
 
     <!-- lrf sensor -->
-    <xacro:lrf_v0 prefix = "front" parent="base_link">
+    <xacro:lrf prefix = "front" parent="base_link">
         <origin xyz="0 0 0.083" rpy="0 0 0"/>
-    </xacro:lrf_v0>
+    </xacro:lrf>
 
     <link name="lrf_link"/>
     <joint name="lrf_link_joint" type="fixed">
@@ -43,62 +43,62 @@
 
     <!-- Steering -->
     <!-- Front Right Steering -->
-    <xacro:steering_v0 prefix="front_right" parent="base_link">
+    <xacro:steering prefix="front_right" parent="base_link">
         <origin xyz="0.077 -0.031 -0.004" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
-    </xacro:steering_v0>
+    </xacro:steering>
     <!-- Front Left Steering -->
-    <xacro:steering_v0 prefix="front_left" parent="base_link">
+    <xacro:steering prefix="front_left" parent="base_link">
         <origin xyz="0.077 0.031 -0.004" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
-    </xacro:steering_v0>
+    </xacro:steering>
     <!-- Rear Right Steering -->
-    <xacro:steering_v0 prefix="rear_right" parent="base_link">
+    <xacro:steering prefix="rear_right" parent="base_link">
         <origin xyz="-0.077 -0.031 -0.004" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
-    </xacro:steering_v0>
+    </xacro:steering>
     <!-- Rear Left Steering -->
-    <xacro:steering_v0 prefix="rear_left" parent="base_link">
+    <xacro:steering prefix="rear_left" parent="base_link">
         <origin xyz="-0.077 0.031 -0.004" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
-    </xacro:steering_v0>
+    </xacro:steering>
 
     <!-- Wheel -->
     <!-- Front Left Wheel -->
-    <xacro:wheel_v0 prefix="fl" parent="front_left_steering_link">
+    <xacro:wheel prefix="fl" parent="front_left_steering_link">
         <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}"/>
         <axis xyz="0 -1 0"/>
-    </xacro:wheel_v0>
+    </xacro:wheel>
     <!-- Front Right Wheel -->
-    <xacro:wheel_v0 prefix="fr" parent="front_right_steering_link">
+    <xacro:wheel prefix="fr" parent="front_right_steering_link">
         <origin xyz="0 -0.021 -0.025" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
-    </xacro:wheel_v0>
+    </xacro:wheel>
     <!--  Rear Left Wheel -->
-    <xacro:wheel_v0 prefix="rl" parent="rear_left_steering_link">
+    <xacro:wheel prefix="rl" parent="rear_left_steering_link">
         <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}"/>
         <axis xyz="0 -1 0"/>
-    </xacro:wheel_v0>
+    </xacro:wheel>
     <!-- Rear Right Wheel -->
-    <xacro:wheel_v0 prefix="rr" parent="rear_right_steering_link">
+    <xacro:wheel prefix="rr" parent="rear_right_steering_link">
         <origin xyz="0 -0.021 -0.025" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
-    </xacro:wheel_v0>
+    </xacro:wheel>
 
     <!-- Wheel Transmission -->
-    <xacro:wheel_trans_v0 prefix="fl"/>
-    <xacro:wheel_trans_v0 prefix="fr"/>
-    <xacro:wheel_trans_v0 prefix="rl"/>
-    <xacro:wheel_trans_v0 prefix="rr"/>
+    <xacro:wheel_trans prefix="fl"/>
+    <xacro:wheel_trans prefix="fr"/>
+    <xacro:wheel_trans prefix="rl"/>
+    <xacro:wheel_trans prefix="rr"/>
 
     <!-- Steering Transmission -->
-    <xacro:steering_trans_v0 prefix="front_left"/>
-    <xacro:steering_trans_v0 prefix="front_right"/>
-    <xacro:steering_trans_v0 prefix="rear_left"/>
-    <xacro:steering_trans_v0 prefix="rear_right"/>
+    <xacro:steering_trans prefix="front_left"/>
+    <xacro:steering_trans prefix="front_right"/>
+    <xacro:steering_trans prefix="rear_left"/>
+    <xacro:steering_trans prefix="rear_right"/>
 
-    <!-- lider head Transmission -->
-    <xacro:lidar_trans_v0/>
+    <!-- lidar head Transmission -->
+    <xacro:lidar_trans/>
 
     <!-- Gazebo -->
     <gazebo>
@@ -116,27 +116,27 @@
     </gazebo>
 
     <!-- Base -->
-    <xacro:base_gazebo_v0/>
+    <xacro:base_gazebo/>
 
     <!-- lidar base -->
-    <xacro:lidar_base_gazebo_v0/>
+    <xacro:lidar_base_gazebo/>
 
     <!-- lidar head -->
-    <xacro:lidar_head_gazebo_v0/>
+    <xacro:lidar_head_gazebo/>
 
     <!-- lrf sensor -->
-    <xacro:lrf_gazebo_v0 prefix = "front" min_rad = "-3.14" max_rad = "3.14" min_range = "0.1" max_range = "10"/>
+    <xacro:lrf_gazebo prefix = "front" min_rad = "-3.14" max_rad = "3.14" min_range = "0.1" max_range = "10"/>
 
     <!-- Wheel -->
-    <xacro:wheel_gazebo_v0 prefix="fl"/>
-    <xacro:wheel_gazebo_v0 prefix="fr"/>
-    <xacro:wheel_gazebo_v0 prefix="rl"/>
-    <xacro:wheel_gazebo_v0 prefix="rr"/>
+    <xacro:wheel_gazebo prefix="fl"/>
+    <xacro:wheel_gazebo prefix="fr"/>
+    <xacro:wheel_gazebo prefix="rl"/>
+    <xacro:wheel_gazebo prefix="rr"/>
 
     <!-- Steering -->
-    <xacro:steering_gazebo_v0 prefix="front_left"/>
-    <xacro:steering_gazebo_v0 prefix="front_right"/>
-    <xacro:steering_gazebo_v0 prefix="rear_left"/>
-    <xacro:steering_gazebo_v0 prefix="rear_right"/>
+    <xacro:steering_gazebo prefix="front_left"/>
+    <xacro:steering_gazebo prefix="front_right"/>
+    <xacro:steering_gazebo prefix="rear_left"/>
+    <xacro:steering_gazebo prefix="rear_right"/>
 
 </robot>
