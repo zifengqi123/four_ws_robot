@@ -68,25 +68,28 @@ gazebo_ros_control:
       p: 50
       i: 1
       d: 0.01
-    fl_wheel:
-      p: 10.0
-      i: 1
+    fl_wheel_joint:
+      p: 0.01
+      i: 0.0
       d: 0.0
-    fr_wheel:
-      p: 10.0
-      i: 1
+    fr_wheel_joint:
+      p: 0.01
+      i: 0.0
       d: 0.0
-    rl_wheel:
-      p: 10.0
-      i: 1
+    rl_wheel_joint:
+      p: 0.01
+      i: 0.0
       d: 0.0
-    rr_wheel:
-      p: 10.0
-      i: 1
+    rr_wheel_joint:
+      p: 0.01
+      i: 0.0
       d: 0.0
+    lidar_head_joint:
+      p: 0.01
+      i: 100.0
+      d: 100.0
 
 lidar_head_controller:
   type: velocity_controllers/JointVelocityController
   joint: lidar_head_joint
   publish_rate: 50
-  pid: {p: 10.0, i: 1.0, d: 0.0}

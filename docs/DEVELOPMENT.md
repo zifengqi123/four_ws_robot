@@ -28,6 +28,10 @@ git clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b mai
 git clone https://github.com/ros-controls/ros_controllers -b noetic-devel
 ```
 
+```bash
+git clone https://github.com/ros-controls/ros_control -b noetic-devel
+```
+
 пакет с сообщениями для четырехколесного управления
 
 ```bash
