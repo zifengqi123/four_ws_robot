@@ -15,11 +15,11 @@ four_wheel_steering_controller:
   # Wheel separation and diameter. These are both optional.
   # diff_drive_controller will attempt to read either one or both from the
   # URDF if not specified as a parameter
-  wheel_separation : 0.122
-  track : 0.122
-  wheel_base : 0.154
-  wheel_radius : 0.026
-  wheel_steering_y_offset : 0.03
+  wheel_separation: 0.122
+  track: 0.122
+  wheel_base: 0.154
+  wheel_radius: 0.026
+  wheel_steering_y_offset: 0.03
 
   # Wheel separation and radius multipliers
   wheel_separation_multiplier: 1.0
@@ -86,7 +86,7 @@ gazebo_ros_control:
       d: 0.0
 
 lidar_head_controller:
-  type : velocity_controllers/JointVelocityController
+  type: velocity_controllers/JointVelocityController
   joint: lidar_head_joint
   publish_rate: 50
   pid: {p: 10.0, i: 1.0, d: 0.0}
