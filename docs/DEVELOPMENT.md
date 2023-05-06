@@ -16,6 +16,18 @@ git clone https://github.com/5met4nka/ROS-four_ws_robot.git four_ws_robot
 git clone https://github.com/ros-planning/navigation.git -b noetic-devel
 ```
 
+hector_slam
+
+```bash
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git -b noetic-devel
+```
+
+slam_gmapping
+
+```bash
+git clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel
+```
+
 пакет с мирами в Gazebo
 
 ```bash
@@ -41,7 +53,7 @@ git clone https://github.com/ros-drivers/four_wheel_steering_msgs.git -b master
 пакет для обработки объектов в urdf
 
 ```bash
-git clone https://github.com/ros-controls/urdf_geometry_parser.git
+git clone https://github.com/ros-controls/urdf_geometry_parser.git -b kinetic-devel
 ```
 
 установка оставших требуемых пакетов

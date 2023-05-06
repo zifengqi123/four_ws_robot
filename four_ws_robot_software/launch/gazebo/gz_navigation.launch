@@ -1,14 +1,23 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- parameters -->
     <!-- gazebo -->
-    <arg name="gui"          default="false" doc="[true, false]"/>
-    <arg name="world_name"   default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
-    <arg name="model"        default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
-    <arg name="robot_pose_x" default="0.0"/>
-    <arg name="robot_pose_y" default="0.0"/>
-    <arg name="robot_pose_z" default="0.15"/>
+    <arg name="paused"             default="false"/>
+    <arg name="use_sim_time"       default="true"/>
+    <arg name="gui"                default="false" doc="[true, false]"/>
+    <arg name="recording"          default="false"/>
+    <arg name="headless"           default="false"/>
+    <arg name="debug"              default="false"/>
+    <arg name="physics"            default="ode"/>
+    <arg name="verbose"            default="false"/>
+    <arg name="output"             default="screen"/>
+    <arg name="world_name"         default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
+    <!-- urdf spawner -->
+    <arg name="robot_pose_x"       default="0.0"/>
+    <arg name="robot_pose_y"       default="0.0"/>
+    <arg name="robot_pose_z"       default="0.15"/>
+    <!-- urdf model -->
+    <arg name="model"              default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
     <!-- map file -->
     <arg name="map_file"         default="$(arg world_name)"/>
     <!-- algorithm_config -->
@@ -17,29 +26,40 @@
 
     <!-- simulation -->
     <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
+        <!-- gazebo -->
+        <arg name="paused"       value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui"          value="$(arg gui)"/>
-        <arg name="world_name"   value="$(arg world_name)"/>
-        <arg name="model"        value="$(arg model)"/>
+        <arg name="recording"    value="$(arg recording)"/>
+        <arg name="headless"     value="$(arg headless)"/>
+        <arg name="debug"        value="$(arg debug)"/>
+        <arg name="physics"      value="$(arg physics)"/>
+        <arg name="verbose"      value="$(arg verbose)"/>
+        <arg name="output"       value="$(arg output)"/>
+        <arg name="world_name"   value="$(find gazebo_models_worlds_collection)/worlds/$(arg world_name).world"/>
+        <!-- urdf spawner -->
         <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
         <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
+        <!-- urdf model -->
+        <arg name="model"        value="$(arg model)"/>
     </include>
 
-    <!-- rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find four_ws_robot_software)/rviz/navigation.rviz"/>
-
-    <!-- mapping algorithm with output in rviz -->
+    <!-- mapping algorithm -->
     <include file="$(find four_ws_robot_software)/launch/mapping.launch">
         <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>
         <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
     </include>
 
-    <!-- stack of navigation algorithms with output in rviz -->
+    <!-- stack of navigation algorithms -->
     <include file="$(find four_ws_robot_software)/launch/navigation.launch">
         <arg name="map_file"         value="$(find four_ws_robot_software)/maps/$(arg map_file).yaml"/>
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
         <arg name="robot_pose_x"     value="$(arg robot_pose_x)"/>
         <arg name="robot_pose_y"     value="$(arg robot_pose_y)"/>
     </include>
+
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find four_ws_robot_software)/rviz/navigation.rviz"/>
 
 </launch>
