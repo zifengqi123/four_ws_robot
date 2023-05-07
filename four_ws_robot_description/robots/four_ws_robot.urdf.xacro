@@ -9,6 +9,7 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_base/lidar_base.urdf.xacro"/>
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.urdf.xacro"/>
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lrf/lrf.urdf.xacro"/>
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/camera/camera.urdf.xacro"/>
 
     <!-- Link & Joint -->
 
@@ -34,12 +35,10 @@
         <origin xyz="0 0 0.083" rpy="0 0 0"/>
     </xacro:lrf>
 
-    <link name="lrf_link"/>
-    <joint name="lrf_link_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="lrf_link"/>
-        <origin xyz="0 0 0.01" rpy="0 0 0"/>
-    </joint>
+    <!-- camera -->
+    <xacro:camera prefix="main" parent="base_link">
+        <origin xyz="0.1 0 0.0177" rpy="0 0 0"/>
+    </xacro:camera>
 
     <!-- Steering -->
     <!-- Front Right Steering -->
@@ -85,22 +84,49 @@
         <axis xyz="0 1 0"/>
     </xacro:wheel>
 
-    <!-- Wheel Transmission -->
-    <xacro:wheel_trans prefix="fl"/>
-    <xacro:wheel_trans prefix="fr"/>
-    <xacro:wheel_trans prefix="rl"/>
-    <xacro:wheel_trans prefix="rr"/>
+    <!-- base  gazebo -->
+    <xacro:base_gazebo/>
 
-    <!-- Steering Transmission -->
+    <!-- lidar base gazebo -->
+    <xacro:lidar_base_gazebo/>
+
+    <!-- lidar head gazebo -->
+    <xacro:lidar_head_gazebo/>
+
+    <!-- lidar head Transmission -->
+    <xacro:lidar_trans/>
+
+    <!-- lrf sensor -->
+    <xacro:lrf_gazebo prefix = "front" min_rad = "-${M_PI}" max_rad = "${M_PI}" min_range = "0.15" max_range = "8"/>
+
+    <!-- lidar head gazebo -->
+    <xacro:camera_gazebo prefix="main"/>
+
+    <!-- steering gazebo -->
+    <xacro:steering_gazebo prefix="front_left"/>
+    <xacro:steering_gazebo prefix="front_right"/>
+    <xacro:steering_gazebo prefix="rear_left"/>
+    <xacro:steering_gazebo prefix="rear_right"/>
+
+    <!-- steering transmission -->
     <xacro:steering_trans prefix="front_left"/>
     <xacro:steering_trans prefix="front_right"/>
     <xacro:steering_trans prefix="rear_left"/>
     <xacro:steering_trans prefix="rear_right"/>
 
-    <!-- lidar head Transmission -->
-    <xacro:lidar_trans/>
+    <!-- wheel gazebo -->
+    <xacro:wheel_gazebo prefix="fl"/>
+    <xacro:wheel_gazebo prefix="fr"/>
+    <xacro:wheel_gazebo prefix="rl"/>
+    <xacro:wheel_gazebo prefix="rr"/>
 
-    <!-- Gazebo -->
+    <!-- wheel transmission gazebo -->
+    <xacro:wheel_trans prefix="fl"/>
+    <xacro:wheel_trans prefix="fr"/>
+    <xacro:wheel_trans prefix="rl"/>
+    <xacro:wheel_trans prefix="rr"/>
+
+    <!-- gazebo plugins -->
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
         <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
@@ -114,29 +140,5 @@
             <rpyOffsets>0 0 0</rpyOffsets>
         </plugin>
     </gazebo>
-
-    <!-- Base -->
-    <xacro:base_gazebo/>
-
-    <!-- lidar base -->
-    <xacro:lidar_base_gazebo/>
-
-    <!-- lidar head -->
-    <xacro:lidar_head_gazebo/>
-
-    <!-- lrf sensor -->
-    <xacro:lrf_gazebo prefix = "front" min_rad = "-3.14" max_rad = "3.14" min_range = "0.1" max_range = "10"/>
-
-    <!-- Wheel -->
-    <xacro:wheel_gazebo prefix="fl"/>
-    <xacro:wheel_gazebo prefix="fr"/>
-    <xacro:wheel_gazebo prefix="rl"/>
-    <xacro:wheel_gazebo prefix="rr"/>
-
-    <!-- Steering -->
-    <xacro:steering_gazebo prefix="front_left"/>
-    <xacro:steering_gazebo prefix="front_right"/>
-    <xacro:steering_gazebo prefix="rear_left"/>
-    <xacro:steering_gazebo prefix="rear_right"/>
 
 </robot>
