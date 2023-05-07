@@ -1,11 +1,4 @@
 <?xml version="1.0"?>
-<!-- Файл wheel.urdf.xacro содержит полное описание колеса робота в формате URDF
-(Unified Robot Description Format), который используется для описания геометрии,
-кинематики, инерционных свойств и других характеристик робота.
-Внутри макроса wheel определены параметры, такие как название звена колеса
-(${prefix}_wheel_link), тип и ограничения соединения (<joint>),
-геометрия визуализации и столкновений колеса (<visual> и <collision>),
-а также инерционные свойства (<inertial>) для симуляции физических характеристик колеса. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />
@@ -22,15 +15,17 @@
                 <geometry>
                     <mesh filename="package://four_ws_robot_description/meshes/DAE/wheel/wheel_link.dae" />
                 </geometry>
+                <origin xyz="0.0 0.0 0.0" />
             </visual>
             <collision>
                 <geometry>
                     <mesh filename="package://four_ws_robot_description/meshes/STL/wheel/robot_wheel.stl" />
                 </geometry>
+                <origin xyz="0.0 0.0 0.0" />
             </collision>
             <inertial>
-                <origin xyz="0.0 -0.007 -0.0" />
                 <mass value="0.05" />
+                <origin xyz="0.0 -0.007 0.0" />
                 <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.000018" iyz="0" izz="0.00001" />
             </inertial>
         </link>

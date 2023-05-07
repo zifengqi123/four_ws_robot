@@ -56,7 +56,13 @@ git clone https://github.com/ros-drivers/four_wheel_steering_msgs.git -b master
 git clone https://github.com/ros-controls/urdf_geometry_parser.git -b kinetic-devel
 ```
 
-установка оставших требуемых пакетов
+инструмент для отладки urdf-моделей
+
+```bash
+git clone https://github.com/ros/joint_state_publisher.git -b noetic-devel
+```
+
+установка оставшихся требуемых пакетов
 
 ```bash
 ./four_ws_robot/scripts/install_pkgs.sh

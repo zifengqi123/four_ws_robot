@@ -85,9 +85,9 @@ gazebo_ros_control:
       i: 0.0
       d: 0.0
     lidar_head_joint:
-      p: 0.01
-      i: 100.0
-      d: 100.0
+      p: 0.0
+      i: 0.0
+      d: 0.0
 
 lidar_head_controller:
   type: velocity_controllers/JointVelocityController

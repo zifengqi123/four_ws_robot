@@ -1,10 +1,4 @@
 <?xml version="1.0"?>
-<!-- Файл wheel.transmission.xacro содержит описание трансмиссии (передачи) для колеса робота.
-Внутри макроса wheel_trans определены параметры, такие как название трансмиссии
-(${prefix}_wheel_trans), тип трансмиссии (transmission_interface/SimpleTransmission),
-а также интерфейсы обмена данными с аппаратным обеспечением
-(hardware_interface/VelocityJointInterface) для соединения колеса
-с мотором иуправления его скоростью. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="wheel_trans" params="prefix">
         <transmission name="${prefix}_wheel_trans">

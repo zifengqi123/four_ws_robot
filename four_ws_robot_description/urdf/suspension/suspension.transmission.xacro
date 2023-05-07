@@ -1,9 +1,4 @@
 <?xml version="1.0"?>
-<!-- Файл "suspension.transmission.xacro" определяет параметры трансмиссии робота.
-Он содержит макрос "steering_trans", который определяет параметры трансмиссии,
-такие как тип трансмиссии (в данном случае "transmission_interface/SimpleTransmission"),
-аппаратный интерфейс для соединения с мотором и суставом, а также
-механическое уменьшение (mechanicalReduction) для мотора. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="steering_trans" params="prefix">
         <transmission name="${prefix}_steering_trans">
