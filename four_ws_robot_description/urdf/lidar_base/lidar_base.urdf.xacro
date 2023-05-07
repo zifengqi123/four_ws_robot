@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_base/lidar_base.gazebo.xacro" />
     <xacro:macro name="lidar_base" params="parent *joint_origin">
-        <joint name="lidar_base_link_joint" type="fixed">
+        <joint name="lidar_base_joint" type="fixed">
             <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />
             <child link="lidar_base_link" />

@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />
     <xacro:macro name="wheel" params="prefix parent *joint_origin *joint_axis">
         <joint name="${prefix}_wheel_joint" type="continuous">
             <xacro:insert_block name="joint_origin" />

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="lidar_trans">
+    <xacro:macro name="lidar_head_trans">
         <transmission name="lidar_head_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="lidar_head_joint">

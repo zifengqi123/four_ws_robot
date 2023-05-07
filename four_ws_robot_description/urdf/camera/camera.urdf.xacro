@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="delirobo">
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/camera/camera.gazebo.xacro" />
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="camera" params="prefix parent *joint_origin">
         <joint name="${prefix}_camera_joint" type="fixed">
             <xacro:insert_block name="joint_origin" />

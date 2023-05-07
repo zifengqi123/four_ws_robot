@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.transmission.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.gazebo.xacro" />
     <xacro:macro name="steering" params="prefix parent *joint_origin *joint_axis">
         <joint name="${prefix}_steering_joint" type="revolute">
             <xacro:insert_block name="joint_origin" />

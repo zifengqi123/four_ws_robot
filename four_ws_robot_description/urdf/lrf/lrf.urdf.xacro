@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lrf/lrf.gazebo.xacro" />
     <xacro:macro name="lrf" params="prefix parent *joint_origin">
         <joint name="${prefix}_lrf_joint" type="fixed">
             <xacro:insert_block name="joint_origin" />

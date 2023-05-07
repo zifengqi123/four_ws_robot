@@ -62,6 +62,12 @@ git clone https://github.com/ros-controls/urdf_geometry_parser.git -b kinetic-de
 git clone https://github.com/ros/joint_state_publisher.git -b noetic-devel
 ```
 
+инструменты и плагины, используемые в gazebo
+
+```bash
+git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b noetic-devel
+```
+
 установка оставшихся требуемых пакетов
 
 ```bash
