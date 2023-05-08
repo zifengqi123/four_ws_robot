@@ -56,6 +56,10 @@ git clone https://github.com/ros-drivers/four_wheel_steering_msgs.git -b master
 git clone https://github.com/ros-controls/urdf_geometry_parser.git -b kinetic-devel
 ```
 
+```bash
+git clone https://github.com/ros/urdf.git -b melodic-devel
+```
+
 инструмент для отладки urdf-моделей
 
 ```bash

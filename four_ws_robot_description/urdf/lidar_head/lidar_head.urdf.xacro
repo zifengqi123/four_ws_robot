@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="lidar_head" params="parent *joint_origin *joint_axis">
-        <joint name="lidar_head_joint" type="continuous">
+    <xacro:macro name="lidar_head" params="parent *joint_origin">
+        <joint name="lidar_head_joint" type="fixed">
             <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />
             <child link="lidar_head_link" />
-            <limit effort="1.5" velocity="20" />
-            <xacro:insert_block name="joint_axis" />
         </joint>
         <link name="lidar_head_link">
             <visual>

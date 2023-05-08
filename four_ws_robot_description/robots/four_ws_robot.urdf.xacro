@@ -14,7 +14,6 @@
 
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.transmission.xacro" />
 
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lrf/lrf.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lrf/lrf.gazebo.xacro" />
@@ -43,10 +42,8 @@
     <!-- lidar_head -->
     <xacro:lidar_head parent="lidar_base_link">
         <origin xyz="0.022 0 0.0" rpy="0 0 0" />
-        <axis xyz="0 0 1" />
     </xacro:lidar_head>
     <xacro:lidar_head_gazebo />
-    <xacro:lidar_head_trans />
 
     <!-- lrf sensor -->
     <xacro:lrf prefix="front" parent="base_link">

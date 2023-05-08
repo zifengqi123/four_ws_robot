@@ -84,12 +84,3 @@ gazebo_ros_control:
       p: 0.01
       i: 0.0
       d: 0.0
-    lidar_head_joint:
-      p: 0.0
-      i: 0.0
-      d: 0.0
-
-lidar_head_controller:
-  type: velocity_controllers/JointVelocityController
-  joint: lidar_head_joint
-  publish_rate: 50
