@@ -116,17 +116,17 @@ Visualization Manager:
           Value: true
         base_link:
           Value: false
-        fl_wheel_link:
-          Value: false
-        fr_wheel_link:
-          Value: false
         front_camera_link:
           Value: false
         front_left_steering_link:
           Value: false
+        front_left_wheel_link:
+          Value: false
         front_lrf_link:
           Value: false
         front_right_steering_link:
+          Value: false
+        front_right_wheel_link:
           Value: false
         lidar_base_link:
           Value: false
@@ -138,11 +138,11 @@ Visualization Manager:
           Value: true
         rear_left_steering_link:
           Value: false
+        rear_left_wheel_link:
+          Value: false
         rear_right_steering_link:
           Value: false
-        rl_wheel_link:
-          Value: false
-        rr_wheel_link:
+        rear_right_wheel_link:
           Value: false
       Marker Alpha: 1
       Marker Scale: 1
@@ -158,21 +158,21 @@ Visualization Manager:
                 front_camera_link:
                   {}
                 front_left_steering_link:
-                  fl_wheel_link:
+                  front_left_wheel_link:
                     {}
                 front_lrf_link:
                   {}
                 front_right_steering_link:
-                  fr_wheel_link:
+                  front_right_wheel_link:
                     {}
                 lidar_base_link:
                   lidar_head_link:
                     {}
                 rear_left_steering_link:
-                  rl_wheel_link:
+                  rear_left_wheel_link:
                     {}
                 rear_right_steering_link:
-                  rr_wheel_link:
+                  rear_right_wheel_link:
                     {}
       Update Interval: 0
       Value: true
@@ -280,16 +280,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        fl_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fr_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         front_camera_link:
           Alpha: 1
           Show Axes: false
@@ -300,11 +290,21 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        front_left_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         front_lrf_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
         front_right_steering_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_right_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -324,17 +324,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        rear_left_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         rear_right_steering_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rl_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rr_wheel_link:
+        rear_right_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false

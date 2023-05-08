@@ -27,7 +27,7 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro" />
 
-    <!-- Base -->
+    <!-- base -->
     <link name="base_footprint" />
     <xacro:base parent="base_footprint">
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -60,29 +60,29 @@
     </xacro:camera>
     <xacro:camera_gazebo prefix="front" />
 
-    <!-- Steering -->
-    <!-- Front Right Steering -->
+    <!-- steering -->
+    <!-- front right -->
     <xacro:steering prefix="front_right" parent="base_link">
         <origin xyz="0.077 -0.031 -0.004" rpy="0 0 0" />
         <axis xyz="0 0 1" />
     </xacro:steering>
     <xacro:steering_gazebo prefix="front_right" />
     <xacro:steering_trans prefix="front_right" />
-    <!-- Front Left Steering -->
+    <!-- front left -->
     <xacro:steering prefix="front_left" parent="base_link">
         <origin xyz="0.077 0.031 -0.004" rpy="0 0 0" />
         <axis xyz="0 0 1" />
     </xacro:steering>
     <xacro:steering_gazebo prefix="front_left" />
     <xacro:steering_trans prefix="front_left" />
-    <!-- Rear Right Steering -->
+    <!-- rear right -->
     <xacro:steering prefix="rear_right" parent="base_link">
         <origin xyz="-0.077 -0.031 -0.004" rpy="0 0 0" />
         <axis xyz="0 0 1" />
     </xacro:steering>
     <xacro:steering_gazebo prefix="rear_right" />
     <xacro:steering_trans prefix="rear_right" />
-    <!-- Rear Left Steering -->
+    <!-- rear left -->
     <xacro:steering prefix="rear_left" parent="base_link">
         <origin xyz="-0.077 0.031 -0.004" rpy="0 0 0" />
         <axis xyz="0 0 1" />
@@ -90,35 +90,35 @@
     <xacro:steering_gazebo prefix="rear_left" />
     <xacro:steering_trans prefix="rear_left" />
 
-    <!-- Wheel -->
-    <!-- Front Left Wheel -->
-    <xacro:wheel prefix="fl" parent="front_left_steering_link">
+    <!-- wheel -->
+    <!-- front left -->
+    <xacro:wheel prefix="front_left" parent="front_left_steering_link">
         <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}" />
         <axis xyz="0 -1 0" />
     </xacro:wheel>
-    <xacro:wheel_gazebo prefix="fl" />
-    <xacro:wheel_trans prefix="fl" />
-    <!-- Front Right Wheel -->
-    <xacro:wheel prefix="fr" parent="front_right_steering_link">
+    <xacro:wheel_gazebo prefix="front_left" />
+    <xacro:wheel_trans prefix="front_left" />
+    <!-- front right -->
+    <xacro:wheel prefix="front_right" parent="front_right_steering_link">
         <origin xyz="0 -0.021 -0.025" rpy="0 0 0" />
         <axis xyz="0 1 0" />
     </xacro:wheel>
-    <xacro:wheel_gazebo prefix="fr" />
-    <xacro:wheel_trans prefix="fr" />
-    <!--  Rear Left Wheel -->
-    <xacro:wheel prefix="rl" parent="rear_left_steering_link">
+    <xacro:wheel_gazebo prefix="front_right" />
+    <xacro:wheel_trans prefix="front_right" />
+    <!--  rear left -->
+    <xacro:wheel prefix="rear_left" parent="rear_left_steering_link">
         <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}" />
         <axis xyz="0 -1 0" />
     </xacro:wheel>
-    <xacro:wheel_gazebo prefix="rl" />
-    <xacro:wheel_trans prefix="rl" />
-    <!-- Rear Right Wheel -->
-    <xacro:wheel prefix="rr" parent="rear_right_steering_link">
+    <xacro:wheel_gazebo prefix="rear_left" />
+    <xacro:wheel_trans prefix="rear_left" />
+    <!-- rear right -->
+    <xacro:wheel prefix="rear_right" parent="rear_right_steering_link">
         <origin xyz="0 -0.021 -0.025" rpy="0 0 0" />
         <axis xyz="0 1 0" />
     </xacro:wheel>
-    <xacro:wheel_gazebo prefix="rr" />
-    <xacro:wheel_trans prefix="rr" />
+    <xacro:wheel_gazebo prefix="rear_right" />
+    <xacro:wheel_trans prefix="rear_right" />
 
     <!-- gazebo plugins -->
     <gazebo>
