@@ -15,8 +15,8 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lrf/lrf.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lrf/lrf.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_scan/lidar_scan.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_scan/lidar_scan.gazebo.xacro" />
 
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.gazebo.xacro" />
@@ -45,11 +45,11 @@
     </xacro:lidar_head>
     <xacro:lidar_head_gazebo />
 
-    <!-- lrf sensor -->
-    <xacro:lrf prefix="front" parent="base_link">
+    <!-- lidar_scan sensor -->
+    <xacro:lidar_scan parent="base_link">
         <origin xyz="0 0 0.083" rpy="0 0 0" />
-    </xacro:lrf>
-    <xacro:lrf_gazebo prefix="front" min_rad="-${M_PI}" max_rad="${M_PI}" min_range="0.15" max_range="8" />
+    </xacro:lidar_scan>
+    <xacro:lidar_scan_gazebo min_rad="-${M_PI}" max_rad="${M_PI}" min_range="0.15" max_range="8" />
 
     <!-- camera -->
     <xacro:camera prefix="front" parent="base_link">
@@ -122,7 +122,7 @@
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so" />
         <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
             <alwaysOn>true</alwaysOn>
-            <updateRate>10.0</updateRate>
+            <updateRate>10</updateRate>
             <bodyName>base_link</bodyName>
             <topicName>ground_truth/state</topicName>
             <gaussianNoise>0.01</gaussianNoise>

@@ -8,7 +8,7 @@ observation_sources: base_scan #The "observation_sources" parameter defines a li
 
 base_scan: {
   sensor_frame: lrf_link, 
-  topic: front/scan,
+  topic: scan,
   data_type: LaserScan, 
   expected_update_rate: 1.0,
   observation_persistence: 0.0, 
