@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="joy_controller_sub"/>
-    <node pkg="joy_controller" name="joy_controller_node" type="joy_controller.py" output="screen">
+    <node pkg="joy_controller" name="joy_controller" type="joy_controller.py" output="screen">
         <remap from="cmd_vel" to="$(arg joy_controller_sub)"/>
     </node>
 </launch>

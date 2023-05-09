@@ -72,6 +72,12 @@ git clone https://github.com/ros/joint_state_publisher.git -b noetic-devel
 git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git -b noetic-devel
 ```
 
+инструменты для работы с джойстиками
+
+```bash
+git clone https://github.com/ros-drivers/joystick_drivers.git -b main
+```
+
 установка оставшихся требуемых пакетов
 
 ```bash
