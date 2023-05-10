@@ -45,9 +45,9 @@
     </xacro:lidar_head>
     <xacro:lidar_head_gazebo />
 
-    <!-- lidar_scan sensor -->
+    <!-- lidar_scan -->
     <xacro:lidar_scan parent="base_link">
-        <origin xyz="0 0 0.083" rpy="0 0 0" />
+        <origin xyz="0 0 0.084" rpy="0 0 0" />
     </xacro:lidar_scan>
     <xacro:lidar_scan_gazebo min_rad="-${M_PI}" max_rad="${M_PI}" min_range="0.15" max_range="8" />
 
