@@ -9,13 +9,13 @@
         <link name="${prefix}_camera_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/DAE/camera/camera.dae" />
+                    <mesh filename="package://four_ws_robot_description/meshes/DAE/sensors/camera/camera.dae" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/STL/camera/camera.stl" />
+                    <mesh filename="package://four_ws_robot_description/meshes/STL/sensors/camera/camera.stl" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </collision>
