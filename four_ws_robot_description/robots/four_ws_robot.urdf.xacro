@@ -15,9 +15,6 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_scan/lidar_scan.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_scan/lidar_scan.gazebo.xacro" />
-
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.gazebo.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.transmission.xacro" />
@@ -43,13 +40,7 @@
     <xacro:lidar_head parent="lidar_base_link">
         <origin xyz="0.022 0 0.0" rpy="0 0 0" />
     </xacro:lidar_head>
-    <xacro:lidar_head_gazebo />
-
-    <!-- lidar_scan -->
-    <xacro:lidar_scan parent="base_link">
-        <origin xyz="0 0 0.084" rpy="0 0 0" />
-    </xacro:lidar_scan>
-    <xacro:lidar_scan_gazebo min_rad="-${M_PI}" max_rad="${M_PI}" min_range="0.15" max_range="8" />
+    <xacro:lidar_head_gazebo min_rad="-${M_PI}" max_rad="${M_PI}" min_range="0.15" max_range="8" />
 
     <!-- camera -->
     <xacro:camera prefix="front" parent="base_link">
