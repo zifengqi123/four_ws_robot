@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="camera" params="prefix parent *joint_origin">
-        <joint name="${prefix}_camera_joint" type="fixed">
+    <xacro:macro name="camera" params="parent *joint_origin">
+        <joint name="camera_joint" type="fixed">
             <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />
-            <child link="${prefix}_camera_link" />
+            <child link="camera_link" />
         </joint>
-        <link name="${prefix}_camera_link">
+        <link name="camera_link">
             <visual>
                 <geometry>
                     <mesh filename="package://four_ws_robot_description/meshes/DAE/sensors/camera/camera.dae" />

@@ -116,7 +116,7 @@ Visualization Manager:
           Value: true
         base_link:
           Value: false
-        front_camera_link:
+        camera_link:
           Value: false
         front_left_steering_link:
           Value: false
@@ -129,8 +129,6 @@ Visualization Manager:
         lidar_base_link:
           Value: false
         lidar_head_link:
-          Value: false
-        lidar_scan_link:
           Value: false
         map:
           Value: true
@@ -155,7 +153,7 @@ Visualization Manager:
           odom:
             base_footprint:
               base_link:
-                front_camera_link:
+                camera_link:
                   {}
                 front_left_steering_link:
                   front_left_wheel_link:
@@ -166,8 +164,6 @@ Visualization Manager:
                 lidar_base_link:
                   lidar_head_link:
                     {}
-                lidar_scan_link:
-                  {}
                 rear_left_steering_link:
                   rear_left_wheel_link:
                     {}
@@ -280,7 +276,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        front_camera_link:
+        camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -315,10 +311,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        lidar_scan_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         rear_left_steering_link:
           Alpha: 1
           Show Axes: false
@@ -385,7 +377,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.837530612945557
+      Distance: 0.8517624735832214
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -401,9 +393,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 0.4747973680496216
       Target Frame: <Fixed Frame>
-      Yaw: 3.143576145172119
+      Yaw: 4.5435967445373535
     Saved: ~
 Window Geometry:
   Displays:

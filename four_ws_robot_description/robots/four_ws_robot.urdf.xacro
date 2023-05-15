@@ -23,10 +23,13 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro" />
 
-    <!-- base -->
+    <!-- base_footprint -->
     <link name="base_footprint" />
+    <gazebo reference="base_footprint" />
+
+    <!-- base -->
     <xacro:base parent="base_footprint">
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.055" rpy="0 0 0" />
     </xacro:base>
     <xacro:base_gazebo />
 
@@ -43,10 +46,10 @@
     <xacro:lidar_head_gazebo min_rad="-${M_PI}" max_rad="${M_PI}" min_range="0.15" max_range="8" />
 
     <!-- camera -->
-    <xacro:camera prefix="front" parent="base_link">
+    <xacro:camera parent="base_link">
         <origin xyz="0.1 0 0.0177" rpy="0 0 0" />
     </xacro:camera>
-    <xacro:camera_gazebo prefix="front" />
+    <xacro:camera_gazebo />
 
     <!-- steering -->
     <!-- front right -->
