@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="camera_gazebo">
         <gazebo reference="camera_link">
-            <sensor type="camera" name="camera">
+            <sensor name="camera" type="camera">
                 <pose>0 0 0 0 0 0</pose>
                 <visualize>true</visualize>
                 <update_rate>10</update_rate>
