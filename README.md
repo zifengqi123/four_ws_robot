@@ -9,7 +9,7 @@
 ## запуск навигации
 
 ```bash
-roslaunch four_ws_robot_software gz_navigation.launch
+roslaunch four_ws_robot_software gazebo_start.launch mode:=navigation
 ```
 
 <p align="center">
@@ -19,7 +19,7 @@ roslaunch four_ws_robot_software gz_navigation.launch
 ## запуск локализации
 
 ```bash
-roslaunch four_ws_robot_software gz_localization.launch
+roslaunch four_ws_robot_software gazebo_start.launch mode:=localization
 ```
 
 <p align="center">
@@ -29,7 +29,7 @@ roslaunch four_ws_robot_software gz_localization.launch
 ## запуск SLAM
 
 ```bash
-roslaunch four_ws_robot_software gz_map_creation.launch
+roslaunch four_ws_robot_software gazebo_start.launch mode:=mapping
 ```
 
 <p align="center">
