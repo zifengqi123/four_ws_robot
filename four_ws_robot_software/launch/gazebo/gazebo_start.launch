@@ -19,7 +19,7 @@
     <!-- urdf model -->
     <arg name="model"              default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
     <!-- mapping algorithm and config -->
-    <arg name="mapping_algorithm"  default="hector_mapping" doc="[slam_gmapping, hector_mapping]"/>
+    <arg name="mapping_algorithm"  default="slam_gmapping" doc="[hector_mapping, slam_gmapping]"/>
     <arg name="algorithm_config"   default="test" doc="[default, original, test]"/>
     <!-- selecting keyboard or joystick controls -->
     <arg name="control_method"     default="keyboard" doc="[keyboard, joystick]"/>
