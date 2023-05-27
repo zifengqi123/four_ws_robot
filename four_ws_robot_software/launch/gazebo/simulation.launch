@@ -12,6 +12,12 @@
     <arg name="verbose"/>
     <arg name="output"/>
     <arg name="world_name"/>
+    <arg name="respawn_gazebo"/>
+    <arg name="use_clock_frequency"/>
+    <arg name="pub_clock_frequency"/>
+    <arg name="enable_ros_network"/>
+    <arg name="server_required"/>
+    <arg name="gui_required"/>
     <!-- urdf spawner -->
     <arg name="robot_pose_x"/>
     <arg name="robot_pose_y"/>
@@ -30,6 +36,12 @@
         <arg name="verbose"      value="$(arg verbose)"/>
         <arg name="output"       value="$(arg output)"/>
         <arg name="world_name"   value="$(arg world_name)"/>
+        <arg name="respawn_gazebo"      value="$(arg respawn_gazebo)"/>
+        <arg name="use_clock_frequency" value="$(arg use_clock_frequency)"/>
+        <arg name="pub_clock_frequency" value="$(arg use_clock_frequency)"/>
+        <arg name="enable_ros_network"  value="$(arg enable_ros_network)"/>
+        <arg name="server_required"     value="$(arg server_required)"/>
+        <arg name="gui_required"        value="$(arg gui_required)"/>
     </include>
 
     <!-- Load the URDF into the ROS Parameter Server -->
