@@ -29,6 +29,6 @@ def joy_controller():
 
 if __name__ == '__main__':
     rospy.init_node('joy_controller', anonymous=True)
-    rospy.Subscriber("joy0", Joy, callback_controller)
+    rospy.Subscriber('joy', Joy, callback_controller)
     joy_controller()
     rospy.spin()

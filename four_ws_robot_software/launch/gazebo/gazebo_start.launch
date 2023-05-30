@@ -29,7 +29,7 @@
     <!-- ... and config -->
     <arg name="algorithm_config"   default="test" doc="[default, original, test]"/>
     <!-- selecting keyboard or joystick controls -->
-    <arg name="control_method"     default="bag" doc="[keyboard, joystick]"/>
+    <arg name="control_method"     default="keyboard" doc="[keyboard, joystick]"/>
     <!-- mode -->
     <arg name="mode"               default="mapping" doc="[mapping, localization, navigation]"/>
 
