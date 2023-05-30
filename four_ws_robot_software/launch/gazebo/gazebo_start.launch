@@ -29,7 +29,7 @@
     <!-- ... and config -->
     <arg name="algorithm_config"   default="test" doc="[default, original, test]"/>
     <!-- selecting keyboard or joystick controls -->
-    <arg name="control_method"     default="keyboard" doc="[keyboard, joystick]"/>
+    <arg name="control_method"     default="joystick" doc="[keyboard, joystick]"/>
     <!-- mode -->
     <arg name="mode"               default="mapping" doc="[mapping, localization, navigation]"/>
 
@@ -109,7 +109,7 @@
     </group>
     <!-- joystick controls -->
     <group if="$(eval control_method == 'joystick')">
-        <include file="$(find four_ws_robot_software)/launch/joy_control.launch">
+        <include file="$(find joy_controller)/launch/joy_controller.launch">
             <arg name="joy_dev"            value="/dev/input/js0"/>
             <arg name="joy_controller_sub" value="/four_wheel_steering_controller/cmd_vel"/>
         </include>

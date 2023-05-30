@@ -1,6 +1,17 @@
 <?xml version="1.0"?>
 <launch>
+
+    <arg name="joy_dev"/>
     <arg name="joy_controller_sub"/>
+
+    <!-- launch joynode -->
+    <node pkg="joy" type="joy_node" name="joy_node0">
+        <param name="dev"             value="$(arg joy_dev)"/>
+        <param name="deadzone"        value="0.3"/>
+        <param name="autorepeat_rate" value="20"/>
+    </node>
+
+    <!-- launch joy_controller node -->
     <node pkg="joy_controller" name="joy_controller" type="joy_controller.py" output="screen">
         <remap from="cmd_vel" to="$(arg joy_controller_sub)"/>
     </node>
