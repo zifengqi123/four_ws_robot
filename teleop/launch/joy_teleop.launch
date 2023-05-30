@@ -2,7 +2,7 @@
 <launch>
 
     <arg name="joy_dev"/>
-    <arg name="joy_controller_sub"/>
+    <arg name="joy_teleop_sub"/>
 
     <!-- launch joynode -->
     <node pkg="joy" type="joy_node" name="joy_node0">
@@ -11,8 +11,8 @@
         <param name="autorepeat_rate" value="20"/>
     </node>
 
-    <!-- launch joy_controller node -->
-    <node pkg="joy_controller" name="joy_controller" type="joy_controller.py" output="screen">
-        <remap from="cmd_vel" to="$(arg joy_controller_sub)"/>
+    <!-- launch joy_teleop node -->
+    <node pkg="teleop" name="joy_teleop" type="joy_teleop.py" output="screen">
+        <remap from="cmd_vel" to="$(arg joy_teleop_sub)"/>
     </node>
 </launch>

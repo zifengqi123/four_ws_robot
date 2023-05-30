@@ -6,7 +6,7 @@ from sensor_msgs.msg import Joy
 
 vel_msg = Twist()
 
-def callback_controller(data):
+def callback_teleop(data):
     global vel_msg
 
     if data.axes[3] == 0:
@@ -18,7 +18,7 @@ def callback_controller(data):
         vel_msg.linear.y = data.axes[3]
         vel_msg.angular.z = 0
 
-def joy_controller():
+def joy_teleop():
     global vel_msg
 
     pub = rospy.Publisher('cmd_vel', Twist, queue_size = 10)
@@ -28,7 +28,7 @@ def joy_controller():
         rate.sleep()
 
 if __name__ == '__main__':
-    rospy.init_node('joy_controller', anonymous=True)
-    rospy.Subscriber('joy', Joy, callback_controller)
-    joy_controller()
+    rospy.init_node('joy_teleop', anonymous=True)
+    rospy.Subscriber('joy', Joy, callback_teleop)
+    joy_teleop()
     rospy.spin()

@@ -29,7 +29,7 @@
     <!-- ... and config -->
     <arg name="algorithm_config"   default="test" doc="[default, original, test]"/>
     <!-- selecting keyboard or joystick controls -->
-    <arg name="control_method"     default="joystick" doc="[keyboard, joystick]"/>
+    <arg name="control_method"     default="keyboard" doc="[keyboard, joystick]"/>
     <!-- mode -->
     <arg name="mode"               default="mapping" doc="[mapping, localization, navigation]"/>
 
@@ -96,7 +96,7 @@
     <!-- selecting keyboard or joystick controls -->
     <!-- keyboard controls -->
     <group if="$(eval control_method == 'keyboard')">
-        <node pkg="wr8_software" type="key_teleop.py" name="keyboard_cmd" output="screen" respawn="false">
+        <node pkg="teleop" type="key_teleop.py" name="keyboard_cmd" output="screen" respawn="false">
             <param name="turbo/steps"               value="10"/>
             <param name="turbo/linear_forward_min"  value="0.04"/>
             <param name="turbo/linear_forward_max"  value="0.4"/>
@@ -109,9 +109,9 @@
     </group>
     <!-- joystick controls -->
     <group if="$(eval control_method == 'joystick')">
-        <include file="$(find joy_controller)/launch/joy_controller.launch">
+        <include file="$(find teleop)/launch/joy_teleop.launch">
             <arg name="joy_dev"            value="/dev/input/js0"/>
-            <arg name="joy_controller_sub" value="/four_wheel_steering_controller/cmd_vel"/>
+            <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
         </include>
     </group>
 

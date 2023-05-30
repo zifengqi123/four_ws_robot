@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(joy_controller)
+project(teleop)
 
 find_package(catkin REQUIRED COMPONENTS
     geometry_msgs
