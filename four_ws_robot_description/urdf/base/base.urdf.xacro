@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/base/base.gazebo.xacro" />
     <xacro:macro name="base" params="parent *joint_origin">
         <joint name="base_link_joint" type="fixed">
-            <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />
             <child link="base_link" />
+            <xacro:insert_block name="joint_origin" />
         </joint>
         <link name="base_link">
             <visual>

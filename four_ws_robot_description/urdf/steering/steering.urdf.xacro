@@ -2,11 +2,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="steering" params="prefix parent *joint_origin *joint_axis">
         <joint name="${prefix}_steering_joint" type="revolute">
-            <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />
             <child link="${prefix}_steering_link" />
-            <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1" />
+            <xacro:insert_block name="joint_origin" />
             <xacro:insert_block name="joint_axis" />
+            <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1" />
         </joint>
         <link name="${prefix}_steering_link">
             <visual>

@@ -2,11 +2,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="wheel" params="prefix parent *joint_origin *joint_axis">
         <joint name="${prefix}_wheel_joint" type="continuous">
-            <xacro:insert_block name="joint_origin" />
             <parent link="${parent}" />
             <child link="${prefix}_wheel_link" />
-            <limit effort="1.5" velocity="20" />
+            <xacro:insert_block name="joint_origin" />
             <xacro:insert_block name="joint_axis" />
+            <limit effort="1.5" velocity="20" />
         </joint>
         <link name="${prefix}_wheel_link">
             <visual>
