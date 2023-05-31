@@ -27,3 +27,5 @@ git clone https://github.com/ros-drivers/joystick_drivers.git -b main
 git clone https://github.com/ros/geometry2.git -b noetic-devel
 
 git clone https://github.com/ros-teleop/teleop_tools.git -b noetic-devel
+
+git clone https://github.com/ros/robot_state_publisher.git -b noetic-devel
