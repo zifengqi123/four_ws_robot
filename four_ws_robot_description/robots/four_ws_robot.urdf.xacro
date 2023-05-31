@@ -15,9 +15,9 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/suspension/suspension.transmission.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/steering/steering.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/steering/steering.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/steering/steering.transmission.xacro" />
 
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />

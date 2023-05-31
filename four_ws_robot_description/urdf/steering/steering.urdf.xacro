@@ -11,13 +11,13 @@
         <link name="${prefix}_steering_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/DAE/suspension/${prefix}_link.dae" />
+                    <mesh filename="package://four_ws_robot_description/meshes/DAE/steering/${prefix}_steering.dae" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/STL/suspension/sus_link.stl" />
+                    <mesh filename="package://four_ws_robot_description/meshes/STL/steering/steering.stl" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </collision>

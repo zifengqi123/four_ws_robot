@@ -11,13 +11,13 @@
         <link name="${prefix}_wheel_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/DAE/wheel/wheel_link.dae" />
+                    <mesh filename="package://four_ws_robot_description/meshes/DAE/wheel/wheel.dae" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/STL/wheel/robot_wheel.stl" />
+                    <mesh filename="package://four_ws_robot_description/meshes/STL/wheel/wheel.stl" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </collision>

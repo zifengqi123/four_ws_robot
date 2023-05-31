@@ -10,13 +10,13 @@
         <link name="base_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/DAE/base/base_link.dae" />
+                    <mesh filename="package://four_ws_robot_description/meshes/DAE/base/base.dae" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/STL/base/base_link.stl" />
+                    <mesh filename="package://four_ws_robot_description/meshes/STL/base/base.stl" />
                 </geometry>
                 <origin xyz="0.0 0.0 0.0" />
             </collision>
