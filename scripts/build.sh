@@ -16,6 +16,7 @@ catkin build \
     robot_state_publisher \
     ros_control \
     ros_controllers \
+    four_wheel_steering_controller \
     slam_gmapping \
     urdf \
     urdf_geometry_parser
