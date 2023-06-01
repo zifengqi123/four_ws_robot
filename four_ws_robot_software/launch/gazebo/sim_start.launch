@@ -2,53 +2,53 @@
 <launch>
 
     <!-- gazebo -->
-    <arg name="paused"             default="false"/>
-    <arg name="use_sim_time"       default="true"/>
-    <arg name="gui"                default="false" doc="[true, false]"/>
-    <arg name="recording"          default="false"/>
-    <arg name="headless"           default="false"/>
-    <arg name="debug"              default="false"/>
-    <arg name="physics"            default="ode"/>
-    <arg name="verbose"            default="false"/>
-    <arg name="output"             default="screen"/>
-    <arg name="world_name"         default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
-    <arg name="respawn_gazebo"     default="false"/>
+    <arg name="paused"              default="false"/>
+    <arg name="use_sim_time"        default="true"/>
+    <arg name="gui"                 default="false" doc="[true, false]"/>
+    <arg name="recording"           default="false"/>
+    <arg name="headless"            default="false"/>
+    <arg name="debug"               default="false"/>
+    <arg name="physics"             default="ode"/>
+    <arg name="verbose"             default="false"/>
+    <arg name="output"              default="screen"/>
+    <arg name="world_name"          default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
+    <arg name="respawn_gazebo"      default="false"/>
     <arg name="use_clock_frequency" default="false"/>
     <arg name="pub_clock_frequency" default="100"/>
     <arg name="enable_ros_network"  default="true"/>
     <arg name="server_required"     default="false"/>
     <arg name="gui_required"        default="false"/>
-    <!-- urdf spawner -->
-    <arg name="robot_pose_x"       default="0.0"/>
-    <arg name="robot_pose_y"       default="0.0"/>
-    <arg name="robot_pose_z"       default="0.15"/>
     <!-- urdf model -->
-    <arg name="model"              default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
+    <arg name="model"               default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
+    <!-- urdf spawner -->
+    <arg name="robot_pose_x"        default="0.0"/>
+    <arg name="robot_pose_y"        default="0.0"/>
+    <arg name="robot_pose_z"        default="0.15"/>
     <!-- select mapping algorithm... -->
-    <arg name="mapping_algorithm"  default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
+    <arg name="mapping_algorithm"   default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
     <!-- ... and config -->
-    <arg name="algorithm_config"   default="test" doc="[default, original, test]"/>
+    <arg name="algorithm_config"    default="test" doc="[default, original, test]"/>
     <!-- selecting keyboard or joystick controls -->
-    <arg name="control_method"     default="keyboard" doc="[keyboard, joystick]"/>
+    <arg name="control_method"      default="bag" doc="[keyboard, joystick]"/>
     <!-- mode -->
-    <arg name="mode"               default="mapping" doc="[mapping, localization, navigation]"/>
+    <arg name="mode"                default="mapping" doc="[mapping, localization, navigation]"/>
 
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
-    <!-- simulation -->
-    <include file="$(find four_ws_robot_software)/launch/gazebo/simulation.launch">
+    <!-- simulation with robot -->
+    <include file="$(find four_ws_robot_description)/launch/four_ws_robot.launch">
         <!-- gazebo -->
-        <arg name="paused"       value="$(arg paused)"/>
-        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-        <arg name="gui"          value="$(arg gui)"/>
-        <arg name="recording"    value="$(arg recording)"/>
-        <arg name="headless"     value="$(arg headless)"/>
-        <arg name="debug"        value="$(arg debug)"/>
-        <arg name="physics"      value="$(arg physics)"/>
-        <arg name="verbose"      value="$(arg verbose)"/>
-        <arg name="output"       value="$(arg output)"/>
-        <arg name="world_name"   value="$(find gazebo_models_worlds_collection)/worlds/$(arg world_name).world"/>
+        <arg name="paused"              value="$(arg paused)"/>
+        <arg name="use_sim_time"        value="$(arg use_sim_time)"/>
+        <arg name="gui"                 value="$(arg gui)"/>
+        <arg name="recording"           value="$(arg recording)"/>
+        <arg name="headless"            value="$(arg headless)"/>
+        <arg name="debug"               value="$(arg debug)"/>
+        <arg name="physics"             value="$(arg physics)"/>
+        <arg name="verbose"             value="$(arg verbose)"/>
+        <arg name="output"              value="$(arg output)"/>
+        <arg name="world_name"          value="$(find gazebo_models_worlds_collection)/worlds/$(arg world_name).world"/>
         <arg name="respawn_gazebo"      value="$(arg respawn_gazebo)"/>
         <arg name="use_clock_frequency" value="$(arg use_clock_frequency)"/>
         <arg name="pub_clock_frequency" value="$(arg use_clock_frequency)"/>
@@ -56,12 +56,15 @@
         <arg name="server_required"     value="$(arg server_required)"/>
         <arg name="gui_required"        value="$(arg gui_required)"/>
         <!-- urdf spawner -->
-        <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
-        <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
-        <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
+        <arg name="robot_pose_x"        value="$(arg robot_pose_x)"/>
+        <arg name="robot_pose_y"        value="$(arg robot_pose_y)"/>
+        <arg name="robot_pose_z"        value="$(arg robot_pose_z)"/>
         <!-- urdf model -->
-        <arg name="model"        value="$(arg model)"/>
+        <arg name="model"               value="$(arg model)"/>
     </include>
+
+    <!-- ros_control motoman launch file -->
+    <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
 
     <!-- mapping algorithm ... -->
     <group if="$(eval mode == 'mapping')">
@@ -86,10 +89,10 @@
             <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
         </include>
         <include file="$(find four_ws_robot_software)/launch/navigation.launch">
-            <arg name="map_file"         value="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
-            <arg name="algorithm_config" value="$(arg algorithm_config)"/>
-            <arg name="robot_pose_x"     value="$(arg robot_pose_x)"/>
-            <arg name="robot_pose_y"     value="$(arg robot_pose_y)"/>
+            <arg name="map_file"          value="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
+            <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
+            <arg name="robot_pose_x"      value="$(arg robot_pose_x)"/>
+            <arg name="robot_pose_y"      value="$(arg robot_pose_y)"/>
         </include>
     </group>
 
@@ -111,7 +114,7 @@
     <group if="$(eval control_method == 'joystick')">
         <include file="$(find teleop)/launch/joy_teleop.launch">
             <arg name="joy_dev"            value="/dev/input/js0"/>
-            <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
+            <arg name="joy_teleop_sub"     value="/four_wheel_steering_controller/cmd_vel"/>
         </include>
     </group>
 
