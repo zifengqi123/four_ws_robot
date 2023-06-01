@@ -13,3 +13,13 @@ cd $CATKIN_WORKSPACE/src/four_ws_robot
 ```bash
 ./scripts/install_third_party.sh
 ```
+
+сборка требуемых пакетов
+
+```bash
+cd $CATKIN_WORKSPACE
+```
+
+```bash
+./src/four_ws_robot/scripts/build.sh
+```
