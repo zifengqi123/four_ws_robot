@@ -2,28 +2,28 @@
 <launch>
 
     <!-- gazebo -->
-    <arg name="paused"/>
-    <arg name="use_sim_time"/>
-    <arg name="gui"/>
-    <arg name="recording"/>
-    <arg name="headless"/>
-    <arg name="debug"/>
-    <arg name="physics"/>
-    <arg name="verbose"/>
-    <arg name="output"/>
-    <arg name="world_name"/>
-    <arg name="respawn_gazebo"/>
-    <arg name="use_clock_frequency"/>
-    <arg name="pub_clock_frequency"/>
-    <arg name="enable_ros_network"/>
-    <arg name="server_required"/>
-    <arg name="gui_required"/>
+    <arg name="paused"              default="false"/>
+    <arg name="use_sim_time"        default="true"/>
+    <arg name="gui"                 default="true" doc="[true, false]"/>
+    <arg name="recording"           default="false"/>
+    <arg name="headless"            default="false"/>
+    <arg name="debug"               default="false"/>
+    <arg name="physics"             default="ode"/>
+    <arg name="verbose"             default="false"/>
+    <arg name="output"              default="screen"/>
+    <arg name="world_name"          default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
+    <arg name="respawn_gazebo"      default="false"/>
+    <arg name="use_clock_frequency" default="false"/>
+    <arg name="pub_clock_frequency" default="100"/>
+    <arg name="enable_ros_network"  default="true"/>
+    <arg name="server_required"     default="false"/>
+    <arg name="gui_required"        default="false"/>
     <!-- urdf model -->
-    <arg name="model"/>
+    <arg name="model"               default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
     <!-- urdf spawner -->
-    <arg name="robot_pose_x"/>
-    <arg name="robot_pose_y"/>
-    <arg name="robot_pose_z"/>
+    <arg name="robot_pose_x"        default="0.0"/>
+    <arg name="robot_pose_y"        default="0.0"/>
+    <arg name="robot_pose_z"        default="0.15"/>
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>

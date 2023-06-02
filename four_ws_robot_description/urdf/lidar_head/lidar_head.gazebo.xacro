@@ -12,7 +12,7 @@
                 <ray>
                     <scan>
                         <horizontal>
-                            <samples>720</samples>
+                            <samples>360</samples>
                             <resolution>1</resolution>
                             <min_angle>${min_rad}</min_angle>
                             <max_angle>${max_rad}</max_angle>

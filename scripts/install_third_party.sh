@@ -26,6 +26,4 @@ git -C third_party clone https://github.com/ros-drivers/joystick_drivers.git -b 
 
 git -C third_party clone https://github.com/ros/geometry2.git -b noetic-devel
 
-git -C third_party clone https://github.com/ros-teleop/teleop_tools.git -b noetic-devel
-
 git -C third_party clone https://github.com/ros/robot_state_publisher.git -b noetic-devel
