@@ -9,9 +9,9 @@
     <license>BSD</license>
 
     <buildtool_depend>catkin</buildtool_depend>
-    <run_depend>four_ws_robot_software</run_depend>
-    <run_depend>four_ws_robot_description</run_depend>
     <run_depend>four_ws_robot_control</run_depend>
+    <run_depend>four_ws_robot_description</run_depend>
+    <run_depend>four_ws_robot_software</run_depend>
     <run_depend>teleop</run_depend>
 
     <export>
