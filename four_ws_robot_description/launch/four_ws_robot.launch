@@ -56,10 +56,7 @@
         <arg name="gui_required"        value="$(arg gui_required)"/>
     </include>
 
-    <!-- Publish static TFs (fixed joints) -->
+    <!-- a node that uses a urdf file of the robot description and translates all TF transformations from it -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-
-    <!-- Publish dynamic TFs (non-fixed joints) -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
 </launch>
