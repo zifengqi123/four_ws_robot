@@ -19,7 +19,7 @@
     <arg name="server_required"     default="false"/>
     <arg name="gui_required"        default="false"/>
     <!-- urdf model -->
-    <arg name="model"               default="$(find four_ws_robot_description)/robots/four_ws_robot.urdf.xacro"/>
+    <arg name="model"               default="$(find four_ws_robot_description)/urdf/four_ws_robot.urdf.xacro"/>
     <!-- urdf spawner -->
     <arg name="robot_pose_x"        default="0.0"/>
     <arg name="robot_pose_y"        default="0.0"/>

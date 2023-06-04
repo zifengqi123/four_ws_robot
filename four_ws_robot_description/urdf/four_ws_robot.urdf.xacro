@@ -3,25 +3,25 @@
 
     <xacro:property name="M_PI" value="3.14159274" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/base/base.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/base/base.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/base/base.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/base/base.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/camera/camera.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/camera/camera.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/camera/camera.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/camera/camera.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_base/lidar_base.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_base/lidar_base.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_base/lidar_base.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_base/lidar_base.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/lidar_head/lidar_head.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_head/lidar_head.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_head/lidar_head.gazebo.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/steering/steering.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/steering/steering.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/steering/steering.transmission.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steering/steering.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steering/steering.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steering/steering.transmission.xacro" />
 
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/wheel/wheel.transmission.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.transmission.xacro" />
 
     <!-- base_footprint -->
     <link name="base_footprint" />
