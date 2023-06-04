@@ -113,8 +113,8 @@
     <!-- joystick controls -->
     <group if="$(eval control_method == 'joystick')">
         <include file="$(find teleop)/launch/joy_teleop.launch">
-            <arg name="joy_dev"            value="/dev/input/js0"/>
-            <arg name="joy_teleop_sub"     value="/four_wheel_steering_controller/cmd_vel"/>
+            <arg name="joy_dev"        value="/dev/input/js0"/>
+            <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
         </include>
     </group>
 
