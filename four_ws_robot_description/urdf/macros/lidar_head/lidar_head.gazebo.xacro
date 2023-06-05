@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="lidar_head_gazebo" params="min_rad max_rad min_range max_range">
+    <xacro:macro name="lidar_head_gazebo" params="min_angle max_angle min_range max_range">
         <gazebo reference="lidar_head_link">
             <selfCollide>false</selfCollide>
             <mu1 value="0.05" />
@@ -14,8 +14,8 @@
                         <horizontal>
                             <samples>360</samples>
                             <resolution>1</resolution>
-                            <min_angle>${min_rad}</min_angle>
-                            <max_angle>${max_rad}</max_angle>
+                            <min_angle>${min_angle}</min_angle>
+                            <max_angle>${max_angle}</max_angle>
                         </horizontal>
                     </scan>
                     <range>
