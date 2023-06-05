@@ -66,15 +66,16 @@
     <!-- ros_control motoman launch file -->
     <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
 
-    <!-- mapping algorithm ... -->
+    <!-- select mode ... -->
     <group if="$(eval mode == 'mapping')">
+        <!-- mapping algorithm ... -->
         <include file="$(find four_ws_robot_software)/launch/mapping.launch">
             <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>
             <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
         </include>
     </group>
-    <!-- ... localization algorithm ... -->
     <group if="$(eval mode == 'localization')">
+        <!-- ... localization algorithm ... -->
         <include file="$(find four_ws_robot_software)/launch/localization.launch">
             <arg name="map_file"         value="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
             <arg name="algorithm_config" value="$(arg algorithm_config)"/>
@@ -82,8 +83,8 @@
             <arg name="robot_pose_y"     value="$(arg robot_pose_y)"/>
         </include>
     </group>
-    <!-- ... or stack of navigation algorithms -->
     <group if="$(eval mode == 'navigation')">
+        <!-- ... or stack of navigation algorithms -->
         <include file="$(find four_ws_robot_software)/launch/mapping.launch">
             <arg name="mapping_algorithm" value="$(arg mapping_algorithm)"/>
             <arg name="algorithm_config"  value="$(arg algorithm_config)"/>
@@ -119,6 +120,6 @@
     </group>
 
     <!-- rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/$(arg mode).rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/rviz_$(arg mode)_view.rviz"/>
 
 </launch>
