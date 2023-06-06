@@ -51,61 +51,77 @@
 
     <!-- steering -->
     <!-- front right -->
-    <xacro:steering prefix="front_right" parent="base_link">
-        <origin xyz="0.077 -0.031 -0.004" rpy="0 0 0" />
-        <axis xyz="0 0 1" />
-    </xacro:steering>
+    <xacro:steering
+        prefix="front_right"
+        parent="base_link"
+        origin_xyz="0.077 -0.031 -0.004"
+        origin_rpy="0 0 0"
+        axis_xyz="0 0 1" />
     <xacro:steering_gazebo prefix="front_right" />
     <xacro:steering_trans prefix="front_right" />
     <!-- front left -->
-    <xacro:steering prefix="front_left" parent="base_link">
-        <origin xyz="0.077 0.031 -0.004" rpy="0 0 0" />
-        <axis xyz="0 0 1" />
-    </xacro:steering>
+    <xacro:steering
+        prefix="front_left"
+        parent="base_link"
+        origin_xyz="0.077 0.031 -0.004"
+        origin_rpy="0 0 0"
+        axis_xyz="0 0 1" />
     <xacro:steering_gazebo prefix="front_left" />
     <xacro:steering_trans prefix="front_left" />
     <!-- rear right -->
-    <xacro:steering prefix="rear_right" parent="base_link">
-        <origin xyz="-0.077 -0.031 -0.004" rpy="0 0 0" />
-        <axis xyz="0 0 1" />
-    </xacro:steering>
+    <xacro:steering
+        prefix="rear_right"
+        parent="base_link"
+        origin_xyz="-0.077 -0.031 -0.004"
+        origin_rpy="0 0 0"
+        axis_xyz="0 0 1" />
     <xacro:steering_gazebo prefix="rear_right" />
     <xacro:steering_trans prefix="rear_right" />
     <!-- rear left -->
-    <xacro:steering prefix="rear_left" parent="base_link">
-        <origin xyz="-0.077 0.031 -0.004" rpy="0 0 0" />
-        <axis xyz="0 0 1" />
-    </xacro:steering>
+    <xacro:steering
+        prefix="rear_left"
+        parent="base_link"
+        origin_xyz="-0.077 0.031 -0.004"
+        origin_rpy="0 0 0"
+        axis_xyz="0 0 1" />
     <xacro:steering_gazebo prefix="rear_left" />
     <xacro:steering_trans prefix="rear_left" />
 
     <!-- wheel -->
     <!-- front left -->
-    <xacro:wheel prefix="front_left" parent="front_left_steering_link">
-        <origin xyz="0 0.021 -0.025" rpy="0 0 ${pi}" />
-        <axis xyz="0 -1 0" />
-    </xacro:wheel>
+    <xacro:wheel
+        prefix="front_left"
+        parent="front_left_steering_link"
+        origin_xyz="0 0.021 -0.025"
+        origin_rpy="0 0 ${pi}"
+        axis_xyz="0 -1 0" />
     <xacro:wheel_gazebo prefix="front_left" />
     <xacro:wheel_trans prefix="front_left" />
     <!-- front right -->
-    <xacro:wheel prefix="front_right" parent="front_right_steering_link">
-        <origin xyz="0 -0.021 -0.025" rpy="0 0 0" />
-        <axis xyz="0 1 0" />
-    </xacro:wheel>
+    <xacro:wheel
+        prefix="front_right"
+        parent="front_right_steering_link"
+        origin_xyz="0 -0.021 -0.025"
+        origin_rpy="0 0 0"
+        axis_xyz="0 1 0" />
     <xacro:wheel_gazebo prefix="front_right" />
     <xacro:wheel_trans prefix="front_right" />
     <!--  rear left -->
-    <xacro:wheel prefix="rear_left" parent="rear_left_steering_link">
-        <origin xyz="0 0.021 -0.025" rpy="0 0 ${pi}" />
-        <axis xyz="0 -1 0" />
-    </xacro:wheel>
+    <xacro:wheel
+        prefix="rear_left"
+        parent="rear_left_steering_link"
+        origin_xyz="0 0.021 -0.025"
+        origin_rpy="0 0 ${pi}"
+        axis_xyz="0 -1 0" />
     <xacro:wheel_gazebo prefix="rear_left" />
     <xacro:wheel_trans prefix="rear_left" />
     <!-- rear right -->
-    <xacro:wheel prefix="rear_right" parent="rear_right_steering_link">
-        <origin xyz="0 -0.021 -0.025" rpy="0 0 0" />
-        <axis xyz="0 1 0" />
-    </xacro:wheel>
+    <xacro:wheel
+        prefix="rear_right"
+        parent="rear_right_steering_link"
+        origin_xyz="0 -0.021 -0.025"
+        origin_rpy="0 0 0"
+        axis_xyz="0 1 0" />
     <xacro:wheel_gazebo prefix="rear_right" />
     <xacro:wheel_trans prefix="rear_right" />
 
@@ -121,7 +137,7 @@
 
         <!-- plugin that publishes the position of the coordinate system "bodyName"
         relative to "frameName" in the topic "ground_truth/state" -->
-        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+        <plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
             <alwaysOn>true</alwaysOn>
             <updateRate>10</updateRate>
             <bodyName>base_footprint</bodyName>
