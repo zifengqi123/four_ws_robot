@@ -63,9 +63,6 @@
         <arg name="model"               value="$(arg model)"/>
     </include>
 
-    <!-- ros_control motoman launch file -->
-    <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
-
     <!-- select mode ... -->
     <group if="$(eval mode == 'mapping')">
         <!-- mapping algorithm ... -->

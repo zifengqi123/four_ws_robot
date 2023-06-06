@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="four_ws_robot">
 
-    <xacro:property name="M_PI" value="3.14159274" />
-
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/base/base.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/base/base.gazebo.xacro" />
 
@@ -43,7 +41,7 @@
     <xacro:lidar_head parent="lidar_base_link">
         <origin xyz="0.022 0 0.0" rpy="0 0 0" />
     </xacro:lidar_head>
-    <xacro:lidar_head_gazebo min_angle="-${M_PI}" max_angle="${M_PI}" min_range="0.15" max_range="8" />
+    <xacro:lidar_head_gazebo min_angle="-${pi}" max_angle="${pi}" min_range="0.15" max_range="8" />
 
     <!-- camera -->
     <xacro:camera parent="base_link">
@@ -84,7 +82,7 @@
     <!-- wheel -->
     <!-- front left -->
     <xacro:wheel prefix="front_left" parent="front_left_steering_link">
-        <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}" />
+        <origin xyz="0 0.021 -0.025" rpy="0 0 ${pi}" />
         <axis xyz="0 -1 0" />
     </xacro:wheel>
     <xacro:wheel_gazebo prefix="front_left" />
@@ -98,7 +96,7 @@
     <xacro:wheel_trans prefix="front_right" />
     <!--  rear left -->
     <xacro:wheel prefix="rear_left" parent="rear_left_steering_link">
-        <origin xyz="0 0.021 -0.025" rpy="0 0 ${M_PI}" />
+        <origin xyz="0 0.021 -0.025" rpy="0 0 ${pi}" />
         <axis xyz="0 -1 0" />
     </xacro:wheel>
     <xacro:wheel_gazebo prefix="rear_left" />

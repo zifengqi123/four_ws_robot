@@ -4,10 +4,10 @@
         <transmission name="${prefix}_steering_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="${prefix}_steering_joint">
-                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             </joint>
             <actuator name="${prefix}_steering_motor">
-                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 <mechanicalReduction>30</mechanicalReduction>
             </actuator>
         </transmission>
