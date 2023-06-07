@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="joy_dev"        value="/dev/input/js0"/>
-    <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
+    <arg name="joy_dev"        default="/dev/input/js0"/>
+    <arg name="joy_teleop_sub" default="/four_wheel_steering_controller/cmd_vel"/>
 
     <!-- launch joynode -->
     <node pkg="joy" type="joy_node" name="joy_node0">

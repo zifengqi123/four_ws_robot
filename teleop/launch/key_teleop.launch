@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="turbo/steps"               default="10"/>
+    <arg name="turbo/linear_forward_min"  default="0.04"/>
+    <arg name="turbo/linear_forward_max"  default="0.4"/>
+    <arg name="turbo/linear_backward_min" default="0.03"/>
+    <arg name="turbo/linear_backward_max" default="0.3"/>
+    <arg name="turbo/angular_min"         default="0.05"/>
+    <arg name="turbo/angular_max"         default="0.5"/>
+    <arg name="key_teleop_sub"            default="/cmd_vel"/>
+
+    <!-- launch joy_teleop node -->
+    <node pkg="teleop" name="key_teleop" type="key_teleop.py" output="screen" respawn="false">
+        <param name="turbo/steps"               value="$(arg turbo/steps)"/>
+        <param name="turbo/linear_forward_min"  value="$(arg turbo/linear_forward_min)"/>
+        <param name="turbo/linear_forward_max"  value="$(arg turbo/linear_forward_max)"/>
+        <param name="turbo/linear_backward_min" value="$(arg turbo/linear_backward_min)"/>
+        <param name="turbo/linear_backward_max" value="$(arg turbo/linear_backward_max)"/>
+        <param name="turbo/angular_min"         value="$(arg turbo/angular_min)"/>
+        <param name="turbo/angular_max"         value="$(arg turbo/angular_max)"/>
+        <remap from="key_vel" to="$(arg key_teleop_sub)"/>
+    </node>
+</launch>

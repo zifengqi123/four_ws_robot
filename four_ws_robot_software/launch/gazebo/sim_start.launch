@@ -97,16 +97,16 @@
     <!-- selecting keyboard or joystick controls -->
     <!-- keyboard controls -->
     <group if="$(eval control_method == 'keyboard')">
-        <node pkg="teleop" type="key_teleop.py" name="keyboard_cmd" output="screen" respawn="false">
-            <param name="turbo/steps"               value="10"/>
-            <param name="turbo/linear_forward_min"  value="0.04"/>
-            <param name="turbo/linear_forward_max"  value="0.4"/>
-            <param name="turbo/linear_backward_min" value="0.03"/>
-            <param name="turbo/linear_backward_max" value="0.3"/>
-            <param name="turbo/angular_min"         value="0.05"/>
-            <param name="turbo/angular_max"         value="0.5"/>
-            <remap from="key_vel" to="four_wheel_steering_controller/cmd_vel"/>
-        </node>
+        <include file="$(find teleop)/launch/key_teleop.launch">
+            <arg name="turbo/steps"               value="10"/>
+            <arg name="turbo/linear_forward_min"  value="0.04"/>
+            <arg name="turbo/linear_forward_max"  value="0.4"/>
+            <arg name="turbo/linear_backward_min" value="0.03"/>
+            <arg name="turbo/linear_backward_max" value="0.3"/>
+            <arg name="turbo/angular_min"         value="0.05"/>
+            <arg name="turbo/angular_max"         value="0.5"/>
+            <arg name="key_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
+        </include>
     </group>
     <!-- joystick controls -->
     <group if="$(eval control_method == 'joystick')">
