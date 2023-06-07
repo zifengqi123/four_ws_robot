@@ -8,7 +8,7 @@
     <arg name="turbo/linear_backward_max" default="0.3"/>
     <arg name="turbo/angular_min"         default="0.05"/>
     <arg name="turbo/angular_max"         default="0.5"/>
-    <arg name="key_teleop_sub"            default="/cmd_vel"/>
+    <arg name="key_teleop_sub"            default="/four_wheel_steering_controller/cmd_vel"/>
 
     <!-- launch joy_teleop node -->
     <node pkg="teleop" name="key_teleop" type="key_teleop.py" output="screen" respawn="false">
