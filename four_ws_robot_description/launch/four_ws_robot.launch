@@ -59,7 +59,10 @@
     <!-- start controllers -->
     <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
 
-    <!-- a node that uses a urdf file of the robot description and translates all TF transformations from it -->
+    <!-- Publish static TFs (fixed joints) -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- Publish dynamic TFs (non-fixed joints) -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
 </launch>
