@@ -117,6 +117,6 @@
     </group>
 
     <!-- rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/rviz_$(arg mode)_view.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/config/rviz/rviz_$(arg mode)_view.rviz"/>
 
 </launch>
