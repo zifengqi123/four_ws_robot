@@ -3,8 +3,6 @@
 THIRD_PARTY_DIR=third_party
 mkdir -p $THIRD_PARTY_DIR
 
-git -C $THIRD_PARTY_DIR clone  https://github.com/KumarRobotics/ublox -b 1.4.1
-
 git -C $THIRD_PARTY_DIR clone https://github.com/ros-planning/navigation.git -b noetic-devel
 
 git -C $THIRD_PARTY_DIR clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git -b noetic-devel
