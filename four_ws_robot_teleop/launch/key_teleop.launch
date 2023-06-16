@@ -11,7 +11,7 @@
     <arg name="key_teleop_sub"            default="/four_wheel_steering_controller/cmd_vel"/>
 
     <!-- launch joy_teleop node -->
-    <node pkg="teleop" name="key_teleop" type="key_teleop.py" output="screen" respawn="false">
+    <node pkg="four_ws_robot_teleop" name="key_teleop" type="key_teleop.py" output="screen" respawn="false">
         <param name="turbo/steps"               value="$(arg turbo/steps)"/>
         <param name="turbo/linear_forward_min"  value="$(arg turbo/linear_forward_min)"/>
         <param name="turbo/linear_forward_max"  value="$(arg turbo/linear_forward_max)"/>

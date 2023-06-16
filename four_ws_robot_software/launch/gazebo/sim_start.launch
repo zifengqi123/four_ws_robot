@@ -97,7 +97,7 @@
     <!-- selecting keyboard or joystick controls -->
     <!-- keyboard controls -->
     <group if="$(eval control_method == 'keyboard')">
-        <include file="$(find teleop)/launch/key_teleop.launch">
+        <include file="$(find four_ws_robot_teleop)/launch/key_teleop.launch">
             <arg name="turbo/steps"               value="10"/>
             <arg name="turbo/linear_forward_min"  value="0.04"/>
             <arg name="turbo/linear_forward_max"  value="0.4"/>
@@ -110,7 +110,7 @@
     </group>
     <!-- joystick controls -->
     <group if="$(eval control_method == 'joystick')">
-        <include file="$(find teleop)/launch/joy_teleop.launch">
+        <include file="$(find four_ws_robot_teleop)/launch/joy_teleop.launch">
             <arg name="joy_dev"        value="/dev/input/js0"/>
             <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
         </include>

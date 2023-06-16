@@ -12,7 +12,7 @@
     </node>
 
     <!-- launch joy_teleop node -->
-    <node pkg="teleop" name="joy_teleop" type="joy_teleop.py" output="screen">
+    <node pkg="four_ws_robot_teleop" name="joy_teleop" type="joy_teleop.py" output="screen">
         <remap from="cmd_vel" to="$(arg joy_teleop_sub)"/>
     </node>
 </launch>
