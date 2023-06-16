@@ -20,4 +20,5 @@ catkin build \
     four_wheel_steering_controller \
     slam_gmapping \
     urdf \
-    urdf_geometry_parser
+    urdf_geometry_parser \
+    robot_localization

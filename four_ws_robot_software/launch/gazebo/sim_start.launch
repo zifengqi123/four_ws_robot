@@ -63,6 +63,12 @@
         <arg name="model"               value="$(arg model)"/>
     </include>
 
+    <!-- robot localization-->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" clear_params="true" output="screen">
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization_params/ekf_sim.yaml" />
+        <remap from="odometry/filtered" to="odom" />
+    </node>
+
     <!-- select mode ... -->
     <group if="$(eval mode == 'mapping')">
         <!-- mapping algorithm ... -->

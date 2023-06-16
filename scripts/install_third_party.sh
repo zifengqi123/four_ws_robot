@@ -30,3 +30,5 @@ git -C $THIRD_PARTY_DIR clone https://github.com/ros-drivers/joystick_drivers.gi
 git -C $THIRD_PARTY_DIR clone https://github.com/ros/geometry2.git -b noetic-devel
 
 git -C $THIRD_PARTY_DIR clone https://github.com/ros/robot_state_publisher.git -b noetic-devel
+
+git -C $THIRD_PARTY_DIR clone https://github.com/cra-ros-pkg/robot_localization.git -b noetic-devel

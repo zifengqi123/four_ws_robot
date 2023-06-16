@@ -1,0 +1,78 @@
+frequency: 10
+# sensor_timeout: 
+two_d_mode: true
+
+map_frame: map
+odom_frame: odom
+base_link_frame: base_footprint
+# base_link_frame_output: 
+world_frame: odom
+
+# transform_time_offset: 
+# transform_timeout: 
+
+pose0: /poseupdate
+pose0_config: [true,  true,  false,
+               false, false, true,
+               false, false, false,
+               false, false, false,
+               false, false, false]
+# pose0_queue_size: 5
+# pose0_differential: false
+# pose0_relative: false
+# pose0_nodelay:
+
+odom0: /four_wheel_steering_controller/odom
+odom0_config: [false, false, false,
+               false, false, true,
+               false, false, false,
+               true,  true,  true,
+               true,  true,  false]
+# odom0_queue_size: 5
+# odom0_differential: false
+# odom0_relative: false
+# odom0_nodelay:
+
+# initial_state: 
+# publish_tf: false
+# publish_acceleration: false
+# permit_corrected_publication: false
+# print_diagnostics: false
+
+# advanced parameters
+# use_control: false
+# stamped_control: false
+# control_timeout: 
+# control_config: [false, false, false,
+#                  true,  true,  false]
+# acceleration_limits: [1.3, 0.0, 0.0,
+#                       0.0, 0.0, 3.2]
+# acceleration_gains: [1.3, 0.0, 0.0,
+#                      0.0, 0.0, 3.2]
+# deceleration_gains: 
+# smooth_lagged_data: 
+# history_length: 
+# debug: 
+# debug_out_file: 
+# process_noise_covariance: 
+# dynamic_process_noise_covariance: 
+
+# initial_estimate_covariance: [7.11*1e-8, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    7.11*1e-8, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    1e-9, 0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    2.77*1e-8, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0.071, 0,    0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0.071, 0,    0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    1e-9, 0,     0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,  0,     0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e5,  0,    0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0.028, 0,    0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9, 0,
+#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]
+
+# reset_on_time_jump: 
+# predict_to_current_time: 
+# disabled_at_startup: 
