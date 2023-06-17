@@ -1,3 +1,5 @@
+# http://wiki.ros.org/amcl
+# https://github.com/5met4nka/four_ws_robot/blob/main/docs/amcl_params.md
 min_particles: 100
 max_particles: 500
 kld_err: 0.01
@@ -8,15 +10,15 @@ resample_interval: 2
 transform_tolerance: 0.1
 recovery_alpha_slow: 0.0
 recovery_alpha_fast: 0.0
-# initial_pose_x: # defined in launch
-# initial_pose_y: # defined in launch
+# initial_pose_x: defined in launch
+# initial_pose_y: defined in launch
 initial_pose_a: 0.0
 initial_cov_xx: 0.25
 initial_cov_yy: 0.25
 initial_cov_aa: 0.06854
 gui_publish_rate: -1.0
 save_pose_rate: 0.5
-use_map_topic: false
+use_map_topic: true
 first_map_only: false
 selective_resampling: false
 

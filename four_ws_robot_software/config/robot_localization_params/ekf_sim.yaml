@@ -1,3 +1,4 @@
+# http://docs.ros.org/en/noetic/api/robot_localization/html/state_estimation_nodes.html
 frequency: 10
 # sensor_timeout: 
 two_d_mode: true
@@ -34,10 +35,10 @@ odom0_config: [false, false, false,
 # odom0_nodelay:
 
 # initial_state: 
-# publish_tf: false
+publish_tf: false
 # publish_acceleration: false
 # permit_corrected_publication: false
-# print_diagnostics: false
+print_diagnostics: false
 
 # advanced parameters
 # use_control: false
@@ -52,7 +53,7 @@ odom0_config: [false, false, false,
 # deceleration_gains: 
 # smooth_lagged_data: 
 # history_length: 
-# debug: 
+debug: false
 # debug_out_file: 
 # process_noise_covariance: 
 # dynamic_process_noise_covariance: 
