@@ -21,4 +21,5 @@ catkin build \
     slam_gmapping \
     urdf \
     urdf_geometry_parser \
-    robot_localization
+    robot_localization \
+    -j$(($(nproc)-2))
