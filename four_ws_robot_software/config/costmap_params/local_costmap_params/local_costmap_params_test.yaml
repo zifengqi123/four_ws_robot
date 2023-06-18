@@ -1,5 +1,5 @@
 local_costmap:
-  plugins:
+  # plugins:
   global_frame: odom
   robot_base_frame: base_footprint
   transform_tolerance: 1.5
@@ -8,10 +8,10 @@ local_costmap:
   publish_frequency: 10.0
 
   rolling_window: true
-  always_send_full_costmap: 
+  # always_send_full_costmap: 
 
   width: 0.8
   height: 0.8
   resolution: 0.01
-  origin_x:
-  origin_y:
+  # origin_x:
+  # origin_y:
