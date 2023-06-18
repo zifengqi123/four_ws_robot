@@ -12,9 +12,10 @@ world_frame: odom
 # transform_time_offset: 
 # transform_timeout: 
 
+# hector_mapping
 pose0: /poseupdate
-pose0_config: [true,  true,  false,
-               false, false, true,
+pose0_config: [false, false, false,
+               false, false, false,
                false, false, false,
                false, false, false,
                false, false, false]
@@ -23,34 +24,52 @@ pose0_config: [true,  true,  false,
 # pose0_relative: false
 # pose0_nodelay:
 
+# four_wheel_steering_controller
 odom0: /four_wheel_steering_controller/odom
-odom0_config: [false, false, false,
-               false, false, true,
-               false, false, false,
-               true,  true,  true,
-               true,  true,  false]
+odom0_config: [true, true, true,
+               true, true, true,
+               true, true, true,
+               true, true, true,
+               true, true, true]
 # odom0_queue_size: 5
 # odom0_differential: false
 # odom0_relative: false
 # odom0_nodelay:
 
-# initial_state: 
-publish_tf: false
-# publish_acceleration: false
-# permit_corrected_publication: false
+# amcl
+# pose0: /amcl_pose
+# pose0_config: [true, true, true,
+#                true, true, true,
+#                true, true, true,
+#                true, true, true,
+#                true, true, true]
+# pose0_queue_size: 5
+# pose0_differential: false
+# pose0_relative: false
+# pose0_nodelay:
+
+initial_state: [0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0]
+publish_tf: false # world_frame -> base_link_frame
+# publish_acceleration: true
+permit_corrected_publication: false
 print_diagnostics: false
 
 # advanced parameters
-# use_control: false
-# stamped_control: false
+use_control: true
+stamped_control: false
 # control_timeout: 
-# control_config: [false, false, false,
-#                  true,  true,  false]
-# acceleration_limits: [1.3, 0.0, 0.0,
-#                       0.0, 0.0, 3.2]
-# acceleration_gains: [1.3, 0.0, 0.0,
-#                      0.0, 0.0, 3.2]
-# deceleration_gains: 
+control_config: [true, true, true,
+                 true, true, true]
+# acceleration_limits: [0.0, 0.0, 0.0,
+#                       0.0, 0.0, 0.0]
+# acceleration_gains: [0.0, 0.0, 0.0,
+#                      0.0, 0.0, 0.0]
+# deceleration_gains: [0.0, 0.0, 0.0,
+#                      0.0, 0.0, 0.0]
 # smooth_lagged_data: 
 # history_length: 
 debug: false

@@ -6,31 +6,19 @@
 
 > ### инструкция по началу работы находится [здесь](docs/DEVELOPMENT.md)
 
-## запуск навигации
+## запуск
 
 ```bash
-roslaunch four_ws_robot_software sim_start.launch mode:=navigation
+roslaunch four_ws_robot_software sim_start.launch
 ```
 
 <p align="center">
 <img src="docs/navigation.gif">
 </p>
 
-## запуск локализации
-
-```bash
-roslaunch four_ws_robot_software sim_start.launch mode:=localization
-```
-
 <p align="center">
 <img src="docs/localization.gif">
 </p>
-
-## запуск SLAM
-
-```bash
-roslaunch four_ws_robot_software sim_start.launch mode:=mapping
-```
 
 <p align="center">
 <img src="docs/slam_gmapping.gif">

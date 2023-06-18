@@ -27,11 +27,9 @@
     <!-- select slam algorithm ... -->
     <arg name="slam_algorithm" default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
     <!-- ... and config -->
-    <arg name="algorithm_config" default="original" doc="[default, original, test]"/>
+    <arg name="algorithm_config" default="test" doc="[default, original, test]"/>
     <!-- selecting keyboard or joystick controls -->
     <arg name="control_method" default="joystick" doc="[keyboard, joystick]"/>
-    <!-- mode -->
-    <arg name="mode" default="slam" doc="[slam, localization, navigation]"/>
     <!-- map file for amcl and navigation -->
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
 
@@ -65,64 +63,56 @@
         <arg name="model" value="$(arg model)"/>
     </include>
 
+    <!-- solving slam problem -->
+    <include file="$(find four_ws_robot_software)/launch/base/$(arg slam_algorithm).launch">
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+    </include>
+
+    <!-- solving localization problem -->
+    <!-- <include file="$(find four_ws_robot_software)/launch/base/map_server.launch">
+        <arg name="map_file" value="$(arg map_file)"/>
+    </include>
+    <include file="$(find four_ws_robot_software)/launch/base/amcl.launch">
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+        <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
+        <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
+    </include> -->
+
+    <!-- solving navigation problem (in a known or unknown space) -->
+    <!-- <include file="$(find four_ws_robot_software)/launch/base/move_base.launch">
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+    </include> -->
+
     <!-- odometry filter-->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" clear_params="true" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization_params/ekf_sim.yaml" />
+        <remap from="/odometry/filtered" to="/odometry/filtered"/>
+        <remap from="/cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
     </node>
 
-    <!-- select mode ... -->
-    <!-- slam algorithm ... -->
-    <group if="$(eval mode == 'slam')">
-        <include file="$(find four_ws_robot_software)/launch/slam.launch">
-            <arg name="slam_algorithm" value="$(arg slam_algorithm)"/>
-            <arg name="algorithm_config" value="$(arg algorithm_config)"/>
-        </include>
-    </group>
-    <!-- ... localization algorithm ... -->
-    <group if="$(eval mode == 'localization')">
-        <include file="$(find four_ws_robot_software)/launch/localization.launch">
-            <arg name="map_file" value="$(arg map_file)"/>
-            <arg name="algorithm_config" value="$(arg algorithm_config)"/>
-            <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
-            <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
-        </include>
-    </group>
-    <!-- ... or stack of navigation algorithms -->
-    <group if="$(eval mode == 'navigation')">
-        <include file="$(find four_ws_robot_software)/launch/navigation.launch">
-            <arg name="slam_algorithm" value="$(arg slam_algorithm)"/>
-            <arg name="algorithm_config" value="$(arg algorithm_config)"/>
-            <arg name="map_file" value="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
-            <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
-            <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
-        </include>
-    </group>
-
     <!-- selecting keyboard or joystick controls -->
-    <group ns="teleop" if="$(eval mode == 'slam' or mode == 'localization')">
-        <!-- keyboard controls -->
-        <group if="$(eval control_method == 'keyboard')">
-            <include file="$(find four_ws_robot_teleop)/launch/key_teleop.launch">
-                <arg name="turbo/steps" value="10"/>
-                <arg name="turbo/linear_forward_min" value="0.04"/>
-                <arg name="turbo/linear_forward_max" value="0.4"/>
-                <arg name="turbo/linear_backward_min" value="0.03"/>
-                <arg name="turbo/linear_backward_max" value="0.3"/>
-                <arg name="turbo/angular_min" value="0.05"/>
-                <arg name="turbo/angular_max" value="0.5"/>
-                <arg name="key_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
-            </include>
-        </group>
-        <!-- joystick controls -->
-        <group if="$(eval control_method == 'joystick')">
-            <include file="$(find four_ws_robot_teleop)/launch/joy_teleop.launch">
-                <arg name="joy_dev" value="/dev/input/js0"/>
-                <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
-            </include>
-        </group>
+    <!-- keyboard controls -->
+    <group if="$(eval control_method == 'keyboard')">
+        <include file="$(find four_ws_robot_teleop)/launch/key_teleop.launch">
+            <arg name="turbo/steps" value="10"/>
+            <arg name="turbo/linear_forward_min" value="0.04"/>
+            <arg name="turbo/linear_forward_max" value="0.4"/>
+            <arg name="turbo/linear_backward_min" value="0.03"/>
+            <arg name="turbo/linear_backward_max" value="0.3"/>
+            <arg name="turbo/angular_min" value="0.05"/>
+            <arg name="turbo/angular_max" value="0.5"/>
+            <arg name="key_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
+        </include>
+    </group>
+    <!-- joystick controls -->
+    <group if="$(eval control_method == 'joystick')">
+        <include file="$(find four_ws_robot_teleop)/launch/joy_teleop.launch">
+            <arg name="joy_dev" value="/dev/input/js0"/>
+            <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
+        </include>
     </group>
 
     <!-- rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/rviz_$(arg mode)_view.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
 
 </launch>
