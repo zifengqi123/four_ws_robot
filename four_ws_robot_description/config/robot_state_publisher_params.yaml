@@ -1,0 +1,6 @@
+# http://wiki.ros.org/robot_state_publisher
+# robot_description:
+# tf_prefix:
+# publish_frequency: 50
+# ignore_timestamp: false
+# use_tf_static: true

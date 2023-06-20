@@ -6,9 +6,10 @@
 
     <!-- load the controllers:  -->
     <node name="controller_spawner"
-          pkg="controller_manager"
-          type="spawner"
-          output="screen"
-          args="joint_state_controller four_wheel_steering_controller"/>
+        pkg="controller_manager"
+        type="spawner"
+        output="screen"
+        args="joint_state_controller four_wheel_steering_controller">
+    </node>
 
 </launch>

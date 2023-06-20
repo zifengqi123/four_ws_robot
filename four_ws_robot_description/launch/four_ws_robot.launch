@@ -60,9 +60,15 @@
     <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
 
     <!-- Publish static TFs (fixed joints) -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <rosparam file="$(find four_ws_robot_description)/config/robot_state_publisher_params.yaml" command="load"/>
+        <remap from="joint_states" to="joint_states"/>
+    </node>
 
     <!-- Publish dynamic TFs (non-fixed joints) -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <rosparam file="$(find four_ws_robot_description)/config/joint_state_publisher_params.yaml" command="load"/>
+        <remap from="joint_states" to="joint_states"/>
+    </node>
 
 </launch>
