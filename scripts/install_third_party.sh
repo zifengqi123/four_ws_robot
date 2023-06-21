@@ -9,7 +9,7 @@ git -C $THIRD_PARTY_DIR clone https://github.com/tu-darmstadt-ros-pkg/hector_sla
 
 git -C $THIRD_PARTY_DIR clone https://github.com/ros-perception/slam_gmapping.git -b melodic-devel
 
-git -C $THIRD_PARTY_DIR clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b main
+git -C $THIRD_PARTY_DIR clone https://github.com/5met4nka/gazebo_models_worlds_collection.git -b develop
 
 git -C $THIRD_PARTY_DIR clone https://github.com/ros-controls/ros_controllers.git -b noetic-devel
 
