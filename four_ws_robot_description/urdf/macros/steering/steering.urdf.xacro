@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:macro name="steering" params="prefix parent origin_xyz origin_rpy axis_xyz">
+
         <joint name="${prefix}_steering_joint" type="revolute">
             <parent link="${parent}" />
             <child link="${prefix}_steering_link" />
@@ -8,6 +9,7 @@
             <axis xyz="${axis_xyz}" />
             <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1" />
         </joint>
+
         <link name="${prefix}_steering_link">
             <visual>
                 <geometry>
@@ -27,5 +29,6 @@
                 <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.000004" />
             </inertial>
         </link>
+
     </xacro:macro>
 </robot>

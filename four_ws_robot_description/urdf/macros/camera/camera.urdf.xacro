@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="camera" params="parent *joint_origin">
+    <xacro:macro name="camera" params="parent origin_xyz origin_rpy">
+
         <joint name="camera_joint" type="fixed">
             <parent link="${parent}" />
             <child link="camera_link" />
-            <xacro:insert_block name="joint_origin" />
+            <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
         </joint>
+
         <link name="camera_link">
             <visual>
                 <geometry>
@@ -25,5 +27,6 @@
                 <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001" />
             </inertial>
         </link>
+
     </xacro:macro>
 </robot>

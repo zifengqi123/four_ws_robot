@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/inertia.urdf.xacro" />
+
+    <xacro:property name="rs_imu_height" value="0.01" />
+    <xacro:property name="rs_imu_width" value="0.01" />
+    <xacro:property name="rs_imu_length" value="0.01" />
+
+    <xacro:macro name="imu" params="parent origin_xyz origin_rpy">
+
+        <joint name="imu_joint" type="fixed">
+            <parent link="${parent}" />
+            <child link="imu_link" />
+            <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
+        </joint>
+
+        <link name="imu_link">
+            <visual>
+                <geometry>
+                    <box size="${rs_imu_length} ${rs_imu_width} ${rs_imu_height}" />
+                </geometry>
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${rs_imu_length} ${rs_imu_width} ${rs_imu_height}" />
+                </geometry>
+            </collision>
+            <xacro:null_inertial />
+        </link>
+
+    </xacro:macro>
+</robot>
