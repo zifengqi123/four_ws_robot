@@ -1,5 +1,6 @@
 # http://docs.ros.org/en/noetic/api/robot_localization/html/state_estimation_nodes.html
-frequency: 10
+# base parameters
+frequency: 30
 # sensor_timeout: 
 two_d_mode: true
 
@@ -9,61 +10,49 @@ base_link_frame: base_footprint
 # base_link_frame_output: 
 world_frame: odom
 
-# transform_time_offset: 
-# transform_timeout: 
-
-# hector_mapping
-pose0: /poseupdate
-pose0_config: [false, false, false,
-               false, false, false,
-               false, false, false,
-               false, false, false,
-               false, false, false]
-# pose0_queue_size: 5
-# pose0_differential: false
-# pose0_relative: false
-# pose0_nodelay:
+transform_time_offset: 0.0
+transform_timeout: 0.0
 
 # four_wheel_steering_controller
-odom0: /four_wheel_steering_controller/odom
-odom0_config: [true, true, true,
-               true, true, true,
-               true, true, true,
-               true, true, true,
-               true, true, true]
-# odom0_queue_size: 5
-# odom0_differential: false
-# odom0_relative: false
+odom0: /four_wheel_steering_controller/odom # (50 Hz)
+odom0_config:  [false, false, false,
+                false, false, true,
+                true, true, false,
+                false, false, true,
+                false, false, false]
+odom0_queue_size: 5
+odom0_differential: false
+odom0_relative: false
 # odom0_nodelay:
 
-# amcl
-# pose0: /amcl_pose
-# pose0_config: [true, true, true,
-#                true, true, true,
-#                true, true, true,
-#                true, true, true,
-#                true, true, true]
-# pose0_queue_size: 5
-# pose0_differential: false
-# pose0_relative: false
-# pose0_nodelay:
+# imu
+imu0: /imu # (20 Hz)
+imu0_config: [false, false, false,
+              false, false, true,
+              false, false, false,
+              false, false, true,
+              true, true, false]
+imu0_queue_size: 5
+imu0_differential: false
+imu0_relative: false
+# imu0_nodelay:
 
 initial_state: [0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0]
-publish_tf: false # world_frame -> base_link_frame
-# publish_acceleration: true
+publish_tf: true # odom -> base_footprint
+publish_acceleration: false
 permit_corrected_publication: false
 print_diagnostics: false
 
 # advanced parameters
-use_control: true
-stamped_control: false
+# use_control: false
+# stamped_control: false
 # control_timeout: 
-control_config: [true, true, true,
-                 true, true, true]
+# control_config:  [true, true, false,
+#                   false, false, true]
 # acceleration_limits: [0.0, 0.0, 0.0,
 #                       0.0, 0.0, 0.0]
 # acceleration_gains: [0.0, 0.0, 0.0,
@@ -72,27 +61,41 @@ control_config: [true, true, true,
 #                      0.0, 0.0, 0.0]
 # smooth_lagged_data: 
 # history_length: 
-debug: false
+# debug: false
 # debug_out_file: 
-# process_noise_covariance: 
-# dynamic_process_noise_covariance: 
+process_noise_covariance:  [0.005, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0.005, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0.006, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0.003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0.003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0.006, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0.0025, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0.0025, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0.004, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0.001, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.001, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.002, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.001, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.001, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0015]
+# dynamic_process_noise_covariance: true
 
-# initial_estimate_covariance: [7.11*1e-8, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    7.11*1e-8, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    1e-9, 0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    2.77*1e-8, 0,    0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0.071, 0,    0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0.071, 0,    0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    1e-9, 0,     0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,  0,     0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e5,  0,    0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0.028, 0,    0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9, 0,
-#                               0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]
+initial_estimate_covariance: [1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1e-9]
 
 # reset_on_time_jump: 
-# predict_to_current_time: 
-# disabled_at_startup: 
+# predict_to_current_time: true
+# disabled_at_startup: false

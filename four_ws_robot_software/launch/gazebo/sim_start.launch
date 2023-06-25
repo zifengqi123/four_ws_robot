@@ -84,7 +84,7 @@
     </include> -->
 
     <!-- odometry filter-->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" clear_params="true" output="screen">
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization_params/ekf_sim.yaml" />
         <remap from="/odometry/filtered" to="/odometry/filtered"/>
         <remap from="/cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>

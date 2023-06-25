@@ -15,7 +15,7 @@ four_wheel_steering_controller:
   # twist command related
   cmd_vel_timeout: 0.5
   base_frame_id: base_footprint
-  enable_odom_tf: true
+  enable_odom_tf: false # odom -> base_footprint
   enable_twist_cmd: false
   # velocity and acceleration limits
   linear:
