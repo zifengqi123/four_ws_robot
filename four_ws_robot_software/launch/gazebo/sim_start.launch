@@ -116,7 +116,7 @@
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
 
     <!-- debug instruments -->
-    <group ns="debug">
+    <!-- <group ns="debug">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /four_wheel_steering_controller/odom/pose/pose/position/x
@@ -133,5 +133,5 @@
         <node name="rqt_runtime_monitor" pkg="rqt_runtime_monitor" type="rqt_runtime_monitor"/>
         <node name="rqt_tf_tree" pkg="rqt_tf_tree" type="rqt_tf_tree"/>
         <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph"/>
-    </group>
+    </group> -->
 </launch>
