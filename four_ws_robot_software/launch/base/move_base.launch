@@ -18,8 +18,8 @@
         <!-- move base -->
         <rosparam file="$(find four_ws_robot_software)/config/movebase_params/movebase_params_$(arg algorithm_config).yaml" command="load"/>
         <!-- remap cmd_vel topic for gazebo -->
-        <remap from="cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
-        <remap from="odom" to="/four_wheel_steering_controller/odom"/>
+        <remap from="cmd_vel" to="nav_vel"/>
+        <remap from="odom" to="odometry/filtered/local"/>
     </node>
 
 </launch>
