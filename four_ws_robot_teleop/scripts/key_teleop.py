@@ -84,6 +84,8 @@ class KeyTeleop:
     _linear = None
     _angular = None
 
+    _zero_command_published = False  # flag to track zero command publishing
+
     def __init__(self, interface):
         self._interface = interface
         self._pub_cmd = rospy.Publisher("key_vel", Twist)
@@ -171,20 +173,29 @@ class KeyTeleop:
     def _publish(self):
         twist = self._get_twist(self._linear, self._angular)
 
-        linear_speed = twist.linear.x
-        angular_speed = twist.angular.z
+        if twist.linear.x == 0 and twist.angular.z == 0 and not self._zero_command_published:
+            self._zero_command_published = True
+            self._interface.clear()
+            self._interface.write_line(
+                2,
+                "Linear: 0 [0 m/s], Angular: 0 [0 rad]")
+            self._interface.write_line(
+                5,
+                "Use arrow keys to move, space to stop, q to exit.")
+            self._interface.refresh()
+            self._pub_cmd.publish(twist)
 
-        self._interface.clear()
-        self._interface.write_line(
-            2,
-            f"Linear: {self._linear} [{linear_speed} m/s], Angular: {self._angular} [{angular_speed} rad]",
-        )
-        self._interface.write_line(
-            5, "Use arrow keys to move, space to stop, q to exit."
-        )
-        self._interface.refresh()
-
-        self._pub_cmd.publish(twist)
+        elif twist.linear.x != 0 or twist.angular.z != 0:
+            self._zero_command_published = False
+            self._interface.clear()
+            self._interface.write_line(
+                2, f"Linear: {self._linear} [{twist.linear.x} m/s], Angular: {self._angular} [{twist.angular.z} rad]"
+            )
+            self._interface.write_line(
+                5, "Use arrow keys to move, space to stop, q to exit."
+            )
+            self._interface.refresh()
+            self._pub_cmd.publish(twist)
 
 
 class SimpleKeyTeleop:

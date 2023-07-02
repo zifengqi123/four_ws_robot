@@ -23,4 +23,5 @@ catkin build \
     urdf_geometry_parser \
     robot_localization \
     hector_gazebo \
+    twist_mux \
     -j$(($(nproc)-2))

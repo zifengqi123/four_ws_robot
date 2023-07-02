@@ -28,8 +28,6 @@
     <arg name="slam_algorithm" default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
     <!-- ... and config -->
     <arg name="algorithm_config" default="test" doc="[default, original, test]"/>
-    <!-- selecting keyboard or joystick controls -->
-    <arg name="control_method" default="joystick" doc="[keyboard, joystick]"/>
     <!-- map file for amcl and navigation -->
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
 
@@ -78,39 +76,38 @@
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
     </include> -->
 
-    <!-- solving navigation problem (in a known or unknown space) -->
-    <!-- <include file="$(find four_ws_robot_software)/launch/base/move_base.launch">
-        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
-    </include> -->
-
     <!-- odometry filter-->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization_params/ekf_sim.yaml" />
-        <remap from="/odometry/filtered" to="/odometry/filtered"/>
-        <remap from="/cmd_vel" to="/four_wheel_steering_controller/cmd_vel"/>
+        <remap from="odometry/filtered" to="odometry/filtered/local"/>
+        <remap from="cmd_vel" to="four_wheel_steering_controller/cmd_vel"/>
     </node>
 
-    <!-- selecting keyboard or joystick controls -->
-    <!-- keyboard controls -->
-    <group if="$(eval control_method == 'keyboard')">
-        <include file="$(find four_ws_robot_teleop)/launch/key_teleop.launch">
-            <arg name="turbo/steps" value="10"/>
-            <arg name="turbo/linear_forward_min" value="0.04"/>
-            <arg name="turbo/linear_forward_max" value="0.4"/>
-            <arg name="turbo/linear_backward_min" value="0.03"/>
-            <arg name="turbo/linear_backward_max" value="0.3"/>
-            <arg name="turbo/angular_min" value="0.05"/>
-            <arg name="turbo/angular_max" value="0.5"/>
-            <arg name="key_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
-        </include>
-    </group>
-    <!-- joystick controls -->
-    <group if="$(eval control_method == 'joystick')">
-        <include file="$(find four_ws_robot_teleop)/launch/joy_teleop.launch">
-            <arg name="joy_dev" value="/dev/input/js0"/>
-            <arg name="joy_teleop_sub" value="/four_wheel_steering_controller/cmd_vel"/>
-        </include>
-    </group>
+    <!-- keyboard control -->
+    <include file="$(find four_ws_robot_teleop)/launch/key_teleop.launch">
+        <arg name="turbo/steps" value="10"/>
+        <arg name="turbo/linear_forward_min" value="0.04"/>
+        <arg name="turbo/linear_forward_max" value="0.4"/>
+        <arg name="turbo/linear_backward_min" value="0.03"/>
+        <arg name="turbo/linear_backward_max" value="0.3"/>
+        <arg name="turbo/angular_min" value="0.05"/>
+        <arg name="turbo/angular_max" value="0.5"/>
+        <arg name="key_teleop_sub" value="key_vel"/>
+    </include>
+    <!-- joystick control -->
+    <include file="$(find four_ws_robot_teleop)/launch/joy_teleop.launch">
+        <arg name="joy_dev" value="/dev/input/js0"/>
+        <arg name="joy_teleop_sub" value="joy_vel"/>
+    </include>
+    <!-- navigation control -->
+    <include file="$(find four_ws_robot_software)/launch/base/move_base.launch">
+        <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+    </include>
+    <!-- twist_mux -->
+    <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
+        <remap from="cmd_vel_out" to="four_wheel_steering_controller/cmd_vel"/>
+    </node>
 
     <!-- rviz -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
