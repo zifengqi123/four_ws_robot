@@ -1,22 +1,15 @@
 <?xml version="1.0"?>
-<package>
-    <name>four_ws_robot_software</name>
-    <version>1.0.0</version>
-    <description>4WS robot simulation</description>
+<package format="2">
 
-    <maintainer email="aaaa@gmail.com">Robot mania</maintainer>
-    <license>BSD</license>
-    <author>Robot mania</author>
+  <name>four_ws_robot_software</name>
+  <version>1.0.0</version>
+  <description>4WS robot simulation</description>
+  <maintainer email="aaaa@gmail.com">Robot mania</maintainer>
+  <license>BSD</license>
 
-    <buildtool_depend>catkin</buildtool_depend>
-    <build_depend>roslaunch</build_depend>
-    <run_depend>ros_control</run_depend>
-    <run_depend>gazebo_ros_control</run_depend>
-    <run_depend>gazebo_ros</run_depend>
-    <run_depend>four_ws_robot_bringup</run_depend>
-    <run_depend>four_ws_robot_control</run_depend>
-    <run_depend>four_ws_robot_description</run_depend>
-    <run_depend>xacro</run_depend>
-    <run_depend>joy</run_depend>
-    <run_depend>joy_twist</run_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>rospy</exec_depend>
+
 </package>
