@@ -5,12 +5,8 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 catkin_package(
-  INCLUDE_DIRS
-  LIBRARIES
-  CATKIN_DEPENDS
-  DEPENDS
 )
 
 include_directories(
-    ${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
