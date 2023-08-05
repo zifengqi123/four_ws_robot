@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="steering" params="prefix parent origin_xyz origin_rpy axis_xyz">
+    <xacro:macro name="steer" params="prefix parent origin_xyz origin_rpy axis_xyz">
 
-        <joint name="${prefix}_steering_joint" type="revolute">
+        <joint name="${prefix}_steer_joint" type="revolute">
             <parent link="${parent}" />
-            <child link="${prefix}_steering_link" />
+            <child link="${prefix}_steer_link" />
             <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
             <axis xyz="${axis_xyz}" />
             <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1" />
         </joint>
 
-        <link name="${prefix}_steering_link">
+        <link name="${prefix}_steer_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/DAE/steering/${prefix}_steering.dae" />
+                    <mesh filename="package://four_ws_robot_description/meshes/DAE/steer/${prefix}_steer.dae" />
                 </geometry>
                 <origin xyz="0 0 0" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://four_ws_robot_description/meshes/STL/steering/steering.stl" />
+                    <mesh filename="package://four_ws_robot_description/meshes/STL/steer/steer.stl" />
                 </geometry>
                 <origin xyz="0 0 0" />
             </collision>

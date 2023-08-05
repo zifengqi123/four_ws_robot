@@ -21,10 +21,10 @@
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/imu/imu.urdf.xacro" />
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/imu/imu.gazebo.xacro" />
 
-    <!-- steering -->
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steering/steering.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steering/steering.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steering/steering.transmission.xacro" />
+    <!-- steer -->
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steer/steer.urdf.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steer/steer.gazebo.xacro" />
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steer/steer.transmission.xacro" />
 
     <!-- wheels -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.urdf.xacro" />
@@ -70,49 +70,49 @@
         origin_rpy="0 0 0" />
     <xacro:imu_gazebo />
 
-    <!-- steering -->
+    <!-- steer -->
     <!-- front right -->
-    <xacro:steering
+    <xacro:steer
         prefix="front_right"
         parent="base_link"
         origin_xyz="0.077 -0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steering_gazebo prefix="front_right" />
-    <xacro:steering_trans prefix="front_right" />
+    <xacro:steer_gazebo prefix="front_right" />
+    <xacro:steer_trans prefix="front_right" />
     <!-- front left -->
-    <xacro:steering
+    <xacro:steer
         prefix="front_left"
         parent="base_link"
         origin_xyz="0.077 0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steering_gazebo prefix="front_left" />
-    <xacro:steering_trans prefix="front_left" />
+    <xacro:steer_gazebo prefix="front_left" />
+    <xacro:steer_trans prefix="front_left" />
     <!-- rear right -->
-    <xacro:steering
+    <xacro:steer
         prefix="rear_right"
         parent="base_link"
         origin_xyz="-0.077 -0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steering_gazebo prefix="rear_right" />
-    <xacro:steering_trans prefix="rear_right" />
+    <xacro:steer_gazebo prefix="rear_right" />
+    <xacro:steer_trans prefix="rear_right" />
     <!-- rear left -->
-    <xacro:steering
+    <xacro:steer
         prefix="rear_left"
         parent="base_link"
         origin_xyz="-0.077 0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steering_gazebo prefix="rear_left" />
-    <xacro:steering_trans prefix="rear_left" />
+    <xacro:steer_gazebo prefix="rear_left" />
+    <xacro:steer_trans prefix="rear_left" />
 
     <!-- wheels -->
     <!-- front left -->
     <xacro:wheel
         prefix="front_left"
-        parent="front_left_steering_link"
+        parent="front_left_steer_link"
         origin_xyz="0 0.021 -0.025"
         origin_rpy="0 0 ${pi}"
         axis_xyz="0 -1 0" />
@@ -121,7 +121,7 @@
     <!-- front right -->
     <xacro:wheel
         prefix="front_right"
-        parent="front_right_steering_link"
+        parent="front_right_steer_link"
         origin_xyz="0 -0.021 -0.025"
         origin_rpy="0 0 0"
         axis_xyz="0 1 0" />
@@ -130,7 +130,7 @@
     <!--  rear left -->
     <xacro:wheel
         prefix="rear_left"
-        parent="rear_left_steering_link"
+        parent="rear_left_steer_link"
         origin_xyz="0 0.021 -0.025"
         origin_rpy="0 0 ${pi}"
         axis_xyz="0 -1 0" />
@@ -139,7 +139,7 @@
     <!-- rear right -->
     <xacro:wheel
         prefix="rear_right"
-        parent="rear_right_steering_link"
+        parent="rear_right_steer_link"
         origin_xyz="0 -0.021 -0.025"
         origin_rpy="0 0 0"
         axis_xyz="0 1 0" />
@@ -162,7 +162,7 @@
             <robotNamespace>/</robotNamespace>
             <bodyName>base_footprint</bodyName>
             <topicName>ground_truth/state</topicName>
-            <frameName>world</frameName>
+            <frameName>map</frameName>
             <xyzOffsets>0 0 0</xyzOffsets>
             <rpyOffsets>0 0 0</rpyOffsets>
             <gaussianNoise>0.01</gaussianNoise>

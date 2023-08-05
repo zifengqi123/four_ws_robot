@@ -4,7 +4,7 @@
     <!-- gazebo -->
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
-    <arg name="gui" default="true" doc="[true, false]"/>
+    <arg name="gui" default="true"/>
     <arg name="recording" default="false"/>
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
