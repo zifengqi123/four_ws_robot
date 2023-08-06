@@ -2,7 +2,7 @@
 # https://github.com/5met4nka/four_ws_robot/blob/main/docs/slam_gmapping_params.md
 inverted_laser: false
 throttle_scans: 1
-base_frame: base_link
+base_frame: base_footprint
 map_frame: map
 odom_frame: odom
 map_update_interval: 0.5

@@ -26,8 +26,8 @@ odom0_differential: false
 odom0_relative: false
 # odom0_nodelay:
 
-# imu
-imu0: /imu # (20 Hz)
+# front_rs_d455_camera_imu
+imu0: /front_rs_d455_camera/imu # (20 Hz)
 imu0_config: [false, false, false,
               false, false, true,
               false, false, false,
@@ -36,6 +36,18 @@ imu0_config: [false, false, false,
 imu0_queue_size: 5
 imu0_differential: false
 imu0_relative: true
+# imu0_nodelay:
+
+# rear_rs_d435i_camera_imu
+imu1: /rear_rs_d435i_camera/imu # (20 Hz)
+imu1_config: [false, false, false,
+              false, false, true,
+              false, false, false,
+              false, false, true,
+              false, false, false]
+imu1_queue_size: 5
+imu1_differential: true
+imu1_relative: true
 # imu0_nodelay:
 
 initial_state: [0.0, 0.0, 0.0,
