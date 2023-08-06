@@ -3,33 +3,24 @@
 
     <!-- base -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/base/base.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/base/base.gazebo.xacro" />
 
     <!-- lidar_base -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_base/lidar_base.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_base/lidar_base.gazebo.xacro" />
 
     <!-- lidar_head -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_head/lidar_head.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/lidar_head/lidar_head.gazebo.xacro" />
 
     <!-- camera -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/camera/camera.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/camera/camera.gazebo.xacro" />
 
     <!-- imu -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/imu/imu.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/imu/imu.gazebo.xacro" />
 
     <!-- steer -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steer/steer.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steer/steer.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/steer/steer.transmission.xacro" />
 
     <!-- wheels -->
     <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.urdf.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.gazebo.xacro" />
-    <xacro:include filename="$(find four_ws_robot_description)/urdf/macros/wheel/wheel.transmission.xacro" />
 
     <!-- base_footprint -->
     <link name="base_footprint" />
@@ -40,35 +31,34 @@
         parent="base_footprint"
         origin_xyz="0 0 0.055"
         origin_rpy="0 0 0" />
-    <xacro:base_gazebo />
 
     <!-- lidar_base -->
     <xacro:lidar_base
         parent="base_link"
         origin_xyz="-0.022 0 0.035"
         origin_rpy="0 0 0" />
-    <xacro:lidar_base_gazebo />
 
     <!-- lidar_head -->
     <xacro:lidar_head
         parent="lidar_base_link"
         origin_xyz="0.022 0 0"
-        origin_rpy="0 0 0" />
-    <xacro:lidar_head_gazebo min_angle="-${pi}" max_angle="${pi}" min_range="0.15" max_range="8" />
+        origin_rpy="0 0 0"
+        min_angle="-${pi}" 
+        max_angle="${pi}"
+        min_range="0.15"
+        max_range="8" />
 
     <!-- camera -->
     <xacro:camera
         parent="base_link"
         origin_xyz="0.1 0 0.0177"
         origin_rpy="0 0 0" />
-    <xacro:camera_gazebo />
 
     <!-- imu -->
     <xacro:imu
         parent="base_link"
         origin_xyz="0 0 0"
         origin_rpy="0 0 0" />
-    <xacro:imu_gazebo />
 
     <!-- steer -->
     <!-- front right -->
@@ -78,8 +68,6 @@
         origin_xyz="0.077 -0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steer_gazebo prefix="front_right" />
-    <xacro:steer_trans prefix="front_right" />
     <!-- front left -->
     <xacro:steer
         prefix="front_left"
@@ -87,8 +75,6 @@
         origin_xyz="0.077 0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steer_gazebo prefix="front_left" />
-    <xacro:steer_trans prefix="front_left" />
     <!-- rear right -->
     <xacro:steer
         prefix="rear_right"
@@ -96,8 +82,6 @@
         origin_xyz="-0.077 -0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steer_gazebo prefix="rear_right" />
-    <xacro:steer_trans prefix="rear_right" />
     <!-- rear left -->
     <xacro:steer
         prefix="rear_left"
@@ -105,8 +89,6 @@
         origin_xyz="-0.077 0.031 -0.004"
         origin_rpy="0 0 0"
         axis_xyz="0 0 1" />
-    <xacro:steer_gazebo prefix="rear_left" />
-    <xacro:steer_trans prefix="rear_left" />
 
     <!-- wheels -->
     <!-- front left -->
@@ -116,8 +98,6 @@
         origin_xyz="0 0.021 -0.025"
         origin_rpy="0 0 ${pi}"
         axis_xyz="0 -1 0" />
-    <xacro:wheel_gazebo prefix="front_left" />
-    <xacro:wheel_trans prefix="front_left" />
     <!-- front right -->
     <xacro:wheel
         prefix="front_right"
@@ -125,8 +105,6 @@
         origin_xyz="0 -0.021 -0.025"
         origin_rpy="0 0 0"
         axis_xyz="0 1 0" />
-    <xacro:wheel_gazebo prefix="front_right" />
-    <xacro:wheel_trans prefix="front_right" />
     <!--  rear left -->
     <xacro:wheel
         prefix="rear_left"
@@ -134,8 +112,6 @@
         origin_xyz="0 0.021 -0.025"
         origin_rpy="0 0 ${pi}"
         axis_xyz="0 -1 0" />
-    <xacro:wheel_gazebo prefix="rear_left" />
-    <xacro:wheel_trans prefix="rear_left" />
     <!-- rear right -->
     <xacro:wheel
         prefix="rear_right"
@@ -143,8 +119,6 @@
         origin_xyz="0 -0.021 -0.025"
         origin_rpy="0 0 0"
         axis_xyz="0 1 0" />
-    <xacro:wheel_gazebo prefix="rear_right" />
-    <xacro:wheel_trans prefix="rear_right" />
 
     <!-- gazebo plugins -->
     <gazebo>

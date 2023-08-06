@@ -28,5 +28,11 @@
             </inertial>
         </link>
 
+        <gazebo reference="base_link">
+            <selfCollide>false</selfCollide>
+            <mu1 value="0.05" />
+            <mu2 value="0.05" />
+        </gazebo>
+
     </xacro:macro>
 </robot>

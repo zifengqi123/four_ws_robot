@@ -10,6 +10,17 @@
             <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1" />
         </joint>
 
+        <transmission name="${prefix}_steer_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${prefix}_steer_joint">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${prefix}_steer_motor">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>30</mechanicalReduction>
+            </actuator>
+        </transmission>
+
         <link name="${prefix}_steer_link">
             <visual>
                 <geometry>
@@ -29,6 +40,12 @@
                 <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.000004" />
             </inertial>
         </link>
+
+        <gazebo reference="${prefix}_steer_link">
+            <selfCollide>false</selfCollide>
+            <mu1 value="0.05" />
+            <mu2 value="0.05" />
+        </gazebo>
 
     </xacro:macro>
 </robot>
