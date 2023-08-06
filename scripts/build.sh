@@ -3,7 +3,6 @@
 catkin build \
     four_ws_robot \
     four_wheel_steering_msgs \
-    gazebo_models_worlds_collection \
     gazebo_ros_pkgs \
     gazebo_ros_control \
     geometry2 \
