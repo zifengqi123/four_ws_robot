@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="four_ws_robot">
+
+    <xacro:include filename="$(find four_ws_robot_description)/urdf/params.urdf.xacro" />
+	<xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/inertia.urdf.xacro" />
+	<xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/common.urdf.xacro" />
+	<xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/wheels.urdf.xacro" />
+
+	<!-- BASE FOOTPRINT-->
+
+	<link name="base_footprint">
+		<xacro:null_visual/>
+		<xacro:null_collision/>
+		<xacro:null_inertia/>
+	</link>
+
+	<gazebo reference="base_footprint" />
+
+    <!-- BASE LINK -->
+
+	<joint name="base_footprint_2_base_link" type="fixed">
+		<parent link="base_footprint" />
+		<child link="base_link" />
+		<origin xyz="0 0 ${wheel_radius}" rpy="0 0 0" />
+	</joint>
+
+	<link name="base_link">
+		<visual>
+			<origin xyz="0 0 ${body_heigth/2}" rpy="0 0 0" />
+			<geometry>
+				<box size="${body_length} ${body_width} ${body_heigth}" />
+			</geometry>
+		</visual>
+		<collision name="base_collision">
+			<origin xyz="0 0 ${body_heigth/2}" rpy="0 0 0" />
+			<geometry>
+				<box size="${body_length} ${body_width} ${body_heigth}" />
+			</geometry>
+		</collision>
+		<xacro:box_inertia
+			width="${body_width}"
+			length="${body_length}"
+			height="${body_heigth}"
+			mass="${body_mass}">
+			<origin xyz="0 0 ${body_heigth/2}" rpy="0 0 0" />
+		</xacro:box_inertia>
+	</link>
+
+	<gazebo reference="base_link">
+		<material>Gazebo/Blue</material>
+		<selfCollide>false</selfCollide>
+	</gazebo>
+
+	<!-- REAR AXIS LINK -->
+
+	<joint name="base_link_2_rear_axis_link" type="fixed">
+		<parent link="base_link" />
+		<child link="rear_axis_link" />
+		<origin xyz="${-(body_length/2-rear_wheel_2_rear_bumper)} 0 0" rpy="0 0 0" />
+	</joint>
+
+	<link name="rear_axis_link">
+		<xacro:null_visual/>
+		<xacro:null_collision/>
+		<xacro:null_inertia/>
+	</link>
+
+	<gazebo reference="rear_axis_link" />
+
+	<!-- FRONT AXIS LINK -->
+
+	<joint name="base_link_2_front_axis_link" type="fixed">
+		<parent link="base_link" />
+		<child link="front_axis_link" />
+		<origin xyz="${body_length/2-front_wheel_2_front_bumper} 0 0" rpy="0 0 0" />
+	</joint>
+
+	<link name="front_axis_link">
+		<xacro:null_visual/>
+		<xacro:null_collision/>
+		<xacro:null_inertia/>
+	</link>
+
+	<gazebo reference="front_axis_link" />
+
+	<!-- WHEELS -->
+
+	<xacro:steer_wheel
+		prefix="rear_right"
+		parent="rear_axis_link"
+		steer_origin_xyz="0 -${track_width/2} 0"
+		steer_limit="${wheel_turn_limit}" />
+	<xacro:steer_wheel
+		prefix="rear_left"
+		parent="rear_axis_link"
+		steer_origin_xyz="0 ${track_width/2} 0"
+		steer_limit="${wheel_turn_limit}" />
+	<xacro:steer_wheel
+		prefix="front_right"
+		parent="front_axis_link"
+		steer_origin_xyz="0 -${track_width/2} 0"
+		steer_limit="${wheel_turn_limit}" />
+	<xacro:steer_wheel
+		prefix="front_left"
+		parent="front_axis_link"
+		steer_origin_xyz="0 ${track_width/2} 0"
+		steer_limit="${wheel_turn_limit}" />
+
+	<!-- gazebo plugins -->
+	<gazebo>
+
+		<!-- this plugin provides the ability to manage physical models of robots
+		in the Gazebo environment using ROS -->
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+
+		<!-- plugin that publishes the position of the coordinate system "bodyName"
+		relative to "frameName" in the topic "ground_truth/state" -->
+		<plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+			<robotNamespace>/</robotNamespace>
+			<bodyName>base_footprint</bodyName>
+			<topicName>ground_truth/state</topicName>
+			<frameName>map</frameName>
+			<xyzOffsets>0 0 0</xyzOffsets>
+			<rpyOffsets>0 0 0</rpyOffsets>
+			<gaussianNoise>0.01</gaussianNoise>
+			<updateRate>10</updateRate>
+		</plugin>
+
+	</gazebo>
+
+</robot>

@@ -11,7 +11,7 @@
     <arg name="physics" default="ode"/>
     <arg name="verbose" default="false"/>
     <arg name="output" default="screen"/>
-    <arg name="world_name" default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
+    <arg name="world_name" default="room_with_pillars_asphalt"/>
     <arg name="respawn_gazebo" default="false"/>
     <arg name="use_clock_frequency" default="false"/>
     <arg name="pub_clock_frequency" default="100"/>
@@ -19,7 +19,7 @@
     <arg name="server_required" default="false"/>
     <arg name="gui_required" default="false"/>
     <!-- urdf model -->
-    <arg name="model" default="$(find four_ws_robot_description)/urdf/four_ws_robot.urdf.xacro"/>
+    <arg name="model" default="$(find four_ws_robot_description)/urdf/config.urdf.xacro"/>
     <!-- urdf spawner -->
     <arg name="robot_pose_x" default="0.0"/>
     <arg name="robot_pose_y" default="0.0"/>
@@ -28,9 +28,10 @@
     <arg name="slam_algorithm" default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
     <!-- ... and config -->
     <arg name="algorithm_config" default="test" doc="[default, original, test]"/>
-    <!-- map file for amcl and navigation -->
+    <!-- map file for localization and navigation -->
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
-
+    <!-- rviz -->
+    <arg name='rviz' default="true" />
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
@@ -46,7 +47,7 @@
         <arg name="physics" value="$(arg physics)"/>
         <arg name="verbose" value="$(arg verbose)"/>
         <arg name="output" value="$(arg output)"/>
-        <arg name="world_name" value="$(find gazebo_models_worlds_collection)/worlds/$(arg world_name).world"/>
+        <arg name="world_name" value="$(find maddrive_worlds)/worlds/$(arg world_name).world"/>
         <arg name="respawn_gazebo" value="$(arg respawn_gazebo)"/>
         <arg name="use_clock_frequency" value="$(arg use_clock_frequency)"/>
         <arg name="pub_clock_frequency" value="$(arg use_clock_frequency)"/>
@@ -110,7 +111,7 @@
     </node>
 
     <!-- rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
 
     <!-- debug instruments -->
     <!-- <group ns="debug">

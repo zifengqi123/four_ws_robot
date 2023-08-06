@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:arg name="robot_name" default="four_ws_robot" />
+
+    <xacro:property name="yaml_file" value="$(find four_ws_robot_description)/config/props.yaml" />
+    <xacro:property name="props" value="${xacro.load_yaml(yaml_file)}" />
+
+    <xacro:property name="front_wheel_2_front_bumper" value="0.05" />
+    <xacro:property name="rear_wheel_2_rear_bumper" value="0.05" />
+
+    <xacro:property name="wheelbase" value="${props['wheelbase']}" />
+    <xacro:property name="track_width" value="${props['track_width']}" />
+
+    <!-- основные габариты -->
+    <xacro:property name="body_length" value="${front_wheel_2_front_bumper+wheelbase+rear_wheel_2_rear_bumper}" />
+    <xacro:property name="body_width" value="0.8" />
+    <xacro:property name="body_heigth" value="0.8" />
+    <xacro:property name="body_mass" value="40" />
+
+    <!-- габариты колес -->
+    <xacro:property name="wheel_width" value="0.025" />
+    <xacro:property name="wheel_radius" value="${props['wheel_radius']}" />
+    <xacro:property name="wheel_mass" value="0.02" />
+    <xacro:property name="wheel_turn_limit" value="${pi/4}" />
+
+    <xacro:property name="wheel_shift_z" value="0.0" /> <!-- расстояние по оси Z между передней осью и осью вращения колеса -->
+
+</robot>

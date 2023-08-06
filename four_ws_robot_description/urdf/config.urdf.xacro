@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot name="tigra" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find four_ws_robot_description)/urdf/base.urdf.xacro" />
+	<xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/realsense.urdf.xacro" />
+	<xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/sector_lidar.urdf.xacro" />
+	<!-- <xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/elp_stereo.urdf.xacro" /> -->
+	<xacro:include filename="$(find maddrive_urdf_tools)/urdf/macros/gps.urdf.xacro" />
+
+	<!-- <xacro:sector_lidar
+		prefix="front"
+		model="c16"
+		parent="front_axis_link"
+		origin_xyz="0.07 0.0 0.715"
+		origin_rpy="0.0 0.0 0.04" />
+
+	<xacro:rs_camera
+		prefix="front"
+		model="d455"
+		parent="front_axis_link"
+		origin_xyz="-0.19 0.0 1.35"
+		origin_rpy="0.0 0.15 -0.02" />
+
+	<xacro:rs_camera
+		prefix="rear"
+		model="d435i"
+		parent="rear_axis_link"
+		origin_xyz="-0.19 0.0 0.61"
+		origin_rpy="3.14159265 -0.01 3.14159265" />
+
+	<xacro:gps_sensor
+		prefix="front"
+		parent="base_footprint"
+		origin_xyz="0.0 0.0 ${body_heigth/2+0.1}"
+		origin_rpy="0.0 0.0 0.0" /> -->
+
+	<!-- <xacro:elp_stereo
+		name="elp_stereo"
+		parent="base_link"
+		xyz="-${body_length/2-wheelbase/2+0.05} 0 0"
+		rpy="0 0 ${pi}" /> -->
+
+</robot>

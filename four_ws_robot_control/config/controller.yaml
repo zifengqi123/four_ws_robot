@@ -35,10 +35,10 @@ four_wheel_steering_controller:
       max_acceleration:        1.0
       min_acceleration:        -1.0
   # if either parameter is not available, we need to look up the value in the URDF
-  track: 0.122
-  wheel_steering_y_offset: 0.03
-  wheel_radius: 0.026
-  wheel_base: 0.154
+  track: 0.6
+  wheel_steering_y_offset: 0.0
+  wheel_radius: 0.067
+  wheel_base: 0.6
   # params for covariances
   pose_covariance_diagonal:  [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
   twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]

@@ -11,7 +11,7 @@
     <arg name="physics" default="ode"/>
     <arg name="verbose" default="false"/>
     <arg name="output" default="screen"/>
-    <arg name="world_name" default="turtlebot3_stage_4" doc="[..._stage_1-4]"/>
+    <arg name="world_name" default="worlds/empty.world"/>
     <arg name="respawn_gazebo" default="false"/>
     <arg name="use_clock_frequency" default="false"/>
     <arg name="pub_clock_frequency" default="100"/>
@@ -19,11 +19,13 @@
     <arg name="server_required" default="false"/>
     <arg name="gui_required" default="false"/>
     <!-- urdf model -->
-    <arg name="model" default="$(find four_ws_robot_description)/urdf/four_ws_robot.urdf.xacro"/>
+    <arg name="model" default="$(find four_ws_robot_description)/urdf/config.urdf.xacro"/>
     <!-- urdf spawner -->
     <arg name="robot_pose_x" default="0.0"/>
     <arg name="robot_pose_y" default="0.0"/>
     <arg name="robot_pose_z" default="0.15"/>
+    <!-- rviz -->
+    <arg name="rviz" default="false" />
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
@@ -66,9 +68,12 @@
     </node>
 
     <!-- Publish dynamic TFs (non-fixed joints) -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
         <rosparam file="$(find four_ws_robot_description)/config/joint_state_publisher_params.yaml" command="load"/>
         <remap from="joint_states" to="joint_states"/>
-    </node>
+    </node> -->
+
+    <!-- rviz-->
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_description)/rviz/robot_view.rviz" />
 
 </launch>
