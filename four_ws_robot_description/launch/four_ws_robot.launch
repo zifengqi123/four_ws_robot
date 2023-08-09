@@ -25,7 +25,7 @@
     <arg name="robot_pose_y" default="0.0"/>
     <arg name="robot_pose_z" default="0.15"/>
     <!-- rviz -->
-    <arg name="rviz" default="false" />
+    <arg name="rviz" default="true" />
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>

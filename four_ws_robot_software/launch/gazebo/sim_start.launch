@@ -81,7 +81,7 @@
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization_params/ekf_sim.yaml" />
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
-        <remap from="cmd_vel" to="four_wheel_steering_controller/cmd_vel"/>
+        <remap from="cmd_vel" to="swerve_steering_controller/cmd_vel"/>
     </node>
 
     <!-- keyboard control -->
@@ -107,7 +107,7 @@
     <!-- twist_mux -->
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
-        <remap from="cmd_vel_out" to="four_wheel_steering_controller/cmd_vel"/>
+        <remap from="cmd_vel_out" to="swerve_steering_controller/cmd_vel"/>
     </node>
 
     <!-- rviz -->

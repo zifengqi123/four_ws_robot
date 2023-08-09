@@ -9,7 +9,7 @@
         pkg="controller_manager"
         type="spawner"
         output="screen"
-        args="joint_state_controller four_wheel_steering_controller">
+        args="joint_state_controller swerve_steering_controller">
     </node>
 
 </launch>
