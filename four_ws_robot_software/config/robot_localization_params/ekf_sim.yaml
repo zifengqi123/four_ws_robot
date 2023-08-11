@@ -15,10 +15,10 @@ transform_time_offset: 0.0
 transform_timeout: 0.0
 
 # four_wheel_steering_controller
-odom0: /four_wheel_steering_controller/odom # (50 Hz)
-odom0_config:  [false, false, false,
+odom0: /swerve_steering_controller/odom # (50 Hz)
+odom0_config:  [true, true, false,
                 false, false, false,
-                true, false, false,
+                false, false, false,
                 false, false, false,
                 false, false, false]
 odom0_queue_size: 5
@@ -35,7 +35,7 @@ imu0_config: [false, false, false,
               false, false, false]
 imu0_queue_size: 5
 imu0_differential: false
-imu0_relative: true
+imu0_relative: false
 # imu0_nodelay:
 
 # rear_rs_d435i_camera_imu
@@ -47,15 +47,15 @@ imu1_config: [false, false, false,
               false, false, false]
 imu1_queue_size: 5
 imu1_differential: true
-imu1_relative: true
-# imu0_nodelay:
+imu1_relative: false
+# imu1_nodelay:
 
 initial_state: [0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0]
-publish_tf: true # odom -> base_footprint
+publish_tf: false # odom -> base_footprint
 publish_acceleration: false
 permit_corrected_publication: false
 print_diagnostics: false

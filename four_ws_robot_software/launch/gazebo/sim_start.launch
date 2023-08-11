@@ -23,7 +23,7 @@
     <!-- urdf spawner -->
     <arg name="robot_pose_x" default="0.0"/>
     <arg name="robot_pose_y" default="0.0"/>
-    <arg name="robot_pose_z" default="0.15"/>
+    <arg name="robot_pose_z" default="0.05"/>
     <!-- select slam algorithm ... -->
     <arg name="slam_algorithm" default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
     <!-- ... and config -->
@@ -32,6 +32,8 @@
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
     <!-- rviz -->
     <arg name='rviz' default="true" />
+    <!-- debug (rqt_plot) -->
+    <arg name="odom_debug" default="true"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
@@ -101,9 +103,9 @@
         <arg name="joy_teleop_sub" value="joy_vel"/>
     </include>
     <!-- navigation control -->
-    <include file="$(find four_ws_robot_software)/launch/base/move_base.launch">
+    <!-- <include file="$(find four_ws_robot_software)/launch/base/move_base.launch">
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
-    </include>
+    </include> -->
     <!-- twist_mux -->
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
@@ -114,22 +116,14 @@
     <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
 
     <!-- debug instruments -->
-    <!-- <group ns="debug">
+    <group if="$(arg odom_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
-                /four_wheel_steering_controller/odom/pose/pose/position/x
-                /four_wheel_steering_controller/odom/pose/pose/position/y
-                /four_wheel_steering_controller/odom/pose/pose/orientation/z
-                /odometry/filtered/pose/pose/position/x
-                /odometry/filtered/pose/pose/position/y
-                /odometry/filtered/pose/pose/orientation/z
-                /imu/orientation/z
-                /imu/angular_velocity/z
-                /imu/linear_acceleration/x
-                /imu/linear_acceleration/y"/>
-        <node name="rqt_console" pkg="rqt_console" type="rqt_console"/>
-        <node name="rqt_runtime_monitor" pkg="rqt_runtime_monitor" type="rqt_runtime_monitor"/>
-        <node name="rqt_tf_tree" pkg="rqt_tf_tree" type="rqt_tf_tree"/>
-        <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph"/>
-    </group> -->
+                /swerve_steering_controller/odom/pose/pose/position/x
+                /swerve_steering_controller/odom/pose/pose/orientation/z
+                /odometry/filtered/local/pose/pose/position/x
+                /odometry/filtered/local/pose/pose/orientation/z
+                /ground_truth/state/pose/pose/position/x
+                /ground_truth/state/pose/pose/orientation/z"/>
+    </group>
 </launch>
