@@ -32,7 +32,7 @@
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
     <!-- rviz -->
     <arg name='rviz' default="true" />
-    <!-- debug (rqt_plot) -->
+    <!-- odom_debug (rqt_plot) -->
     <arg name="odom_debug" default="true"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
@@ -115,7 +115,7 @@
     <!-- rviz -->
     <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
 
-    <!-- debug instruments -->
+    <!-- odom_debug -->
     <group if="$(arg odom_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="

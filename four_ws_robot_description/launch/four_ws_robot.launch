@@ -26,6 +26,8 @@
     <arg name="robot_pose_z" default="0.05"/>
     <!-- rviz -->
     <arg name="rviz" default="false" />
+    <!-- pid_debug (rqt_plot) -->
+    <arg name="pid_debug" default="false"/>
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
@@ -75,5 +77,15 @@
 
     <!-- rviz-->
     <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_description)/rviz/robot_view.rviz" />
+
+    <!-- pid_debug -->
+    <group if="$(arg pid_debug)">
+        <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
+        args="
+            /swerve_steering_controller/cmd_vel/linear/x
+            /swerve_steering_controller/cmd_vel/angular/z
+            /swerve_steering_controller/odom/pose/pose/position/x
+            /swerve_steering_controller/odom/pose/pose/orientation/z"/>
+    </group>
 
 </launch>
