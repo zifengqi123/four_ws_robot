@@ -14,9 +14,9 @@ world_frame: odom
 transform_time_offset: 0.0
 transform_timeout: 0.0
 
-# four_wheel_steering_controller
-odom0: /swerve_steering_controller/odom # (50 Hz)
-odom0_config:  [true, true, false,
+# swerve_steering_controller
+odom0: /swerve_steering_controller/odom # (10 Hz)
+odom0_config:  [false, false, false,
                 false, false, false,
                 false, false, false,
                 false, false, false,
@@ -55,7 +55,7 @@ initial_state: [0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0]
-publish_tf: false # odom -> base_footprint
+publish_tf: true # odom -> base_footprint
 publish_acceleration: false
 permit_corrected_publication: false
 print_diagnostics: false

@@ -8,7 +8,7 @@ swerve_steering_controller:
   publish_rate: 50
   base_frame_id: base_footprint
   odom_frame_id: odom
-  enable_odom_tf: true # odom -> base_footprint
+  enable_odom_tf: false # odom -> base_footprint
   # velocity and acceleration limits
   linear:
     x:
@@ -37,7 +37,7 @@ swerve_steering_controller:
   radii: [0.067, 0.067, 0.067, 0.067]
   limitless: [false, false, false, false]
   offsets: [0.0, 0.0, 0.0, 0.0]
-  positions: [[-0.3, -0.3], [-0.3, 0.3], [0.3, -0.3], [0.3, 0.3]]
+  positions: [[-0.3,-0.3], [-0.3,0.3], [0.3,-0.3], [0.3,0.3]]
   limits: [[-3.14159265,3.14159265], [-3.14159265,3.14159265], [-3.14159265,3.14159265], [-3.14159265,3.14159265]]
   # params for covariances
   pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
