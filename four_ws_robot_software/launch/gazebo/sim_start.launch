@@ -69,6 +69,13 @@
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
     </include>
 
+    <!--- rgbd odom -->
+    <group ns="rtabmap">
+        <include file="$(find four_ws_robot_software)/launch/base/rtabmap_odom.launch">
+            <arg name="algorithm_config" value="$(arg algorithm_config)"/>
+        </include>
+    </group>
+
     <!-- solving localization problem -->
     <!-- <include file="$(find four_ws_robot_software)/launch/base/map_server.launch">
         <arg name="map_file" value="$(arg map_file)"/>

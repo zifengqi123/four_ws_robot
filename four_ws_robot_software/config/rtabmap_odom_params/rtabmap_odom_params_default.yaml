@@ -1,0 +1,20 @@
+# http://wiki.ros.org/rtabmap_odom
+
+frame_id: base_footprint
+odom_frame_id: odom
+publish_tf: false
+wait_for_transform: false
+initial_pose: false
+queue_size: 10
+publish_null_when_lost: 
+ground_truth_frame_id: 
+ground_truth_base_frame_id: 
+guess_frame_id: 
+guess_min_translation: 
+guess_min_rotation: 
+config_path: 
+wait_imu_to_init: 
+
+approx_sync:
+subscribe_rgbd: 
+rgbd_cameras:
