@@ -113,7 +113,10 @@
 		in the Gazebo environment using ROS -->
 		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
 			<robotNamespace>/</robotNamespace>
+			<robotParam>robot_description</robotParam>
 			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			<controlPeriod>0.01</controlPeriod>
+			<eStopTopic>gazebo_ros_control_stop</eStopTopic>
 		</plugin>
 
 		<!-- plugin that publishes the position of the coordinate system "bodyName"

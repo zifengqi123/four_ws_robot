@@ -6,7 +6,6 @@
         <remap from="rgb/image" to="" />
         <remap from="rgb/camera_info" to="" />
         <remap from="depth/image" to="" />
-
     </node>
 
 </launch>
