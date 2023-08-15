@@ -23,4 +23,5 @@ catkin build \
     robot_localization \
     hector_gazebo \
     twist_mux \
+    maddrive_ros_shared \
     -j$(($(nproc)-2))
