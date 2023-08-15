@@ -22,6 +22,7 @@ catkin build \
     urdf_geometry_parser \
     robot_localization \
     hector_gazebo \
+    point_cloud_converter \
     twist_mux \
     maddrive_ros_shared \
     -j$(($(nproc)-2))
