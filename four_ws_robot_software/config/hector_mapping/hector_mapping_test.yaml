@@ -3,8 +3,8 @@ base_frame: base_footprint
 map_frame: map
 odom_frame: odom
 
-map_resolution: 0.05
-map_size: 750
+map_resolution: 0.5
+map_size: 300
 map_start_x: 0.5
 map_start_y: 0.5
 map_update_distance_thresh: 0.4

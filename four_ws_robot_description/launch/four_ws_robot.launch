@@ -82,10 +82,10 @@
     <group if="$(arg pid_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
         args="
-            /swerve_steering_controller/cmd_vel/linear/x
-            /swerve_steering_controller/cmd_vel/angular/z
-            /swerve_steering_controller/odom/pose/pose/position/x
-            /swerve_steering_controller/odom/pose/pose/orientation/z"/>
+            /four_wheel_steering_controller/cmd_vel/linear/x
+            /four_wheel_steering_controller/cmd_vel/angular/z
+            /four_wheel_steering_controller/odom/pose/pose/position/x
+            /four_wheel_steering_controller/odom/pose/pose/orientation/z"/>
     </group>
 
 </launch>

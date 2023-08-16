@@ -33,7 +33,9 @@
     <!-- rviz -->
     <arg name='rviz' default="true" />
     <!-- odom_debug (rqt_plot) -->
-    <arg name="odom_debug" default="true"/>
+    <arg name="odom_debug" default="false"/>
+    <!-- ekf_debug (rqt_plot) -->
+    <arg name="ekf_debug" default="true"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
@@ -90,11 +92,18 @@
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_sim.yaml" />
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
-        <remap from="cmd_vel" to="swerve_steering_controller/cmd_vel"/>
+        <remap from="cmd_vel" to="four_wheel_steering_controller/cmd_vel"/>
     </node>
 
+    <!-- <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform_sim.yaml" />
+        <remap from="odometry/filtered" to="odometry/filtered/local"/>
+        <remap from="gps/fix" to="bottom_gps_sensor/fix"/>
+        <remap from="imu/data" to="front_rs_d455_camera/imu"/>
+    </node> -->
+
     <!-- keyboard control -->
-    <include file="$(find maddrive_teleop)/launch/start_keyboard_teleop.launch">
+    <!-- <include file="$(find maddrive_teleop)/launch/start_keyboard_teleop.launch">
         <arg name="turbo/linear_steps" value="4"/>
         <arg name="turbo/angular_steps" value="4"/>
         <arg name="turbo/linear_forward_min" value="0.04"/>
@@ -104,7 +113,7 @@
         <arg name="turbo/angular_min" value="0.05"/>
         <arg name="turbo/angular_max" value="0.5"/>
         <arg name="cmd_topic" value="key_vel"/>
-    </include>
+    </include> -->
     <!-- joystick control -->
     <include file="$(find maddrive_teleop)/launch/start_joy_teleop.launch">
         <arg name="cmd_topic" value="joy_vel" />
@@ -116,7 +125,7 @@
     <!-- twist_mux -->
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
-        <remap from="cmd_vel_out" to="swerve_steering_controller/cmd_vel"/>
+        <remap from="cmd_vel_out" to="four_wheel_steering_controller/cmd_vel"/>
     </node>
 
     <!-- rviz -->
@@ -126,11 +135,30 @@
     <group if="$(arg odom_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
-                /swerve_steering_controller/odom/pose/pose/position/x
-                /swerve_steering_controller/odom/pose/pose/orientation/z
+                /four_wheel_steering_controller/odom/pose/pose/position/x
+                /four_wheel_steering_controller/odom/pose/pose/orientation/z
                 /odometry/filtered/local/pose/pose/position/x
                 /odometry/filtered/local/pose/pose/orientation/z
                 /ground_truth/state/pose/pose/position/x
-                /ground_truth/state/pose/pose/orientation/z"/>
+                /ground_truth/state/pose/pose/orientation/z"
+                />
     </group>
+
+    <!-- ekf_debug -->
+    <group if="$(arg ekf_debug)">
+        <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
+            args="
+                /odometry/filtered/local/pose/covariance[0]
+                /odometry/filtered/local/pose/covariance[7]
+                /odometry/filtered/local/pose/covariance[35]
+                /odometry/filtered/local/twist/covariance[0]
+                /odometry/filtered/local/twist/covariance[7]
+                /odometry/filtered/local/twist/covariance[35]
+                /odometry/filtered/local/pose/pose/position/x
+                /ground_truth/state/pose/pose/position/x
+                /ground_truth/state/pose/pose/position/y
+                /odometry/filtered/local/pose/pose/position/y
+                "/>
+    </group>
+
 </launch>

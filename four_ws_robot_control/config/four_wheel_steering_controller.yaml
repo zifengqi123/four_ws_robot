@@ -10,7 +10,7 @@ four_wheel_steering_controller:
   publish_rate: 50.0
   cmd_vel_timeout: 0.5
   base_frame_id: base_footprint
-  enable_odom_tf: true # odom -> base_footprint
+  enable_odom_tf: false # odom -> base_footprint
   enable_twist_cmd: false
   # velocity and acceleration limits
   linear:
@@ -35,5 +35,5 @@ four_wheel_steering_controller:
   wheel_radius: 0.067
   wheel_base: 0.6
   # params for covariances
-  pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
-  twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+  pose_covariance_diagonal: [0.001, 0.001, 0.0, 0.0, 0.0, 0.001]
+  twist_covariance_diagonal: [0.001, 0.001, 0.0, 0.0, 0.0, 0.001]
