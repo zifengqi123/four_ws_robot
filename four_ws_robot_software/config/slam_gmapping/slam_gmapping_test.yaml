@@ -1,5 +1,4 @@
 # http://wiki.ros.org/gmapping
-# https://github.com/5met4nka/four_ws_robot/blob/main/docs/slam_gmapping_params.md
 inverted_laser: false
 throttle_scans: 1
 base_frame: base_footprint

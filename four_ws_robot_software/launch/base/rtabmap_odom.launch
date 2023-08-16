@@ -2,7 +2,7 @@
 <launch>
 
     <node if="$(arg rgbd_odom)" pkg="rtabmap_odom" type="rgbd_odometry" name="visual_odometry" output="log">
-        <rosparam file="$(find four_ws_robot_software)/config/rtabmap_odom_params/rtabmap_odom_params_default.yaml" command="load"/>
+        <rosparam file="$(find four_ws_robot_software)/config/rtabmap_odom/rtabmap_odom_default.yaml" command="load"/>
         <remap from="rgb/image" to="" />
         <remap from="rgb/camera_info" to="" />
         <remap from="depth/image" to="" />

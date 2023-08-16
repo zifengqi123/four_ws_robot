@@ -1,5 +1,4 @@
 # http://wiki.ros.org/hector_mapping
-# https://github.com/5met4nka/four_ws_robot/blob/main/docs/hector_mapping_params.md
 base_frame: base_footprint
 map_frame: map
 odom_frame: odom

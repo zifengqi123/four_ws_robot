@@ -4,7 +4,7 @@
     <arg name="algorithm_config"/>
 
     <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
-        <rosparam file="$(find four_ws_robot_software)/config/slam_gmapping_params/slam_gmapping_params_$(arg algorithm_config).yaml" command="load"/>
+        <rosparam file="$(find four_ws_robot_software)/config/slam_gmapping/slam_gmapping_$(arg algorithm_config).yaml" command="load"/>
         <remap from="/scan" to="/top_lidar_scan"/>
     </node>
 

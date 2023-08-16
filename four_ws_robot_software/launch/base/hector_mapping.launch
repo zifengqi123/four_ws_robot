@@ -4,7 +4,7 @@
     <arg name="algorithm_config"/>
 
     <node name="hector_mapping" pkg="hector_mapping" type="hector_mapping" output="screen">
-        <rosparam file="$(find four_ws_robot_software)/config/hector_mapping_params/hector_mapping_params_$(arg algorithm_config).yaml" command="load"/>
+        <rosparam file="$(find four_ws_robot_software)/config/hector_mapping/hector_mapping_$(arg algorithm_config).yaml" command="load"/>
         <remap from="/scan" to="/top_lidar_scan"/>
     </node>
 

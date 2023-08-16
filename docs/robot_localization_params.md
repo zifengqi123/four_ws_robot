@@ -1,4 +1,4 @@
-# robot_localization_params
+# параметры robot_localization
 
 [официальная документация](http://wiki.ros.org/robot_localization)
 

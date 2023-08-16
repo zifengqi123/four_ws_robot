@@ -1,5 +1,4 @@
 # http://wiki.ros.org/amcl
-# https://github.com/5met4nka/four_ws_robot/blob/main/docs/amcl_params.md
 min_particles: 100
 max_particles: 500
 kld_err: 0.01
