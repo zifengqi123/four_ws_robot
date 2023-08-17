@@ -88,19 +88,29 @@
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
     </include> -->
 
-    <!-- odometry filter-->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
+    <!-- ekf_local -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_sim.yaml" />
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
-        <remap from="cmd_vel" to="four_wheel_steering_controller/cmd_vel"/>
     </node>
 
-    <!-- <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
+    <!-- ekf_global -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_gps_sim.yaml" />
+        <remap from="odometry/filtered" to="odometry/filtered/global"/>
+    </node>
+
+    <!-- navsat_transform -->
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform_sim.yaml" />
-        <remap from="odometry/filtered" to="odometry/filtered/local"/>
+        <!-- inputs -->
+        <remap from="odometry/filtered" to="odometry/filtered/global"/>
         <remap from="gps/fix" to="bottom_gps_sensor/fix"/>
         <remap from="imu/data" to="front_rs_d455_camera/imu"/>
-    </node> -->
+        <!-- outputs -->
+        <remap from="odometry/gps" to="odometry/gps"/>
+        <!-- <remap from="gps/filtered" to="odometry/filtered/global"/> -->
+    </node>
 
     <!-- keyboard control -->
     <!-- <include file="$(find maddrive_teleop)/launch/start_keyboard_teleop.launch">

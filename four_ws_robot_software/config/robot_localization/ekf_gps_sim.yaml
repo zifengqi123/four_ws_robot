@@ -1,0 +1,134 @@
+# http://docs.ros.org/en/noetic/api/robot_localization/html/state_estimation_nodes.html
+# base parameters
+
+frequency: 10
+sensor_timeout: 1.0
+two_d_mode: true
+
+map_frame: map
+odom_frame: odom
+base_link_frame: base_footprint
+base_link_frame_output: base_footprint
+world_frame: map # "map_frame" if use GPS; "odom_frame" if not use GPS
+
+transform_time_offset: 0.0
+transform_timeout: 0.0
+
+# wheel odom
+odom0: /four_wheel_steering_controller/odom # (50 Hz)
+odom0_config:  [true, true, false,
+                false, false, false,
+                true, true, false,
+                false, false, false,
+                false, false, false]
+odom0_queue_size: 5
+odom0_differential: false
+odom0_relative: false
+odom0_nodelay: false
+
+# gps
+odom1: odometry/gps # (4 Hz)
+odom1_config:  [true, true, false,
+                false, false, false,
+                false, false, false,
+                false, false, false,
+                false, false, false]
+odom1_queue_size: 5
+odom1_differential: false
+odom1_relative: false
+odom1_nodelay: false
+
+# front_rs_d455_camera_imu
+imu0: /front_rs_d455_camera/imu # (20 Hz)
+imu0_config: [false, false, false,
+              false, false, true,
+              false, false, false,
+              false, false, true,
+              true, true, false]
+imu0_queue_size: 5
+imu0_differential: true
+imu0_relative: false
+imu0_nodelay: false
+
+# # # rear_rs_d435i_camera_imu
+# imu1: /rear_rs_d435i_camera/imu # (20 Hz)
+# imu1_config: [false, false, false,
+#               false, false, true,
+#               false, false, false,
+#               false, false, true,
+#               true, true, false]
+# imu1_queue_size: 5
+# imu1_differential: false
+# imu1_relative: false
+# imu1_nodelay: false
+
+initial_state: [0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0]
+publish_tf: false # odom -> base_footprint
+publish_acceleration: false
+permit_corrected_publication: false
+print_diagnostics: false
+
+# advanced parameters
+
+# use_control: false
+# stamped_control: false
+# control_timeout: 
+# control_config:  [true, true, false,
+#                   false, false, true]
+
+# acceleration_limits: [0.0, 0.0, 0.0,
+#                       0.0, 0.0, 0.0]
+# acceleration_gains: [0.0, 0.0, 0.0,
+#                      0.0, 0.0, 0.0]
+# deceleration_gains: [0.0, 0.0, 0.0,
+#                      0.0, 0.0, 0.0]
+# smooth_lagged_data: 
+# history_length: 
+# debug: false
+# debug_out_file: 
+
+# конфиг ковариационных матриц взят с https://github.com/introlab/rtabmap_ros/blob/c1d1c01d5d732784ceb6b225ebf6eebdb700ceb0/rtabmap_examples/launch/sensor_fusion.launch#L111
+# Q - ковариационная матрица шума процесса - дисперсия переменных состояния
+process_noise_covariance:  [0.001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0.001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0.0004, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0004, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0004, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0004, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+# dynamic_process_noise_covariance: true
+
+# P - начальное значение ковариационной матрицы оценки состояния (дисперсии переменных)
+# рекомендуется ставить значения немного больше чем дисперсий переменных
+initial_estimate_covariance: [0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+# reset_on_time_jump: 
+# predict_to_current_time: true
+disabled_at_startup: false

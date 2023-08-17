@@ -222,6 +222,8 @@ Visualization Manager:
           Value: false
         top_lslidar_c16_lidar_link:
           Value: false
+        utm:
+          Value: true
       Marker Alpha: 0.699999988079071
       Marker Scale: 4
       Name: TF
@@ -229,40 +231,41 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base_footprint:
-              base_link:
-                bottom_gps_sensor_link:
-                  {}
-                front_axis_link:
-                  front_left_steer_link:
-                    front_left_wheel_link:
-                      {}
-                  front_right_steer_link:
-                    front_right_wheel_link:
-                      {}
-                  front_rs_d455_camera_link:
-                    front_rs_d455_camera_imu_link:
-                      {}
-                    front_rs_d455_camera_optical_frame:
-                      {}
-                rear_axis_link:
-                  rear_left_steer_link:
-                    rear_left_wheel_link:
-                      {}
-                  rear_right_steer_link:
-                    rear_right_wheel_link:
-                      {}
-                  rear_rs_d435i_camera_link:
-                    rear_rs_d435i_camera_imu_link:
-                      {}
-                    rear_rs_d435i_camera_optical_frame:
-                      {}
-                top_lidar_link:
-                  {}
-                top_lslidar_c16_lidar_link:
-                  {}
+        utm:
+          map:
+            odom:
+              base_footprint:
+                base_link:
+                  bottom_gps_sensor_link:
+                    {}
+                  front_axis_link:
+                    front_left_steer_link:
+                      front_left_wheel_link:
+                        {}
+                    front_right_steer_link:
+                      front_right_wheel_link:
+                        {}
+                    front_rs_d455_camera_link:
+                      front_rs_d455_camera_imu_link:
+                        {}
+                      front_rs_d455_camera_optical_frame:
+                        {}
+                  rear_axis_link:
+                    rear_left_steer_link:
+                      rear_left_wheel_link:
+                        {}
+                    rear_right_steer_link:
+                      rear_right_wheel_link:
+                        {}
+                    rear_rs_d435i_camera_link:
+                      rear_rs_d435i_camera_imu_link:
+                        {}
+                      rear_rs_d435i_camera_optical_frame:
+                        {}
+                  top_lidar_link:
+                    {}
+                  top_lslidar_c16_lidar_link:
+                    {}
       Update Interval: 0
       Value: true
     - Alpha: 0.5
@@ -566,10 +569,10 @@ Visualization Manager:
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 0; 255; 0
-        Head Length: 0.15000000596046448
-        Head Radius: 0.05000000074505806
-        Shaft Length: 0.5
-        Shaft Radius: 0.02500000037252903
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
         Value: Arrow
       Topic: /ground_truth/state
       Unreliable: false
@@ -593,7 +596,7 @@ Visualization Manager:
         Value: false
       Enabled: true
       Keep: 1
-      Name: filtered_odometry
+      Name: filtered_odometry_local
       Position Tolerance: 0.10000000149011612
       Queue Size: 10
       Shape:
@@ -601,12 +604,47 @@ Visualization Manager:
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 32; 74; 135
-        Head Length: 0.15000000596046448
-        Head Radius: 0.05000000074505806
-        Shaft Length: 0.5
-        Shaft Radius: 0.02500000037252903
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
         Value: Arrow
       Topic: /odometry/filtered/local
+      Unreliable: false
+      Value: true
+    - Angle Tolerance: 0.10000000149011612
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.30000001192092896
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: true
+      Enabled: true
+      Keep: 1
+      Name: filtered_odometry_global
+      Position Tolerance: 0.10000000149011612
+      Queue Size: 10
+      Shape:
+        Alpha: 0.5
+        Axes Length: 1
+        Axes Radius: 0.10000000149011612
+        Color: 255; 25; 0
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
+        Value: Arrow
+      Topic: /odometry/filtered/global
       Unreliable: false
       Value: true
   Enabled: true
@@ -637,7 +675,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 30
+      Distance: 27.1852970123291
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
