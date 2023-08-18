@@ -534,12 +534,12 @@ Visualization Manager:
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 255; 25; 0
-        Head Length: 0.15000000596046448
-        Head Radius: 0.05000000074505806
-        Shaft Length: 0.5
-        Shaft Radius: 0.02500000037252903
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /swerve_steering_controller/odom
+      Topic: /four_wheel_steering_controller/odom
       Unreliable: false
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -558,7 +558,7 @@ Visualization Manager:
           Color: 204; 51; 204
           Scale: 1
           Value: true
-        Value: true
+        Value: false
       Enabled: true
       Keep: 1
       Name: ground_truth
@@ -628,7 +628,7 @@ Visualization Manager:
           Color: 204; 51; 204
           Scale: 1
           Value: true
-        Value: true
+        Value: false
       Enabled: true
       Keep: 1
       Name: filtered_odometry_global
@@ -675,7 +675,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 27.1852970123291
+      Distance: 10
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

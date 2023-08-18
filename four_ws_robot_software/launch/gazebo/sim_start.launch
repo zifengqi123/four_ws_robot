@@ -32,10 +32,12 @@
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
     <!-- rviz -->
     <arg name='rviz' default="true" />
-    <!-- odom_debug (rqt_plot) -->
-    <arg name="odom_debug" default="false"/>
-    <!-- ekf_debug (rqt_plot) -->
-    <arg name="ekf_debug" default="true"/>
+    <!-- wheel_odom_debug (rqt_plot) -->
+    <arg name="wheel_odom_debug" default="false"/>
+    <!-- fused_odom_debug (rqt_plot) -->
+    <arg name="fused_odom_debug" default="false"/>
+    <!-- gps_debug (rqt_plot) -->
+    <arg name="gps_debug" default="false"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
@@ -141,8 +143,8 @@
     <!-- rviz -->
     <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find four_ws_robot_software)/rviz/full_config.rviz"/>
 
-    <!-- odom_debug -->
-    <group if="$(arg odom_debug)">
+    <!-- wheel_odom_debug -->
+    <group if="$(arg wheel_odom_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /four_wheel_steering_controller/odom/pose/pose/position/x
@@ -154,8 +156,8 @@
                 />
     </group>
 
-    <!-- ekf_debug -->
-    <group if="$(arg ekf_debug)">
+    <!-- fused_odom_debug -->
+    <group if="$(arg fused_odom_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /odometry/filtered/local/pose/covariance[0]
@@ -168,6 +170,20 @@
                 /ground_truth/state/pose/pose/position/x
                 /ground_truth/state/pose/pose/position/y
                 /odometry/filtered/local/pose/pose/position/y
+                /gps/filtered/position_covariance[0]
+                /gps/filtered/position_covariance[4]
+                /gps/filtered/position_covariance[8]
+                "/>
+    </group>
+
+    <!-- gps_debug -->
+    <group if="$(arg gps_debug)">
+        <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
+            args="
+                /bottom_gps_sensor/fix/latitude
+                /bottom_gps_sensor/fix/longitude
+                /gps/filtered/latitude
+                /gps/filtered/longitude
                 "/>
     </group>
 
