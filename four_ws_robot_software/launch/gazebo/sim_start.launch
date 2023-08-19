@@ -69,22 +69,22 @@
     </include>
 
     <!-- solving slam problem -->
-    <include file="$(find four_ws_robot_software)/launch/base/$(arg slam_algorithm).launch">
+    <include file="$(find four_ws_robot_software)/launch/drivers/$(arg slam_algorithm).launch">
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
     </include>
 
     <!--- rgbd odom -->
     <!-- <group ns="rtabmap">
-        <include file="$(find four_ws_robot_software)/launch/base/rtabmap_odom.launch">
+        <include file="$(find four_ws_robot_software)/launch/drivers/rtabmap_odom.launch">
             <arg name="algorithm_config" value="$(arg algorithm_config)"/>
         </include>
     </group> -->
 
     <!-- solving localization problem -->
-    <!-- <include file="$(find four_ws_robot_software)/launch/base/map_server.launch">
+    <!-- <include file="$(find four_ws_robot_software)/launch/drivers/map_server.launch">
         <arg name="map_file" value="$(arg map_file)"/>
     </include>
-    <include file="$(find four_ws_robot_software)/launch/base/amcl.launch">
+    <include file="$(find four_ws_robot_software)/launch/drivers/amcl.launch">
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
         <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
@@ -131,7 +131,7 @@
         <arg name="cmd_topic" value="joy_vel" />
     </include>
     <!-- navigation control -->
-    <!-- <include file="$(find four_ws_robot_software)/launch/base/move_base.launch">
+    <!-- <include file="$(find four_ws_robot_software)/launch/drivers/move_base.launch">
         <arg name="algorithm_config" value="$(arg algorithm_config)"/>
     </include> -->
     <!-- twist_mux -->
