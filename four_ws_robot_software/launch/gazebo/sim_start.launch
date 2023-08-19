@@ -115,7 +115,7 @@
     </node>
 
     <!-- keyboard control -->
-    <!-- <include file="$(find maddrive_teleop)/launch/start_keyboard_teleop.launch">
+    <include file="$(find maddrive_teleop)/launch/start_keyboard_teleop.launch">
         <arg name="turbo/linear_steps" value="4"/>
         <arg name="turbo/angular_steps" value="4"/>
         <arg name="turbo/linear_forward_min" value="0.04"/>
@@ -125,7 +125,7 @@
         <arg name="turbo/angular_min" value="0.05"/>
         <arg name="turbo/angular_max" value="0.5"/>
         <arg name="cmd_topic" value="key_vel"/>
-    </include> -->
+    </include>
     <!-- joystick control -->
     <include file="$(find maddrive_teleop)/launch/start_joy_teleop.launch">
         <arg name="cmd_topic" value="joy_vel" />
@@ -170,9 +170,6 @@
                 /ground_truth/state/pose/pose/position/x
                 /ground_truth/state/pose/pose/position/y
                 /odometry/filtered/local/pose/pose/position/y
-                /gps/filtered/position_covariance[0]
-                /gps/filtered/position_covariance[4]
-                /gps/filtered/position_covariance[8]
                 "/>
     </group>
 
@@ -184,6 +181,9 @@
                 /bottom_gps_sensor/fix/longitude
                 /gps/filtered/latitude
                 /gps/filtered/longitude
+                /gps/filtered/position_covariance[0]
+                /gps/filtered/position_covariance[4]
+                /gps/filtered/position_covariance[8]
                 "/>
     </group>
 
