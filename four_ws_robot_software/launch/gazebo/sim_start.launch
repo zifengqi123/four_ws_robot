@@ -92,19 +92,19 @@
 
     <!-- ekf_local -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local" output="screen">
-        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_sim.yaml" />
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_local.yaml" />
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
     </node>
 
     <!-- ekf_global -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
-        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_gps_sim.yaml" />
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_global.yaml" />
         <remap from="odometry/filtered" to="odometry/filtered/global"/>
     </node>
 
     <!-- navsat_transform -->
     <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
-        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform_sim.yaml" />
+        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform.yaml" />
         <!-- inputs -->
         <remap from="odometry/filtered" to="odometry/filtered/global"/>
         <remap from="gps/fix" to="bottom_gps_sensor/fix"/>
