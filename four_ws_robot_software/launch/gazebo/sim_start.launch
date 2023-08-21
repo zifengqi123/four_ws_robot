@@ -32,12 +32,10 @@
     <arg name="map_file" default="$(find four_ws_robot_software)/maps/$(arg world_name).yaml"/>
     <!-- rviz -->
     <arg name='rviz' default="true" />
-    <!-- wheel_odom_debug (rqt_plot) -->
+    <!-- rqt_plot's -->
     <arg name="wheel_odom_debug" default="false"/>
-    <!-- fused_odom_debug (rqt_plot) -->
-    <arg name="fused_odom_debug" default="false"/>
-    <!-- gps_debug (rqt_plot) -->
-    <arg name="gps_debug" default="false"/>
+    <arg name="ekf_local_debug" default="true"/>
+    <arg name="ekf_global_debug" default="false"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
@@ -93,15 +91,17 @@
     <!-- ekf_local -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_local.yaml" />
+        <param name="publish_tf" value="true" />
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
+        <remap from="diagnostics" to="ekf_local_diagnostics"/>
     </node>
-
     <!-- ekf_global -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_global.yaml" />
+        <param name="publish_tf" value="true" />
         <remap from="odometry/filtered" to="odometry/filtered/global"/>
+        <remap from="diagnostics" to="ekf_global_diagnostics"/>
     </node>
-
     <!-- navsat_transform -->
     <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform.yaml" />
@@ -111,7 +111,7 @@
         <remap from="imu/data" to="front_rs_d455_camera/imu"/>
         <!-- outputs -->
         <remap from="odometry/gps" to="odometry/gps"/>
-        <!-- <remap from="gps/filtered" to="odometry/filtered/global"/> -->
+        <remap from="gps/filtered" to="gps/filtered"/>
     </node>
 
     <!-- keyboard control -->
@@ -138,6 +138,7 @@
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
         <remap from="cmd_vel_out" to="four_wheel_steering_controller/cmd_vel"/>
+        <remap from="diagnostics" to="twist_mux_diagnostics"/>
     </node>
 
     <!-- rviz -->
@@ -157,7 +158,7 @@
     </group>
 
     <!-- fused_odom_debug -->
-    <group if="$(arg fused_odom_debug)">
+    <group if="$(arg ekf_local_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /odometry/filtered/local/pose/covariance[0]
@@ -174,7 +175,7 @@
     </group>
 
     <!-- gps_debug -->
-    <group if="$(arg gps_debug)">
+    <group if="$(arg ekf_global_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /bottom_gps_sensor/fix/latitude
