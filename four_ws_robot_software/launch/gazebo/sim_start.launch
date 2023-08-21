@@ -129,6 +129,9 @@
     <!-- joystick control -->
     <include file="$(find maddrive_teleop)/launch/start_joy_teleop.launch">
         <arg name="cmd_topic" value="joy_vel" />
+        <arg name="speed/frwd_limit" value="1"/>
+        <arg name="speed/bkwrd_limit" value="-0.6"/>
+        <arg name="steer/limit" value="45"/>
     </include>
     <!-- navigation control -->
     <!-- <include file="$(find four_ws_robot_software)/launch/drivers/move_base.launch">
