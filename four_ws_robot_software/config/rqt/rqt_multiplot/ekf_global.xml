@@ -11,13 +11,13 @@
                     <axes>
                         <axes>
                             <x_axis>
-                                <custom_title>Untitled Axis</custom_title>
-                                <title_type>0</title_type>
+                                <custom_title>longitude</custom_title>
+                                <title_type>1</title_type>
                                 <title_visible>true</title_visible>
                             </x_axis>
                             <y_axis>
-                                <custom_title>Untitled Axis</custom_title>
-                                <title_type>0</title_type>
+                                <custom_title>latitude</custom_title>
+                                <title_type>1</title_type>
                                 <title_visible>true</title_visible>
                             </y_axis>
                         </axes>
@@ -130,7 +130,7 @@
                         <visible>true</visible>
                     </legend>
                     <plot_rate>30</plot_rate>
-                    <title>GPS</title>
+                    <title>ekf_global</title>
                 </column_0>
             </row_0>
         </plots>

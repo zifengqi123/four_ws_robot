@@ -18,6 +18,11 @@
                 /odometry/filtered/local/twist/covariance[7]
                 /odometry/filtered/local/twist/covariance[35]
                 "/>
+        <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot"
+            args="
+                --multiplot-config $(find four_ws_robot_software)/config/rqt/rqt_multiplot/ekf_local.xml
+                --multiplot-run-all
+                "/>
     </group>
 
     <!-- gps_debug -->
@@ -33,7 +38,7 @@
                 "/>
         <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot"
             args="
-                --multiplot-config $(find four_ws_robot_software)/config/rqt/rqt_multiplot/gps.xml
+                --multiplot-config $(find four_ws_robot_software)/config/rqt/rqt_multiplot/ekf_global.xml
                 --multiplot-run-all
                 "/>
     </group>

@@ -92,31 +92,8 @@
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
     </include> -->
 
-    <!-- ekf_local -->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local" output="screen">
-        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_local.yaml" />
-        <param name="publish_tf" value="true" />
-        <remap from="odometry/filtered" to="odometry/filtered/local"/>
-        <remap from="diagnostics" to="ekf_local_diagnostics"/>
-    </node>
-    <!-- ekf_global -->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
-        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_global.yaml" />
-        <param name="publish_tf" value="false" />
-        <remap from="odometry/filtered" to="odometry/filtered/global"/>
-        <remap from="diagnostics" to="ekf_global_diagnostics"/>
-    </node>
-    <!-- navsat_transform -->
-    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
-        <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform.yaml" />
-        <!-- inputs -->
-        <remap from="odometry/filtered" to="odometry/filtered/global"/>
-        <remap from="gps/fix" to="bottom_gps_sensor/fix"/>
-        <remap from="imu/data" to="front_rs_d455_camera/imu"/>
-        <!-- outputs -->
-        <remap from="odometry/gps" to="odometry/gps"/>
-        <remap from="gps/filtered" to="gps/filtered"/>
-    </node>
+    <!-- robot_localization -->
+    <include file="$(find four_ws_robot_software)/launch/drivers/robot_localization.launch"/>
 
     <!-- keyboard control -->
     <include file="$(find maddrive_teleop)/launch/start_keyboard_teleop.launch">
