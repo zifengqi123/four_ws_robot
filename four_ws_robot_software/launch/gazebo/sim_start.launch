@@ -24,6 +24,9 @@
     <arg name="robot_pose_x" default="0.0"/>
     <arg name="robot_pose_y" default="0.0"/>
     <arg name="robot_pose_z" default="0.05"/>
+    <arg name="robot_pose_R" default="0.0"/>
+    <arg name="robot_pose_P" default="0.0"/>
+    <arg name="robot_pose_Y" default="0.0"/>
     <!-- select slam algorithm ... -->
     <arg name="slam_algorithm" default="hector_mapping" doc="[hector_mapping, slam_gmapping]"/>
     <!-- ... and config -->
@@ -34,7 +37,7 @@
     <arg name='rviz' default="true" />
     <!-- rqt_plot's -->
     <arg name="wheel_odom_debug" default="false"/>
-    <arg name="ekf_local_debug" default="true"/>
+    <arg name="ekf_local_debug" default="false"/>
     <arg name="ekf_global_debug" default="false"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
@@ -62,6 +65,9 @@
         <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
         <arg name="robot_pose_z" value="$(arg robot_pose_z)"/>
+        <arg name="robot_pose_R" value="$(arg robot_pose_R)"/>
+        <arg name="robot_pose_P" value="$(arg robot_pose_P)"/>
+        <arg name="robot_pose_Y" value="$(arg robot_pose_Y)"/>
         <!-- urdf model -->
         <arg name="model" value="$(arg model)"/>
     </include>
@@ -152,10 +158,13 @@
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /four_wheel_steering_controller/odom/pose/pose/position/x
-                /four_wheel_steering_controller/odom/pose/pose/orientation/z
                 /odometry/filtered/local/pose/pose/position/x
-                /odometry/filtered/local/pose/pose/orientation/z
                 /ground_truth/state/pose/pose/position/x
+                /four_wheel_steering_controller/odom/pose/pose/position/y
+                /odometry/filtered/local/pose/pose/position/y
+                /ground_truth/state/pose/pose/position/y
+                /four_wheel_steering_controller/odom/pose/pose/orientation/z
+                /odometry/filtered/local/pose/pose/orientation/z
                 /ground_truth/state/pose/pose/orientation/z"
                 />
     </group>
@@ -164,16 +173,16 @@
     <group if="$(arg ekf_local_debug)">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
+                /odometry/filtered/local/pose/pose/position/x
+                /ground_truth/state/pose/pose/position/x
+                /odometry/filtered/local/pose/pose/position/y
+                /ground_truth/state/pose/pose/position/y
                 /odometry/filtered/local/pose/covariance[0]
                 /odometry/filtered/local/pose/covariance[7]
                 /odometry/filtered/local/pose/covariance[35]
                 /odometry/filtered/local/twist/covariance[0]
                 /odometry/filtered/local/twist/covariance[7]
                 /odometry/filtered/local/twist/covariance[35]
-                /odometry/filtered/local/pose/pose/position/x
-                /ground_truth/state/pose/pose/position/x
-                /ground_truth/state/pose/pose/position/y
-                /odometry/filtered/local/pose/pose/position/y
                 "/>
     </group>
 
@@ -182,12 +191,11 @@
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
                 /bottom_gps_sensor/fix/latitude
-                /bottom_gps_sensor/fix/longitude
                 /gps/filtered/latitude
+                /bottom_gps_sensor/fix/longitude
                 /gps/filtered/longitude
                 /gps/filtered/position_covariance[0]
                 /gps/filtered/position_covariance[4]
-                /gps/filtered/position_covariance[8]
                 "/>
     </group>
 

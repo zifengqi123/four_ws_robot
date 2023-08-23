@@ -24,6 +24,9 @@
     <arg name="robot_pose_x" default="0.0"/>
     <arg name="robot_pose_y" default="0.0"/>
     <arg name="robot_pose_z" default="0.05"/>
+    <arg name="robot_pose_R" default="0.0"/>
+    <arg name="robot_pose_P" default="0.0"/>
+    <arg name="robot_pose_Y" default="0.0"/>
     <!-- rviz -->
     <arg name="rviz" default="false" />
     <!-- pid_debug (rqt_plot) -->
@@ -33,13 +36,16 @@
     <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-    <node name="four_ws_model_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-x $(arg robot_pose_x)
+    <node pkg="gazebo_ros" type="spawn_model" name="four_ws_model_spawner" respawn="false" output="screen"
+          args="-urdf
+                -param robot_description
+                -model four_ws_robot
+                -x $(arg robot_pose_x)
                 -y $(arg robot_pose_y)
                 -z $(arg robot_pose_z)
-                -urdf
-                -model four_ws_robot
-                -param robot_description"/>
+                -R $(arg robot_pose_R)
+                -P $(arg robot_pose_P)
+                -Y $(arg robot_pose_Y)"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="$(arg paused)"/>
