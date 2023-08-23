@@ -1,10 +1,10 @@
 # http://docs.ros.org/en/noetic/api/robot_localization/html/navsat_transform_node.html
 
 frequency: 10
-delay: 1
+delay: 2
 
-magnetic_declination_radians: 0
-yaw_offset: 0
+magnetic_declination_radians: 0 # https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml#declination
+yaw_offset: 0 # imu output is zero if it looks with the X axis to the east
 
 zero_altitude: true
 publish_filtered_gps: true

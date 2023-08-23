@@ -1,8 +1,9 @@
 # http://docs.ros.org/en/noetic/api/robot_localization/html/state_estimation_nodes.html
+
 # base parameters
 
 frequency: 10
-sensor_timeout: 1.0
+sensor_timeout: 2.0
 two_d_mode: true
 
 map_frame: map
@@ -28,7 +29,7 @@ initial_state: [0.0, 0.0, 0.0,
 # wheel odometry
 odom0: /four_wheel_steering_controller/odom # (50 Hz)
 odom0_config:  [true, true, false,
-                false, false, false,
+                false, false, true,
                 true, true, false,
                 false, false, false,
                 false, false, false]
@@ -38,7 +39,7 @@ odom0_relative: false
 odom0_nodelay: false
 
 # gps
-odom1: odometry/gps # (4 Hz)
+odom1: odometry/gps # (1 Hz)
 odom1_config:  [true, true, false,
                 false, false, false,
                 false, false, false,
@@ -55,7 +56,7 @@ imu0_config: [false, false, false,
               false, false, true,
               false, false, false,
               false, false, true,
-              true, true, false]
+              true, false, false]
 imu0_queue_size: 5
 imu0_differential: true
 imu0_relative: false
@@ -95,8 +96,8 @@ debug: false
 
 # конфиг ковариационных матриц взят с https://github.com/introlab/rtabmap_ros/blob/c1d1c01d5d732784ceb6b225ebf6eebdb700ceb0/rtabmap_examples/launch/sensor_fusion.launch#L111
 # Q - ковариационная матрица шума процесса - дисперсия переменных состояния
-process_noise_covariance:  [0.001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                            0, 0.001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+process_noise_covariance:  [0.0025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0.0025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -115,20 +116,20 @@ process_noise_covariance:  [0.001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 
 # P - начальное значение ковариационной матрицы оценки состояния (дисперсии переменных)
 # рекомендуется ставить значения немного больше чем дисперсий переменных
-initial_estimate_covariance: [0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                              0, 0, 0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+initial_estimate_covariance: [0.003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0.003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                              0, 0, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0.0006, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0, 0, 0,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0, 0,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0006, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0006, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0006, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # reset_on_time_jump: 
