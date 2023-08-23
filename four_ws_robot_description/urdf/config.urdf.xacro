@@ -35,7 +35,7 @@
 		model="d435i"
 		parent="rear_axis_link"
 		origin_xyz="-${rear_wheel_2_rear_bumper} 0.0 ${body_heigth}"
-		origin_rpy="3.14159265 0.00 3.14159265" />
+		origin_rpy="3.14159265 0.0 3.14159265" />
 
 	<xacro:gps_sensor
 		prefix="bottom"
