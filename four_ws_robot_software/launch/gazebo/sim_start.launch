@@ -5,19 +5,9 @@
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="false"/>
-    <arg name="recording" default="false"/>
-    <arg name="headless" default="false"/>
-    <arg name="debug" default="false"/>
-    <arg name="physics" default="ode"/>
-    <arg name="verbose" default="false"/>
-    <arg name="output" default="screen"/>
     <arg name="world_name" default="room_with_pillars_asphalt"/>
-    <arg name="respawn_gazebo" default="false"/>
-    <arg name="use_clock_frequency" default="false"/>
+    <arg name="use_clock_frequency" default="true"/>
     <arg name="pub_clock_frequency" default="100"/>
-    <arg name="enable_ros_network" default="true"/>
-    <arg name="server_required" default="false"/>
-    <arg name="gui_required" default="false"/>
     <!-- urdf model -->
     <arg name="model" default="$(find four_ws_robot_description)/urdf/config.urdf.xacro"/>
     <!-- urdf spawner -->
@@ -46,19 +36,9 @@
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)"/>
-        <arg name="recording" value="$(arg recording)"/>
-        <arg name="headless" value="$(arg headless)"/>
-        <arg name="debug" value="$(arg debug)"/>
-        <arg name="physics" value="$(arg physics)"/>
-        <arg name="verbose" value="$(arg verbose)"/>
-        <arg name="output" value="$(arg output)"/>
         <arg name="world_name" value="$(find maddrive_worlds)/worlds/$(arg world_name).world"/>
-        <arg name="respawn_gazebo" value="$(arg respawn_gazebo)"/>
         <arg name="use_clock_frequency" value="$(arg use_clock_frequency)"/>
         <arg name="pub_clock_frequency" value="$(arg use_clock_frequency)"/>
-        <arg name="enable_ros_network" value="$(arg enable_ros_network)"/>
-        <arg name="server_required" value="$(arg server_required)"/>
-        <arg name="gui_required" value="$(arg gui_required)"/>
         <!-- urdf spawner -->
         <arg name="robot_pose_x" value="$(arg robot_pose_x)"/>
         <arg name="robot_pose_y" value="$(arg robot_pose_y)"/>
