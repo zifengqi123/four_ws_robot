@@ -28,8 +28,8 @@ initial_state: [0.0, 0.0, 0.0,
 
 # wheel odometry
 odom0: /four_wheel_steering_controller/odom # (50 Hz)
-odom0_config:  [true, true, false,
-                false, false, true,
+odom0_config:  [false, false, false,
+                false, false, false,
                 true, true, false,
                 false, false, false,
                 false, false, false]
@@ -39,7 +39,7 @@ odom0_relative: false
 odom0_nodelay: false
 
 # gps
-odom1: odometry/gps # (1 Hz)
+odom1: /odometry/gps # (1 Hz)
 odom1_config:  [true, true, false,
                 false, false, false,
                 false, false, false,
@@ -58,10 +58,10 @@ imu0_config: [false, false, false,
               false, false, true,
               true, false, false]
 imu0_queue_size: 5
-imu0_differential: true
+imu0_differential: false
 imu0_relative: false
 imu0_nodelay: false
-imu0_remove_gravitational_acceleration: true
+imu0_remove_gravitational_acceleration: false
 
 # # # rear_rs_d435i_camera_imu
 # imu1: /rear_rs_d435i_camera/imu # (20 Hz)
@@ -69,11 +69,12 @@ imu0_remove_gravitational_acceleration: true
 #               false, false, true,
 #               false, false, false,
 #               false, false, true,
-#               true, true, false]
+#               true, false, false]
 # imu1_queue_size: 5
 # imu1_differential: false
 # imu1_relative: false
 # imu1_nodelay: false
+# imu1_remove_gravitational_acceleration: false
 
 # advanced parameters
 
@@ -102,14 +103,14 @@ process_noise_covariance:  [0.0025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0.0004, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0004, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0004, 0, 0,
-                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0004, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # dynamic_process_noise_covariance: true
@@ -122,14 +123,14 @@ initial_estimate_covariance: [0.003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0.0006, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0.015, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0.015, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0006, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0006, 0, 0,
-                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0006, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # reset_on_time_jump: 

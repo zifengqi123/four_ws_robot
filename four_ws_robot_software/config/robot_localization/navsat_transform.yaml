@@ -4,7 +4,7 @@ frequency: 10
 delay: 2
 
 magnetic_declination_radians: 0 # https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml#declination
-yaw_offset: 0 # imu output is zero if it looks with the X axis to the east
+yaw_offset: 0 # imu выдает "0" если его ось Х смотрит на восток
 
 zero_altitude: true
 publish_filtered_gps: true

@@ -5,6 +5,9 @@
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_local.yaml" />
         <param name="publish_tf" value="true" />
+        <!-- inputs -->
+        <remap from="set_pose" to="ekf_local/set_pose"/>
+        <!-- outputs -->
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
         <remap from="diagnostics" to="ekf_local_diagnostics"/>
     </node>
@@ -12,6 +15,9 @@
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_global.yaml" />
         <param name="publish_tf" value="false" />
+        <!-- inputs -->
+        <remap from="set_pose" to="ekf_global/set_pose"/>
+        <!-- outputs -->
         <remap from="odometry/filtered" to="odometry/filtered/global"/>
         <remap from="diagnostics" to="ekf_global_diagnostics"/>
     </node>

@@ -7,10 +7,6 @@
     <group if="$(eval ekf_debug == 'local')">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
-                /odometry/filtered/local/pose/pose/position/x
-                /ground_truth/state/pose/pose/position/x
-                /odometry/filtered/local/pose/pose/position/y
-                /ground_truth/state/pose/pose/position/y
                 /odometry/filtered/local/pose/covariance[0]
                 /odometry/filtered/local/pose/covariance[7]
                 /odometry/filtered/local/pose/covariance[35]
@@ -29,10 +25,6 @@
     <group if="$(eval ekf_debug == 'global')">
         <node name="rqt_plot" pkg="rqt_plot" type="rqt_plot"
             args="
-                /bottom_gps_sensor/fix/latitude
-                /gps/filtered/latitude
-                /bottom_gps_sensor/fix/longitude
-                /gps/filtered/longitude
                 /gps/filtered/position_covariance[0]
                 /gps/filtered/position_covariance[4]
                 "/>
