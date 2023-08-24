@@ -102,7 +102,7 @@
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
         <remap from="cmd_vel_out" to="four_wheel_steering_controller/cmd_vel"/>
-        <remap from="diagnostics" to="twist_mux_diagnostics"/>
+        <remap from="diagnostics" to="twist_mux/diagnostics"/>
     </node>
 
     <!-- rviz -->

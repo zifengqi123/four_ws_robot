@@ -78,24 +78,24 @@ imu0_remove_gravitational_acceleration: false
 
 # advanced parameters
 
-# use_control: false
-# stamped_control: false
-# control_timeout: 
-# control_config:  [true, true, false,
-#                   false, false, true]
+use_control: false
+stamped_control: false
+control_timeout: 1.0
+control_config:  [true, true, false,
+                  false, false, true]
 
-# acceleration_limits: [0.0, 0.0, 0.0,
-#                       0.0, 0.0, 0.0]
-# acceleration_gains: [0.0, 0.0, 0.0,
-#                      0.0, 0.0, 0.0]
-# deceleration_gains: [0.0, 0.0, 0.0,
-#                      0.0, 0.0, 0.0]
-# smooth_lagged_data: 
-# history_length: 
+acceleration_limits: [0.0, 0.0, 0.0,
+                      0.0, 0.0, 0.0]
+acceleration_gains:  [0.0, 0.0, 0.0,
+                      0.0, 0.0, 0.0]
+deceleration_gains:  [0.0, 0.0, 0.0,
+                      0.0, 0.0, 0.0]
+
+smooth_lagged_data: false
+history_length: 0.0
 debug: false
-# debug_out_file: 
+debug_out_file: robot_localization_debug.txt
 
-# конфиг ковариационных матриц взят с https://github.com/introlab/rtabmap_ros/blob/c1d1c01d5d732784ceb6b225ebf6eebdb700ceb0/rtabmap_examples/launch/sensor_fusion.launch#L111
 # Q - ковариационная матрица шума процесса - дисперсия переменных состояния
 process_noise_covariance:  [0.0025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0.0025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -133,6 +133,6 @@ initial_estimate_covariance: [0.003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-# reset_on_time_jump: 
-# predict_to_current_time: true
+reset_on_time_jump: false
+predict_to_current_time: false
 disabled_at_startup: false

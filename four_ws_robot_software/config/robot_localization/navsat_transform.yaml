@@ -8,8 +8,8 @@ yaw_offset: 0 # imu выдает "0" если его ось Х смотрит н
 
 zero_altitude: true
 publish_filtered_gps: true
-broadcast_utm_transform: true
 use_odometry_yaw: false
 wait_for_datum: false
+broadcast_utm_transform: true
 broadcast_utm_transform_as_parent_frame: true
 transform_timeout: 0

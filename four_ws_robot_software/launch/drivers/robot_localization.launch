@@ -9,7 +9,7 @@
         <remap from="set_pose" to="ekf_local/set_pose"/>
         <!-- outputs -->
         <remap from="odometry/filtered" to="odometry/filtered/local"/>
-        <remap from="diagnostics" to="ekf_local_diagnostics"/>
+        <remap from="diagnostics" to="ekf_local/diagnostics"/>
     </node>
     <!-- ekf_global -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
@@ -19,7 +19,7 @@
         <remap from="set_pose" to="ekf_global/set_pose"/>
         <!-- outputs -->
         <remap from="odometry/filtered" to="odometry/filtered/global"/>
-        <remap from="diagnostics" to="ekf_global_diagnostics"/>
+        <remap from="diagnostics" to="ekf_global/diagnostics"/>
     </node>
     <!-- navsat_transform -->
     <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
