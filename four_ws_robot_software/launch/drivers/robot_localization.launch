@@ -2,7 +2,7 @@
 <launch>
 
     <!-- ekf_local -->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local" output="screen">
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_local_node" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_local.yaml" />
         <param name="publish_tf" value="true" />
         <!-- inputs -->
@@ -12,7 +12,7 @@
         <remap from="diagnostics" to="ekf_local/diagnostics"/>
     </node>
     <!-- ekf_global -->
-    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global" output="screen">
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global_node" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/ekf_global.yaml" />
         <param name="publish_tf" value="false" />
         <!-- inputs -->
@@ -22,7 +22,7 @@
         <remap from="diagnostics" to="ekf_global/diagnostics"/>
     </node>
     <!-- navsat_transform -->
-    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/robot_localization/navsat_transform.yaml" />
         <!-- inputs -->
         <remap from="odometry/filtered" to="odometry/filtered/global"/>
