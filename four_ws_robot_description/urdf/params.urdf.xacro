@@ -16,7 +16,7 @@
     <xacro:property name="body_length" value="${front_wheel_2_front_bumper+wheelbase+rear_wheel_2_rear_bumper}" />
     <xacro:property name="body_width" value="0.8" />
     <xacro:property name="body_heigth" value="0.8" />
-    <xacro:property name="body_mass" value="4" />
+    <xacro:property name="body_mass" value="0.1" />
 
     <!-- габариты колес -->
     <xacro:property name="wheel_width" value="0.025" />

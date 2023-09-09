@@ -12,7 +12,7 @@ base_link_frame: base_footprint
 base_link_frame_output: base_footprint
 world_frame: odom # "map_frame" if use GPS; "odom_frame" if not use GPS
 
-publish_tf: true # "world_frame" -> "base_link_frame"
+publish_tf: false # "world_frame" -> "base_link_frame"
 publish_acceleration: false
 permit_corrected_publication: false
 print_diagnostics: false
@@ -93,7 +93,7 @@ process_noise_covariance:  [0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 # P - начальное значение ковариационной матрицы оценки состояния (дисперсии переменных)
 # рекомендуется ставить значения немного больше чем дисперсий переменных
 initial_estimate_covariance: [0.015, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                              0, 0, 0.015, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0.015, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
