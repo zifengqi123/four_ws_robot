@@ -32,3 +32,7 @@ git -C $THIRD_PARTY_DIR clone https://github.com/ros/robot_state_publisher.git -
 git -C $THIRD_PARTY_DIR clone https://github.com/cra-ros-pkg/robot_localization.git -b noetic-devel
 
 git -C $THIRD_PARTY_DIR clone https://github.com/ros-teleop/twist_mux.git -b melodic-devel
+
+git -C $THIRD_PARTY_DIR clone https://github.com/ros-geographic-info/geographic_info.git -b master
+
+git -C $THIRD_PARTY_DIR clone https://github.com/ros-geographic-info/unique_identifier.git -b master
