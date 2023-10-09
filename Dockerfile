@@ -5,26 +5,14 @@ FROM osrf/ros:noetic-desktop-full
 RUN apt-get update \
     && apt-get install -y \
     sudo \
-    nano \
-    git \
-    git-lfs \
-    curl \
-    net-tools
+    nano
 
-RUN apt-get update \
-    && apt-get install -y \
-    python3-rosdep \
-    python3-rosinstall \
-    python3-rosinstall-generator \
-    python3-wstool \
-    build-essential
-
-RUN rosdep update
-
+# утилита catkin
 RUN apt-get update \
     && apt-get install -y \
     python3-catkin-tools
 
+# необходимые ROS-пакеты
 RUN apt-get update \
     && apt-get install -y \
     ros-$ROS_DISTRO-move-base \
@@ -32,6 +20,7 @@ RUN apt-get update \
     ros-$ROS_DISTRO-gmapping \
     ros-$ROS_DISTRO-map-server
 
+# необходимые библиотеки для ROS-пакетов
 RUN apt-get update \
     && apt-get install -y \
     libspnav-dev \
@@ -61,8 +50,8 @@ COPY bashrc /home/${USERNAME}/.bashrc
 #     --user=user1122 \
 #     --network=host \
 #     --ipc=host \
-#     -v $HOME/catkin_ws/src:/home/user1122/catkin_ws/src \
-#     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+#     --volume=$HOME/catkin_ws/src:/home/user1122/catkin_ws/src \
+#     --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
 #     --env=DISPLAY \
 #     my_image:test
 
