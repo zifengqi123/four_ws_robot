@@ -60,3 +60,5 @@ COPY bashrc /home/${USERNAME}/.bashrc
 # sudo catkin config --extend /opt/ros/noetic
 
 # sudo ./src/four_ws_robot/scripts/build.sh
+
+# roslaunch turtle_tf turtle_tf_demo.launch
