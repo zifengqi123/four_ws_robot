@@ -39,11 +39,13 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
     && mkdir /home/$USERNAME/.config && chown $USER_UID:$USER_GID /home/$USERNAME/.config
 
-RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
+RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # копируем .bashrc
 COPY bashrc /home/${USERNAME}/.bashrc
+
+# docker image build -t lsd-maddrive-ros:noetic-devel .
 
 # docker container run -it \
 #     --name=my_container \
@@ -53,7 +55,7 @@ COPY bashrc /home/${USERNAME}/.bashrc
 #     --volume=$HOME/catkin_ws/src:/home/user1122/catkin_ws/src \
 #     --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
 #     --env=DISPLAY \
-#     my_image:test
+#     lsd-maddrive-ros:noetic-devel
 
 # sudo catkin config --extend /opt/ros/noetic
 
