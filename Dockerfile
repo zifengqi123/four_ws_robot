@@ -47,6 +47,7 @@ COPY bashrc /home/${USERNAME}/.bashrc
 
 # docker image build -t lsd-maddrive-ros:noetic-devel .
 
+# запуск на linux
 # docker container run -it \
 #     --name=my_container \
 #     --user=user1122 \
@@ -55,6 +56,16 @@ COPY bashrc /home/${USERNAME}/.bashrc
 #     --volume=$HOME/catkin_ws/src:/home/user1122/catkin_ws/src \
 #     --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
 #     --env=DISPLAY \
+#     lsd-maddrive-ros:noetic-devel
+
+# запуск на windows
+# docker container run -it `
+#     --name=my_container `
+#     --user=user1122 `
+#     --network=host `
+#     --ipc=host `
+#     --volume=C:\Users\Nikita\Documents\catkin_ws\src:/home/user1122/catkin_ws/src `
+#     -e DISPLAY=host.docker.internal:0.0 `
 #     lsd-maddrive-ros:noetic-devel
 
 # sudo catkin config --extend /opt/ros/noetic
