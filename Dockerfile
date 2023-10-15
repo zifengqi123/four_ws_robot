@@ -5,8 +5,7 @@ FROM osrf/ros:noetic-desktop-full
 RUN apt-get update \
     && apt-get install -y \
     sudo \
-    nano \
-    zsh
+    nano
 
 # утилита catkin
 RUN apt-get update \
@@ -45,9 +44,6 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 
 # копируем .bashrc
 COPY bashrc /home/${USERNAME}/.bashrc
-
-# копируем .zshrc
-COPY zshrc /home/${USERNAME}/.zshrc
 
 # docker image build -t lsd-maddrive-ros:noetic-devel .
 
