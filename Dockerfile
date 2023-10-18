@@ -1,37 +1,6 @@
 # основной образ
 FROM osrf/ros:noetic-desktop-full
 
-# необходимые apt-пакеты
-RUN apt-get update \
-    && apt-get install -y \
-    sudo \
-    nano \
-    && rm -rf /var/lib/apt/lists/*
-
-# утилита catkin
-RUN apt-get update \
-    && apt-get install -y \
-    python3-catkin-tools \
-    && rm -rf /var/lib/apt/lists/*
-
-# необходимые ROS-пакеты
-RUN apt-get update \
-    && apt-get install -y \
-    ros-$ROS_DISTRO-move-base \
-    ros-$ROS_DISTRO-amcl \
-    ros-$ROS_DISTRO-gmapping \
-    ros-$ROS_DISTRO-map-server \
-    && rm -rf /var/lib/apt/lists/*
-
-# необходимые библиотеки для ROS-пакетов
-RUN apt-get update \
-    && apt-get install -y \
-    libspnav-dev \
-    libopenvdb-dev \
-    libpcap-dev \
-    libgeographic-dev \
-    && rm -rf /var/lib/apt/lists/*
-
 # добавляем пользователя по умолчанию
 ARG USERNAME=user1122
 ARG USER_UID=1000
@@ -46,3 +15,23 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 
 # копируем .bashrc
 COPY bashrc /home/${USERNAME}/.bashrc
+
+# необходимые apt-пакеты
+RUN apt-get update \
+    && apt-get install -y \
+    sudo \
+    nano \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# утилита catkin
+RUN apt-get update \
+    && apt-get install -y \
+    python3-catkin-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+# необходимые библиотеки для ROS-пакетов
+COPY ../maddrive_ros_shared/scripts/install_packages.sh /home/${USERNAME}/catkin_ws/install_packages.sh
+RUN chmod +x /home/${USERNAME}/catkin_ws/install_packages.sh \
+    && ./home/${USERNAME}/install_packages.sh \
+    && rm -rf /var/lib/apt/lists/*
