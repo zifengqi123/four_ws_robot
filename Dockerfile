@@ -5,12 +5,14 @@ FROM osrf/ros:noetic-desktop-full
 RUN apt-get update \
     && apt-get install -y \
     sudo \
-    nano
+    nano \
+    && rm -rf /var/lib/apt/lists/*
 
 # утилита catkin
 RUN apt-get update \
     && apt-get install -y \
-    python3-catkin-tools
+    python3-catkin-tools \
+    && rm -rf /var/lib/apt/lists/*
 
 # необходимые ROS-пакеты
 RUN apt-get update \
@@ -18,7 +20,8 @@ RUN apt-get update \
     ros-$ROS_DISTRO-move-base \
     ros-$ROS_DISTRO-amcl \
     ros-$ROS_DISTRO-gmapping \
-    ros-$ROS_DISTRO-map-server
+    ros-$ROS_DISTRO-map-server \
+    && rm -rf /var/lib/apt/lists/*
 
 # необходимые библиотеки для ROS-пакетов
 RUN apt-get update \
@@ -26,9 +29,8 @@ RUN apt-get update \
     libspnav-dev \
     libopenvdb-dev \
     libpcap-dev \
-    libgeographic-dev
-
-RUN rm -rf /var/lib/apt/lists/*
+    libgeographic-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # добавляем пользователя по умолчанию
 ARG USERNAME=user1122
@@ -44,32 +46,3 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 
 # копируем .bashrc
 COPY bashrc /home/${USERNAME}/.bashrc
-
-# docker image build -t lsd-maddrive-ros:noetic-devel .
-
-# запуск на linux
-# docker container run -it \
-#     --name=my_container \
-#     --user=user1122 \
-#     --network=host \
-#     --ipc=host \
-#     --volume=$HOME/catkin_ws/src:/home/user1122/catkin_ws/src \
-#     --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
-#     --env=DISPLAY \
-#     lsd-maddrive-ros:noetic-devel
-
-# запуск на windows
-# docker container run -it `
-#     --name=my_container `
-#     --user=user1122 `
-#     --network=host `
-#     --ipc=host `
-#     --volume=C:\Users\Nikita\Documents\catkin_ws\src:/home/user1122/catkin_ws/src `
-#     -e DISPLAY=host.docker.internal:0.0 `
-#     lsd-maddrive-ros:noetic-devel
-
-# sudo catkin config --extend /opt/ros/noetic
-
-# sudo ./src/four_ws_robot/scripts/build.sh
-
-# roslaunch turtle_tf turtle_tf_demo.launch
