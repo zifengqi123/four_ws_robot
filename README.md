@@ -48,6 +48,7 @@ docker container run -it \
     --volume=$HOME/catkin_ws/src/maddrive_ros_shared:/home/user1122/catkin_ws/src/maddrive_ros_shared \
     --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
     --env=DISPLAY \
+    --device=/dev/ydlidar \
     lsd-maddrive-ros:noetic-desktop-full
 ```
 
@@ -71,14 +72,18 @@ docker container run -it `
 sudo catkin config --extend /opt/ros/noetic
 ```
 
+```bash
+sudo ./src/four_ws_robot/scripts/build.sh
+```
+
 * проверяем, работает ли GUI
 
 ```bash
 roslaunch turtle_tf turtle_tf_demo.launch
 ```
 
-    * если не работает, выполняем команду в хост-системе
+* если не работает, выполняем команду в хост-системе
 
-    ```bash
-    xhost +
-    ```
+```bash
+xhost +
+```

@@ -17,21 +17,25 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 COPY bashrc /home/${USERNAME}/.bashrc
 
 # необходимые apt-пакеты
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     sudo \
     nano \
     git \
+    kmod \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # утилита catkin
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # необходимые библиотеки для ROS-пакетов
-COPY ../maddrive_ros_shared/scripts/install_packages.sh /home/${USERNAME}/catkin_ws/install_packages.sh
-RUN chmod +x /home/${USERNAME}/catkin_ws/install_packages.sh \
-    && ./home/${USERNAME}/install_packages.sh \
-    && rm -rf /var/lib/apt/lists/*
+COPY ../maddrive_ros_shared/scripts/install_packages.sh /home/${USERNAME}/
+RUN chmod +x /home/${USERNAME}/install_packages.sh
+RUN ./home/${USERNAME}/install_packages.sh
+RUN rm -rf /var/lib/apt/lists/*
+
+COPY ../maddrive_ros_shared/scripts/install_hardware_moduls.sh /home/${USERNAME}/
+RUN chmod +x /home/${USERNAME}/install_hardware_moduls.sh
+RUN ./home/${USERNAME}/install_hardware_moduls.sh
