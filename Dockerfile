@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y \
     nano \
     git \
     kmod \
-    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # утилита catkin
@@ -31,11 +30,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # необходимые библиотеки для ROS-пакетов
-COPY ../maddrive_ros_shared/scripts/install_packages.sh /home/${USERNAME}/
+COPY install_packages.sh /home/${USERNAME}/
 RUN chmod +x /home/${USERNAME}/install_packages.sh
 RUN ./home/${USERNAME}/install_packages.sh
 RUN rm -rf /var/lib/apt/lists/*
 
-COPY ../maddrive_ros_shared/scripts/install_hardware_moduls.sh /home/${USERNAME}/
+COPY install_hardware_moduls.sh /home/${USERNAME}/
 RUN chmod +x /home/${USERNAME}/install_hardware_moduls.sh
 RUN ./home/${USERNAME}/install_hardware_moduls.sh
