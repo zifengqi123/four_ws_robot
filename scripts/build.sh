@@ -8,7 +8,6 @@ catkin build \
     urdf_geometry_parser \
     geometry2 \
     hector_slam \
-    hector_imu_tools \
     hector_gazebo \
     point_cloud_converter \
     maddrive_ros_shared \
