@@ -49,6 +49,7 @@ docker container run -it \
     --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw \
     --env=DISPLAY \
     --device=/dev/ydlidar \
+    --device=/dev/input/js0 \
     lsd-maddrive-ros:noetic-desktop-full
 ```
 
