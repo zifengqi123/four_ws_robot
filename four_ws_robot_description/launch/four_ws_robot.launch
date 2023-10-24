@@ -22,6 +22,15 @@
     <!-- pid_debug (rqt_plot) -->
     <arg name="pid_debug" default="false"/>
 
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="use_clock_frequency" value="$(arg use_clock_frequency)"/>
+        <arg name="pub_clock_frequency" value="$(arg pub_clock_frequency)"/>
+    </include>
+
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
 
@@ -37,17 +46,19 @@
                 -P $(arg robot_pose_P)
                 -Y $(arg robot_pose_Y)"/>
 
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="paused" value="$(arg paused)"/>
-        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-        <arg name="gui" value="$(arg gui)"/>
-        <arg name="world_name" value="$(arg world_name)"/>
-        <arg name="use_clock_frequency" value="$(arg use_clock_frequency)"/>
-        <arg name="pub_clock_frequency" value="$(arg use_clock_frequency)"/>
-    </include>
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find four_ws_robot_description)/config/controllers/joint_state_controller.yaml" command="load"/>
+    <rosparam file="$(find four_ws_robot_description)/config/controllers/gazebo_ros_control.yaml" command="load"/>
+    <rosparam file="$(find four_ws_robot_description)/config/controllers/swerve_steering_controller.yaml" command="load"/>
+    <!-- <rosparam file="$(find four_ws_robot_description)/config/controllers/four_wheel_steering_controller.yaml" command="load"/> -->
 
-    <!-- start controllers -->
-    <include file="$(find four_ws_robot_control)/launch/robot_control.launch"/>
+    <!-- load the controllers  -->
+    <node name="controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        output="screen"
+        args="joint_state_controller swerve_steering_controller">
+    </node>
 
     <!-- Publish static TFs (fixed joints) -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">

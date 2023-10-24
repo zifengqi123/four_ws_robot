@@ -9,6 +9,6 @@ catkin build \
     geometry2 \
     hector_slam \
     hector_gazebo \
-    point_cloud_converter \
     maddrive_ros_shared \
+    point_cloud_converter \
     -j$(($(nproc)-2))
