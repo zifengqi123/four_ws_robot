@@ -26,7 +26,7 @@
     <!-- rviz -->
     <arg name='rviz' default="true" />
     <!-- rqt_plot's -->
-    <arg name="ekf_debug" default="global" doc="[local, global]"/>
+    <arg name="ekf_debug" default="local" doc="[local, global]"/>
     <!-- parameter is used to save the map scan with the name of the map from the simulation -->
     <param name="map_name" value="$(arg world_name)"/>
 
@@ -101,7 +101,7 @@
     <!-- twist_mux -->
     <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
         <rosparam command="load" file="$(find four_ws_robot_software)/config/twist_mux/twist_mux.yaml" />
-        <remap from="cmd_vel_out" to="swerve_steering_controller/cmd_vel"/>
+        <remap from="cmd_vel_out" to="four_wheel_steering_controller/cmd_vel"/>
         <remap from="diagnostics" to="twist_mux/diagnostics"/>
     </node>
 

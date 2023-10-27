@@ -50,14 +50,14 @@
     <rosparam file="$(find four_ws_robot_description)/config/controllers/joint_state_controller.yaml" command="load"/>
     <rosparam file="$(find four_ws_robot_description)/config/controllers/gazebo_ros_control.yaml" command="load"/>
     <rosparam file="$(find four_ws_robot_description)/config/controllers/swerve_steering_controller.yaml" command="load"/>
-    <!-- <rosparam file="$(find four_ws_robot_description)/config/controllers/four_wheel_steering_controller.yaml" command="load"/> -->
+    <rosparam file="$(find four_ws_robot_description)/config/controllers/four_wheel_steering_controller.yaml" command="load"/>
 
     <!-- load the controllers  -->
     <node name="controller_spawner"
         pkg="controller_manager"
         type="spawner"
         output="screen"
-        args="joint_state_controller swerve_steering_controller">
+        args="joint_state_controller four_wheel_steering_controller">
     </node>
 
     <!-- Publish static TFs (fixed joints) -->
